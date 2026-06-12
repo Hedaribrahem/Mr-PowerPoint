@@ -1,0 +1,1925 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- أيقونة المتصفح (Favicon) -->
+    <link rel="icon" type="image/png" sizes="32x32" href="image/logoo.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="image/logoo.png" />
+    <link rel="shortcut icon" href="image/logoo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Mr PowerPoint - عروض تقديمية احترافية، قوالب جاهزة، دروس تعليمية. من الصفر إلى الاحتراف."
+    />
+    <title>Mr PowerPoint</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&family=Tajawal:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav id="navbar">
+      <a href="#" class="nav-logo">
+        <img src="image/logoo.png" alt="شعار الموقع" class="logo-img" />
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#" data-translate="nav_home">الرئيسية</a></li>
+        <li><a href="#services" data-translate="nav_services">الخدمات</a></li>
+        <li><a href="#works" data-translate="nav_works">الأعمال</a></li>
+        <li><a href="#templates" data-translate="nav_templates">القوالب</a></li>
+        <li><a href="#academy" data-translate="nav_academy">الأكاديمية</a></li>
+        <li><a href="#testimonials" data-translate="nav_testimonials">الآراء</a></li>
+      </ul>
+
+      <div style="display: flex; align-items: center; gap: 10px">
+        <button class="lang-toggle" onclick="toggleLang()">
+          <span class="lang-text lang-ar">عربي</span>
+          <span class="lang-sep">|</span>
+          <span class="lang-text lang-en">EN</span>
+        </button>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+          <span class="theme-icon"></span>
+        </button>
+        <a
+          href="https://wa.me/963935919037"
+          target="_blank"
+          class="nav-cta"
+          data-translate="nav_cta"
+        >
+         تواصل معنا
+        </a>
+        <button
+          class="nav-hamburger"
+          id="hamburger"
+          onclick="toggleMobileMenu()"
+          aria-label="القائمة"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+      <ul>
+        <li><a href="#" onclick="closeMobileMenu()" data-translate="nav_home">الرئيسية</a></li>
+        <li>
+          <a href="#services" onclick="closeMobileMenu()" data-translate="nav_services">الخدمات</a>
+        </li>
+        <li><a href="#works" onclick="closeMobileMenu()" data-translate="nav_works">الأعمال</a></li>
+        <li>
+          <a href="#templates" onclick="closeMobileMenu()" data-translate="nav_templates">
+            القوالب
+          </a>
+        </li>
+        <li><a href="#academy" onclick="closeMobileMenu()" data-translate="nav_academy">الأكاديمية</a></li>
+        <li>
+          <a href="#testimonials" onclick="closeMobileMenu()" data-translate="nav_testimonials">
+            الآراء
+          </a>
+        </li>
+      </ul>
+      <div class="mobile-menu-footer">
+        <a
+          href="https://wa.me/963935919037"
+          target="_blank"
+          class="btn-primary"
+          onclick="closeMobileMenu()"
+          style="font-size: 14px; padding: 11px 24px"
+          data-translate="nav_cta"
+        >
+          ابدأ مجاناً
+        </a>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <section id="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-grid-lines"></div>
+
+      <div class="hero-content">
+        <div class="hero-tag" data-translate="hero_tag"> عروض تقديمية تُلهم . أفكار تُأثر</div>
+
+        <h1 class="hero-title">
+          <span data-translate="hero_title_prefix">عروضك التقديمية</span>
+          <span class="line-red" data-translate="hero_title_highlight">تستحق الأفضل</span>
+          <span data-translate="hero_title_suffix">من الصفر إلى الاحتراف</span>
+        </h1>
+
+        <p class="hero-subtitle" data-translate="hero_subtitle">
+          نصمم عروضاً تقديمية احترافية تُقنع، نُعلّم المهارات التي تُميّزك، ونُقدّم قوالب جاهزة
+          تُوفر وقتك وتُضاعف تأثيرك.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#services" class="btn-primary">
+            <span data-translate="hero_btn1">شاهد خدماتنا</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M3 8h10M9 4l4 4-4 4"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">+60</span>
+            <div class="stat-label" data-translate="stat_1">عميل راضٍ</div>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">+100</span>
+            <div class="stat-label" data-translate="stat_2">قوالب جاهزة</div>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">+40</span>
+            <div class="stat-label" data-translate="stat_3">درس تعليمي</div>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">4.9★</span>
+            <div class="stat-label" data-translate="stat_4">تقييم العملاء</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-mockup">
+          <!-- SVG احترافي بدلاً من الصورة -->
+          <svg
+            class="hero-svg"
+            viewBox="0 0 600 420"
+            xmlns="http://www.w3.org/2000/svg"
+            style="
+              width: 100%;
+              height: auto;
+              border-radius: 20px;
+              display: block;
+            "
+          >
+            <defs>
+              <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#0d0d0d" />
+                <stop offset="100%" stop-color="#1a1a1a" />
+              </linearGradient>
+              <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#E61312" />
+                <stop offset="100%" stop-color="#ff4a4a" />
+              </linearGradient>
+              <linearGradient id="slideGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.08" />
+                <stop offset="100%" stop-color="#ffffff" stop-opacity="0.02" />
+              </linearGradient>
+              <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="4" />
+                <feMerge>
+                  <feMergeNode in="offsetblur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+
+            <!-- الخلفية الرئيسية -->
+            <rect class="hero-svg-bg" width="600" height="420" rx="20" fill="url(#bgGrad)" />
+
+            <!-- شبكة خلفية (حبيبات) -->
+            <g opacity="0.03">
+              <line x1="0" y1="60" x2="600" y2="60" stroke="white" stroke-width="0.5" />
+              <line x1="0" y1="120" x2="600" y2="120" stroke="white" stroke-width="0.5" />
+              <line x1="0" y1="180" x2="600" y2="180" stroke="white" stroke-width="0.5" />
+              <line x1="0" y1="240" x2="600" y2="240" stroke="white" stroke-width="0.5" />
+              <line x1="0" y1="300" x2="600" y2="300" stroke="white" stroke-width="0.5" />
+              <line x1="0" y1="360" x2="600" y2="360" stroke="white" stroke-width="0.5" />
+              <line x1="100" y1="0" x2="100" y2="420" stroke="white" stroke-width="0.5" />
+              <line x1="200" y1="0" x2="200" y2="420" stroke="white" stroke-width="0.5" />
+              <line x1="300" y1="0" x2="300" y2="420" stroke="white" stroke-width="0.5" />
+              <line x1="400" y1="0" x2="400" y2="420" stroke="white" stroke-width="0.5" />
+              <line x1="500" y1="0" x2="500" y2="420" stroke="white" stroke-width="0.5" />
+            </g>
+
+            <!-- شريحة عرض رئيسية (Mockup) -->
+            <g transform="translate(60, 50)">
+              <!-- ظل الشريحة -->
+              <rect class="hero-slide-shadow" x="5" y="8" width="380" height="220" rx="16" fill="#000000" opacity="0.4" />
+              <!-- الشريحة نفسها -->
+              <rect
+                x="0"
+                y="0"
+                width="380"
+                height="220"
+                rx="16"
+                fill="url(#slideGrad)"
+                stroke="rgba(230,19,18,0.3)"
+                stroke-width="1.5"
+              />
+
+              <!-- محتوى الشريحة -->
+              <!-- شريط علوي أحمر -->
+              <rect x="0" y="0" width="380" height="8" rx="4" fill="url(#redGrad)" />
+
+              <!-- عنوان تجريبي -->
+              <rect x="30" y="35" width="180" height="12" rx="6" fill="#E61312" opacity="0.9" />
+              <rect x="30" y="55" width="250" height="8" rx="4" fill="rgba(255,255,255,0.2)" />
+
+              <!-- أيقونة الرسم البياني -->
+              <g transform="translate(240, 80)">
+                <rect x="0" y="40" width="30" height="50" rx="4" fill="#E61312" opacity="0.8" />
+                <rect x="35" y="20" width="30" height="70" rx="4" fill="#E61312" opacity="0.5" />
+                <rect x="70" y="55" width="30" height="35" rx="4" fill="#E61312" opacity="0.3" />
+                <polyline
+                  points="0,90 15,90 15,65 50,65 50,40 85,40 85,25 100,25"
+                  stroke="#E61312"
+                  stroke-width="2"
+                  fill="none"
+                  opacity="0.7"
+                />
+              </g>
+
+              <!-- دائرة بيانية -->
+              <g transform="translate(40, 120)">
+                <circle
+                  cx="40"
+                  cy="40"
+                  r="35"
+                  fill="none"
+                  stroke="#E61312"
+                  stroke-width="6"
+                  opacity="0.5"
+                />
+                <circle
+                  cx="40"
+                  cy="40"
+                  r="35"
+                  fill="none"
+                  stroke="#E61312"
+                  stroke-width="6"
+                  stroke-dasharray="180 40"
+                  stroke-dashoffset="0"
+                />
+                <circle cx="40" cy="40" r="20" fill="#E61312" opacity="0.15" />
+                <text
+                  x="40"
+                  y="45"
+                  text-anchor="middle"
+                  fill="white"
+                  font-size="11"
+                  font-family="monospace"
+                  opacity="0.8"
+                >
+                  75%
+                </text>
+              </g>
+
+              <!-- قائمة نقطية مزيفة -->
+              <g transform="translate(160, 130)">
+                <circle cx="5" cy="8" r="3" fill="#E61312" />
+                <rect x="14" y="5" width="90" height="6" rx="3" fill="rgba(255,255,255,0.15)" />
+                <circle cx="5" cy="24" r="3" fill="#E61312" />
+                <rect x="14" y="21" width="70" height="6" rx="3" fill="rgba(255,255,255,0.15)" />
+                <circle cx="5" cy="40" r="3" fill="#E61312" />
+                <rect x="14" y="37" width="110" height="6" rx="3" fill="rgba(255,255,255,0.15)" />
+              </g>
+
+              <!-- شعار PowerPoint صغير -->
+              <g transform="translate(310, 180)">
+                <rect x="0" y="0" width="40" height="40" rx="8" fill="#E61312" />
+                <text
+                  x="20"
+                  y="27"
+                  text-anchor="middle"
+                  font-family="Arial"
+                  font-weight="900"
+                  font-size="22"
+                  fill="white"
+                >
+                  P
+                </text>
+              </g>
+            </g>
+
+            <!-- عناصر دائرية عائمة -->
+            <circle cx="480" cy="80" r="40" fill="url(#redGrad)" opacity="0.1" />
+            <circle cx="520" cy="100" r="15" fill="url(#redGrad)" opacity="0.3" />
+            <circle cx="50" cy="350" r="25" fill="url(#redGrad)" opacity="0.08" />
+            <circle cx="550" cy="320" r="60" fill="url(#redGrad)" opacity="0.05" />
+
+            <g transform="translate(460, 200)" opacity="0.4">
+              <path d="M0,30 L20,0 L40,30 L20,60 Z" fill="none" stroke="#E61312" stroke-width="2" />
+              <text x="20" y="38" text-anchor="middle" fill="#E61312" font-size="10">✓</text>
+            </g>
+
+            <g transform="translate(80, 280)" opacity="0.3">
+              <rect
+                x="0"
+                y="0"
+                width="24"
+                height="18"
+                rx="3"
+                fill="none"
+                stroke="#E61312"
+                stroke-width="1.5"
+              />
+              <polygon points="12,3 12,15" stroke="#E61312" stroke-width="1.5" />
+              <polygon points="6,9 12,3 18,9" fill="#E61312" />
+            </g>
+          </svg>
+
+          <div class="floating-badge top-right">
+            <span class="icon"></span>
+            <span class="badge-text" data-translate="badge_1">عرض احترافي جاهز خلال 48 ساعة</span>
+          </div>
+          <div class="floating-badge bottom-left">
+            <span class="icon"></span>
+            <span class="badge-text" data-translate="badge_2">+100 قوالب جاهزة للتحميل</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="section-header">
+        <div>
+          <div class="section-label" data-translate="services_label">خدماتنا</div>
+          <h2 class="section-title reveal" data-translate="services_title">ماذا نُقدّم لك؟</h2>
+          <p class="section-subtitle reveal" data-translate="services_subtitle">
+            خدمات احترافية تناسب جميع احتياجاتك التقديمية
+          </p>
+        </div>
+      </div>
+
+      <div class="services-grid">
+        <!-- خدمة 1: Presentation Design -->
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg
+              width="48"
+              height="48"
+              viewBox="0 0 64 64"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="12"
+                y="16"
+                width="40"
+                height="32"
+                rx="6"
+                fill="url(#grad3d1)"
+                stroke="#E61312"
+                stroke-width="1.5"
+              />
+              <path
+                d="M22 28 L28 34 L36 24 L46 38"
+                stroke="#E61312"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                fill="none"
+              />
+              <circle cx="42" cy="30" r="3" fill="#E61312" opacity="0.6" />
+              <defs>
+                <linearGradient id="grad3d1" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#E61312" stop-opacity="0.15" />
+                  <stop offset="100%" stop-color="#E61312" stop-opacity="0.03" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <h3 class="service-name" data-translate="service_1_title">تصميم عروض تقديمية احترافية</h3>
+          <p class="service-desc" data-translate="service_1_desc">
+            نصنع لك عروضاً احترافية من الصفر، مصممة خصيصاً لتحقق أهدافك وتُبهر جمهورك.
+          </p>
+          <ul class="service-features">
+            <li data-translate="service_1_feature_1">تصميم فريد 100%</li>
+            <li data-translate="service_1_feature_2">تسليم خلال 48-72 ساعة</li>
+            <li data-translate="service_1_feature_3">مراجعتان مجانيتان</li>
+          </ul>
+          <a
+            href="https://khamsat.com/designing/presentation/4121621"
+            target="_blank"
+            class="service-link"
+            data-translate="service_1_link"
+          >
+            اطلب الخدمة
+            <span>←</span>
+          </a>
+        </div>
+
+        <!-- خدمة 2: Presentation Redesign -->
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">
+            <svg
+              width="48"
+              height="48"
+              viewBox="0 0 64 64"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M44 28 L52 32 L44 36 V28Z" fill="#E61312" fill-opacity="0.9" />
+              <path d="M20 32 L28 28 V36 L20 32Z" fill="#E61312" fill-opacity="0.6" />
+              <rect
+                x="28"
+                y="14"
+                width="8"
+                height="36"
+                rx="2"
+                fill="url(#grad3d2)"
+                stroke="#E61312"
+                stroke-width="1.2"
+              />
+              <circle cx="32" cy="20" r="3" fill="#E61312" stroke="#E61312" stroke-width="1" />
+              <path
+                d="M16 44 L48 44"
+                stroke="#E61312"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-dasharray="4 4"
+              />
+              <defs>
+                <linearGradient id="grad3d2" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#E61312" stop-opacity="0.8" />
+                  <stop offset="100%" stop-color="#E61312" stop-opacity="0.2" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <h3 class="service-name" data-translate="service_2_title">
+            تحويل العروض العادية إلى احترافية
+          </h3>
+          <p class="service-desc" data-translate="service_2_desc">
+            لديك عرض عادي؟ نعيد تصميمه ليصبح جذاباً، عصرياً، ومؤثراً دون تغيير المحتوى الأساسي.
+          </p>
+          <ul class="service-features">
+            <li data-translate="service_2_feature_1">تحسين التصميم بالكامل</li>
+            <li data-translate="service_2_feature_2">إضافة تأثيرات بصرية</li>
+            <li data-translate="service_2_feature_3">توحيد الخطوط والألوان</li>
+          </ul>
+          <a
+            href="https://khamsat.com/designing/presentation/4121621"
+            target="_blank"
+            class="service-link"
+            data-translate="service_2_link"
+          >
+            اطلب التعديل
+            <span>←</span>
+          </a>
+        </div>
+
+        <!-- خدمة 3: Custom Templates -->
+        <div class="service-card featured reveal reveal-delay-2">
+          <div class="service-icon">
+            <svg
+              width="48"
+              height="48"
+              viewBox="0 0 64 64"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="14"
+                y="18"
+                width="36"
+                height="28"
+                rx="4"
+                fill="url(#grad3d3)"
+                stroke="#E61312"
+                stroke-width="1.5"
+              />
+              <rect x="20" y="24" width="24" height="3" rx="1" fill="#E61312" opacity="0.8" />
+              <rect x="20" y="30" width="18" height="3" rx="1" fill="#E61312" opacity="0.5" />
+              <rect x="20" y="36" width="12" height="3" rx="1" fill="#E61312" opacity="0.3" />
+              <path
+                d="M48 42 L54 42 M51 39 L51 45"
+                stroke="#E61312"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+              <defs>
+                <linearGradient id="grad3d3" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#E61312" stop-opacity="0.12" />
+                  <stop offset="100%" stop-color="#E61312" stop-opacity="0.02" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <h3 class="service-name" data-translate="service_3_title">قوالب PowerPoint حسب الهوية</h3>
+          <p class="service-desc" data-translate="service_3_desc">
+            نصمم قوالب مخصصة لعلامتك التجارية بألوانك وخطوطك، جاهزة للاستخدام المتكرر.
+          </p>
+          <ul class="service-features">
+            <li data-translate="service_3_feature_1">متوافقة مع هويتك</li>
+            <li data-translate="service_3_feature_2">سهلة التعديل من قبل فريقك</li>
+            <li data-translate="service_3_feature_3">دعم وتحديثات مجانية</li>
+          </ul>
+          <a
+            href="https://khamsat.com/designing/presentation/4121621"
+            target="_blank"
+            class="service-link"
+            data-translate="service_3_link"
+          >
+            اطلب القالب
+            <span>←</span>
+          </a>
+        </div>
+
+        <!-- خدمة 4: Pitch Deck Design -->
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-icon">
+            <svg
+              width="48"
+              height="48"
+              viewBox="0 0 64 64"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M32 12 L44 28 L38 28 L42 48 L32 40 L22 48 L26 28 L20 28 L32 12Z"
+                fill="url(#grad3d4)"
+                stroke="#E61312"
+                stroke-width="1.5"
+                stroke-linejoin="round"
+              />
+              <circle
+                cx="32"
+                cy="30"
+                r="4"
+                fill="#E61312"
+                fill-opacity="0.3"
+                stroke="#E61312"
+                stroke-width="1"
+              />
+              <path
+                d="M32 18 L38 28 L34 28 L36 42 L32 38 L28 42 L30 28 L26 28 L32 18Z"
+                fill="#E61312"
+                fill-opacity="0.2"
+              />
+              <defs>
+                <linearGradient id="grad3d4" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#E61312" stop-opacity="0.2" />
+                  <stop offset="100%" stop-color="#E61312" stop-opacity="0.05" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <h3 class="service-name" data-translate="service_4_title">عروض المستثمرين والشركات</h3>
+          <p class="service-desc" data-translate="service_4_desc">
+            صمم عرضاً مقنعاً للجهات الاستثمارية أو مجالس الإدارة يحكي قصة نجاحك باحترافية.
+          </p>
+          <ul class="service-features">
+            <li data-translate="service_4_feature_1">هيكلة احترافية للقصة</li>
+            <li data-translate="service_4_feature_2">تصاميم عالية الجودة</li>
+            <li data-translate="service_4_feature_3">تسليم سريع للعروض الحساسة</li>
+          </ul>
+          <a
+            href="https://khamsat.com/designing/presentation/4121621"
+            target="_blank"
+            class="service-link"
+            data-translate="service_4_link"
+          >
+            اطلب العرض
+            <span>←</span>
+          </a>
+        </div>
+
+        <!-- خدمة 5: Infographic Slides -->
+        <div class="service-card reveal reveal-delay-4">
+          <div class="service-icon">
+            <svg
+              width="48"
+              height="48"
+              viewBox="0 0 64 64"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect x="16" y="36" width="7" height="16" rx="2" fill="#E61312" opacity="0.4" />
+              <rect x="26" y="24" width="7" height="28" rx="2" fill="#E61312" opacity="0.7" />
+              <rect x="36" y="12" width="7" height="40" rx="2" fill="#E61312" opacity="1" />
+              <rect x="46" y="28" width="7" height="24" rx="2" fill="#E61312" opacity="0.5" />
+              <path d="M12 52 L52 52" stroke="#E61312" stroke-width="1.5" stroke-linecap="round" />
+              <circle cx="39.5" cy="32" r="2" fill="white" opacity="0.8" />
+              <defs>
+                <linearGradient id="grad3d5" x1="0%" y1="100%" x2="0%" y2="0%">
+                  <stop offset="0%" stop-color="#E61312" stop-opacity="0.9" />
+                  <stop offset="100%" stop-color="#E61312" stop-opacity="0.3" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <h3 class="service-name" data-translate="service_5_title">
+            تحويل البيانات إلى إنفوغرافيك
+          </h3>
+          <p class="service-desc" data-translate="service_5_desc">
+            حول الأرقام والإحصائيات إلى رسوم بيانية وإنفوغرافيك جذاب يوضح رؤيتك بوضوح.
+          </p>
+          <ul class="service-features">
+            <li data-translate="service_5_feature_1">رسوم بيانية مخصصة</li>
+            <li data-translate="service_5_feature_2">أيقونات وأشكال بصرية</li>
+            <li data-translate="service_5_feature_3">قابل للتعديل في PowerPoint</li>
+          </ul>
+          <a
+            href="https://khamsat.com/designing/presentation/4121621"
+            target="_blank"
+            class="service-link"
+            data-translate="service_5_link"
+          >
+            اطلب الإنفوغرافيك
+            <span>←</span>
+          </a>
+        </div>
+
+        <!-- خدمة 6: Branding for Presentations -->
+        <div class="service-card reveal reveal-delay-5">
+          <div class="service-icon">
+            <svg
+              width="48"
+              height="48"
+              viewBox="0 0 64 64"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                cx="32"
+                cy="32"
+                r="20"
+                fill="url(#grad3d6)"
+                stroke="#E61312"
+                stroke-width="1.5"
+              />
+              <path
+                d="M32 14 L44 22 L44 38 L32 46 L20 38 L20 22 L32 14Z"
+                fill="none"
+                stroke="#E61312"
+                stroke-width="1.2"
+                stroke-linejoin="round"
+              />
+              <circle
+                cx="32"
+                cy="32"
+                r="5"
+                fill="#E61312"
+                fill-opacity="0.3"
+                stroke="#E61312"
+                stroke-width="1"
+              />
+              <path d="M32 22 L38 28 L32 34 L26 28 L32 22Z" fill="#E61312" fill-opacity="0.2" />
+              <defs>
+                <linearGradient id="grad3d6" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#E61312" stop-opacity="0.15" />
+                  <stop offset="100%" stop-color="#E61312" stop-opacity="0.03" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <h3 class="service-name" data-translate="service_6_title">توحيد هوية العروض</h3>
+          <p class="service-desc" data-translate="service_6_desc">
+            نوحّد ألوانك وخطوطك وعناصرك البصرية في قالب رئيسي واحد لكل عروض مؤسستك.
+          </p>
+          <ul class="service-features">
+            <li data-translate="service_6_feature_1">دليل هوية للعروض</li>
+            <li data-translate="service_6_feature_2">تصميم شرائح رئيسية وأطر</li>
+            <li data-translate="service_6_feature_3">تدريب فريقك على الاستخدام</li>
+          </ul>
+          <a
+            href="https://khamsat.com/designing/presentation/4121621"
+            target="_blank"
+            class="service-link"
+            data-translate="service_6_link"
+          >
+            اطلب التوحيد
+            <span>←</span>
+          </a>
+        </div>
+      </div>
+    </section>
+    <!-- WORKS -->
+    <section id="works">
+      <div class="section-header">
+        <div>
+          <div class="section-label" data-translate="works_label">معرض الأعمال</div>
+          <h2 class="section-title reveal" data-translate="works_title">أعمالنا تتحدث عنا</h2>
+          <p class="section-subtitle reveal" data-translate="works_subtitle">
+            نماذج من عروضنا التقديمية لعملاء من مختلف القطاعات
+          </p>
+        </div>
+      </div>
+
+      <div class="works-grid">
+        <div class="work-item reveal" data-full-img="image/jop1.JPG">
+          <img src="image/jop1.JPG" alt="عمل 1" />
+          <div class="work-overlay">
+            <div class="work-label" data-translate="work_1">تعلم PowerPoint احترافياً</div>
+            <button
+              class="work-preview-btn"
+              onclick="openLightbox('image/jop1.JPG')"
+              data-translate="preview_btn"
+            >
+              معاينة
+            </button>
+          </div>
+        </div>
+
+        <div class="work-item reveal reveal-delay-1" data-full-img="image/jop2.JPG">
+          <img src="image/jop2.JPG" alt="هوية Mr PowerPoint" />
+          <div class="work-overlay">
+            <div class="work-label" data-translate="work_2">هوية بصرية - Mr PowerPoint</div>
+            <button
+              class="work-preview-btn"
+              onclick="openLightbox('image/jop2.JPG')"
+              data-translate="preview_btn"
+            >
+              معاينة
+            </button>
+          </div>
+        </div>
+
+        <div class="work-item reveal reveal-delay-2" data-full-img="image/jop4.JPG">
+          <img src="image/jop4.JPG" alt="قناة Mr PowerPoint" />
+          <div class="work-overlay">
+            <div class="work-label" data-translate="work_3">تصميم قناة يوتيوب</div>
+            <button
+              class="work-preview-btn"
+              onclick="openLightbox('image/jop4.JPG')"
+              data-translate="preview_btn"
+            >
+              معاينة
+            </button>
+          </div>
+        </div>
+
+        <div class="work-item reveal reveal-delay-3" data-full-img="image/jop5.JPG">
+          <img src="image/jop5.JPG" alt="قالب عرض" />
+          <div class="work-overlay">
+            <div class="work-label" data-translate="work_4">خلفية قالب احترافي</div>
+            <button
+              class="work-preview-btn"
+              onclick="openLightbox('image/jop5.JPG')"
+              data-translate="preview_btn"
+            >
+              معاينة
+            </button>
+          </div>
+        </div>
+
+        <div class="work-item reveal reveal-delay-4" data-full-img="image/jop6.JPG">
+          <img src="image/jop6.JPG" alt="قالب عرض 2" />
+          <div class="work-overlay">
+            <div class="work-label" data-translate="work_5">تصميم شريحة بيانية</div>
+            <button
+              class="work-preview-btn"
+              onclick="openLightbox('image/jop6.JPG')"
+              data-translate="preview_btn"
+            >
+              معاينة
+            </button>
+          </div>
+        </div>
+
+        <div class="work-item reveal reveal-delay-5" data-full-img="image/jop7.JPG">
+          <img src="image/jop7.JPG" alt="قالب عرض 3" />
+          <div class="work-overlay">
+            <div class="work-label" data-translate="work_6">إنفوغرافيك تفاعلي</div>
+            <button
+              class="work-preview-btn"
+              onclick="openLightbox('image/jop7.JPG')"
+              data-translate="preview_btn"
+            >
+              معاينة
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lightbox Modal لعرض الصور بشكل أكبر -->
+    <div id="lightboxModal" class="lightbox-modal" onclick="closeLightboxOnBackground(event)">
+      <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+      <img class="lightbox-content" id="lightboxImg" alt="صورة مكبرة" />
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+
+    <!-- Video Modal (embedded YouTube) -->
+    <div id="videoModal" class="video-modal" onclick="if(event.target===this) closeVideoModal()">
+      <button class="video-close" onclick="closeVideoModal()">✕</button>
+      <div class="video-wrapper">
+        <div id="videoPlayer"></div>
+      </div>
+    </div>
+
+    <!-- TEMPLATES SECTION (طلب عبر واتساب) -->
+    <section id="templates">
+      <div class="section-header">
+        <div>
+          <div class="section-label" data-translate="templates_label">المنتجات الرقمية</div>
+          <h2 class="section-title reveal" data-translate="templates_title">نماذج جاهزة للتحميل</h2>
+          <p class="section-subtitle reveal" data-translate="templates_subtitle">
+            تم تصميم كل قالب لتوفير وقتك ورفع جودة عرضك التقديمي على الفور
+          </p>
+        </div>
+      </div>
+
+      <div class="templates-showcase">
+        <div class="template-card reveal">
+          <div class="template-thumb">
+            <img src="templates/template001.jpg" alt="template001" loading="lazy" />
+          </div>
+          <div class="template-info">
+            <div class="template-name">template001</div>
+            <div class="template-price">
+              <a
+                href="https://drive.google.com/file/d/1ktIl8oyWsuL3CURDav_eDz8XLxvfV38b/view?usp=drive_link"
+                target="_blank"
+                rel="noreferrer noopener"
+                class="btn-download" data-translate="download"
+              >
+                تنزيل
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="template-card reveal">
+          <div class="template-thumb">
+            <img src="templates/template002.jpg" alt="template002" loading="lazy" />
+          </div>
+          <div class="template-info">
+            <div class="template-name">template002</div>
+            <div class="template-price">
+              <a
+                href="https://drive.google.com/file/d/1Znkx_ZV9Ccv8-A_aRrT5ZCVRc3zP3VFn/view?usp=drive_link"
+                target="_blank"
+                rel="noreferrer noopener"
+                class="btn-download" data-translate="download"
+              >
+                تنزيل
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="template-card reveal">
+          <div class="template-thumb">
+            <img src="templates/template003.jpg" alt="template003" loading="lazy" />
+          </div>
+          <div class="template-info">
+            <div class="template-name">template003</div>
+            <div class="template-price">
+              <a
+                href="https://drive.google.com/file/d/1ssnRzp8IBGD9lSjneWycTkaJuMy197EA/view?usp=drive_link"
+                target="_blank"
+                rel="noreferrer noopener"
+                class="btn-download" data-translate="download"
+              >
+                تنزيل
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="template-card reveal">
+          <div class="template-thumb">
+            <img src="templates/template004.jpg" alt="template004" loading="lazy" />
+          </div>
+          <div class="template-info">
+            <div class="template-name">template004</div>
+            <div class="template-price">
+              <a
+                href="https://drive.google.com/file/d/1kYEgD6zPIGLGLveIiLSEsMF9nfRjvMe6/view?usp=drive_link"
+                target="_blank"
+                rel="noreferrer noopener"
+                class="btn-download" data-translate="download"
+              >
+                تنزيل
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="template-card reveal">
+          <div class="template-thumb">
+            <img src="templates/template005.jpg" alt="template005" loading="lazy" />
+          </div>
+          <div class="template-info">
+            <div class="template-name">template005</div>
+            <div class="template-price">
+              <a
+                href="https://drive.google.com/file/d/1AN5p8KnMf31ATONf_H7gDNlXcKGduRiQ/view?usp=drive_link"
+                target="_blank"
+                rel="noreferrer noopener"
+                class="btn-download" data-translate="download"
+              >
+                تنزيل
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="template-card reveal">
+          <div class="template-thumb">
+            <img src="templates/template006.jpg" alt="template006" loading="lazy" />
+          </div>
+          <div class="template-info">
+            <div class="template-name">template006</div>
+            <div class="template-price">
+              <a
+                href="https://drive.google.com/file/d/10rNpydv3NS5kqpgwb9mdA7eQ8MOpV62f/view?usp=drive_link"
+                target="_blank"
+                rel="noreferrer noopener"
+                class="btn-download" data-translate="download"
+              >
+                تنزيل
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="template-card reveal">
+          <div class="template-thumb">
+            <img src="templates/template007.jpg" alt="template007" loading="lazy" />
+          </div>
+          <div class="template-info">
+            <div class="template-name">template007</div>
+            <div class="template-price">
+              <a
+                href="https://drive.google.com/file/d/15VdgZ1NIt4ksboGVmd9FbRqwlr4eNSQd/view?usp=drive_link"
+                target="_blank"
+                rel="noreferrer noopener"
+                class="btn-download" data-translate="download"
+              >
+                تنزيل
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="template-card reveal">
+          <div class="template-thumb">
+            <img src="templates/template008.jpg" alt="template008" loading="lazy" />
+          </div>
+          <div class="template-info">
+            <div class="template-name">template008</div>
+            <div class="template-price">
+              <a
+                href="https://drive.google.com/file/d/1kLsL9ifq66Y7J7T8OnU7cT4aw2EK_sxC/view?usp=drive_link"
+                target="_blank"
+                rel="noreferrer noopener"
+                class="btn-download" data-translate="download"
+              >
+                تنزيل
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="template-card reveal extra-template hidden-template">
+          <div class="template-thumb">
+            <img src="templates/template009.jpg" alt="template009" loading="lazy" />
+          </div>
+          <div class="template-info">
+            <div class="template-name">template009</div>
+            <div class="template-price">
+              <a
+                href="https://drive.google.com/file/d/146jGjaqPeOh4eXTeuBhj2C4XQayt7zoR/view?usp=drive_link"
+                target="_blank"
+                rel="noreferrer noopener"
+                class="btn-download" data-translate="download"
+              >
+                تنزيل
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="template-card reveal extra-template hidden-template">
+          <div class="template-thumb">
+            <img src="templates/template010.jpg" alt="template010" loading="lazy" />
+          </div>
+          <div class="template-info">
+            <div class="template-name">template010</div>
+            <div class="template-price">
+              <a
+                href="https://drive.google.com/file/d/11AyxIyjrr9szAi-qC6lIP9X92r-hufg5/view?usp=drive_link"
+                target="_blank"
+                rel="noreferrer noopener"
+                class="btn-download" data-translate="download"
+              >
+                تنزيل
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="template-card reveal extra-template hidden-template">
+          <div class="template-thumb">
+            <img src="templates/template011.jpg" alt="template011" loading="lazy" />
+          </div>
+          <div class="template-info">
+            <div class="template-name">template011</div>
+            <div class="template-price">
+              <a
+                href="https://drive.google.com/file/d/1MKIgUgrBA8ZTvCZ-zm_5Zo5m0lr5yO-m/view?usp=drive_link"
+                target="_blank"
+                rel="noreferrer noopener"
+                class="btn-download" data-translate="download"
+              >
+                تنزيل
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="template-card reveal extra-template hidden-template">
+          <div class="template-thumb">
+            <img src="templates/template012.jpg" alt="template012" loading="lazy" />
+          </div>
+          <div class="template-info">
+            <div class="template-name">template012</div>
+            <div class="template-price">
+              <a
+                href="https://drive.google.com/file/d/1Wb1_4episOg-JLMHNVWYIppdqLhH_OM8/view?usp=drive_link"
+                target="_blank"
+                rel="noreferrer noopener"
+                class="btn-download" data-translate="download"
+              >
+                تنزيل
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="template-card reveal extra-template hidden-template">
+          <div class="template-thumb">
+            <img src="templates/template013.jpg" alt="template013" loading="lazy" />
+          </div>
+          <div class="template-info">
+            <div class="template-name">template013</div>
+            <div class="template-price">
+              <a
+                href="https://drive.google.com/file/d/1YeRgfI9sN4_NKhRs6l4Xt7Vr8SioXZg8/view?usp=drive_link"
+                target="_blank"
+                rel="noreferrer noopener"
+                class="btn-download" data-translate="download"
+              >
+                تنزيل
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="template-card reveal extra-template hidden-template">
+          <div class="template-thumb">
+            <img src="templates/template014.jpg" alt="template014" loading="lazy" />
+          </div>
+          <div class="template-info">
+            <div class="template-name">template014</div>
+            <div class="template-price">
+              <a
+                href="https://drive.google.com/file/d/1ahdVu4mWLuQOr7PwoVO880N35F1Wwflv/view?usp=drive_link"
+                target="_blank"
+                rel="noreferrer noopener"
+                class="btn-download" data-translate="download"
+              >
+                تنزيل
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="template-card reveal extra-template hidden-template">
+          <div class="template-thumb">
+            <img src="templates/template015.jpg" alt="template015" loading="lazy" />
+          </div>
+          <div class="template-info">
+            <div class="template-name">template015</div>
+            <div class="template-price">
+              <a
+                href="https://drive.google.com/file/d/11-p21plyyJm0p8UJQrMfSkhNhKsqTAxu/view?usp=drive_link"
+                target="_blank"
+                rel="noreferrer noopener"
+                class="btn-download" data-translate="download"
+              >
+                تنزيل
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="template-card reveal extra-template hidden-template">
+          <div class="template-thumb">
+            <img src="templates/template016.jpg" alt="template016" loading="lazy" />
+          </div>
+          <div class="template-info">
+            <div class="template-name">template016</div>
+            <div class="template-price">
+              <a
+                href="https://drive.google.com/file/d/19HJB3UVQIuWOR1hCqAqNGM3mg-aUVIdN/view?usp=drive_link"
+                target="_blank"
+                rel="noreferrer noopener"
+                class="btn-download" data-translate="download"
+              >
+                تنزيل
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="template-card reveal extra-template hidden-template">
+          <div class="template-thumb">
+            <img src="templates/template017.jpg" alt="template017" loading="lazy" />
+          </div>
+          <div class="template-info">
+            <div class="template-name">template017</div>
+            <div class="template-price">
+              <a
+                href="https://drive.google.com/file/d/1Wm-DiB_MLPRR6erIfUYHZJJDGTGzTR9M/view?usp=drive_link"
+                target="_blank"
+                rel="noreferrer noopener"
+                class="btn-download" data-translate="download"
+              >
+                تنزيل
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="template-card reveal extra-template hidden-template">
+          <div class="template-thumb">
+            <img src="templates/template018.jpg" alt="template018" loading="lazy" />
+          </div>
+          <div class="template-info">
+            <div class="template-name">template018</div>
+            <div class="template-price">
+              <a
+                href="https://drive.google.com/file/d/1eVlir97Q1Xwyv15i0Agjqs0EF3DIZDxk/view?usp=drive_link"
+                target="_blank"
+                rel="noreferrer noopener"
+                class="btn-download" data-translate="download"
+              >
+                تنزيل
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="template-card reveal extra-template hidden-template">
+          <div class="template-thumb">
+            <img src="templates/template019.jpg" alt="template019" loading="lazy" />
+          </div>
+          <div class="template-info">
+            <div class="template-name">template019</div>
+            <div class="template-price">
+              <a
+                href="https://drive.google.com/file/d/1ykKJBJwJswtmrwYReKY09-Aouc9QNN0l/view?usp=drive_link"
+                target="_blank"
+                rel="noreferrer noopener"
+                class="btn-download" data-translate="download"
+              >
+                تنزيل
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="template-card reveal extra-template hidden-template">
+          <div class="template-thumb">
+            <img src="templates/template020.jpg" alt="template020" loading="lazy" />
+          </div>
+          <div class="template-info">
+            <div class="template-name">template020</div>
+            <div class="template-price">
+              <a
+                href="https://drive.google.com/file/d/15eXrOnLrKiuPFprL9jcGeKRarboA16AP/view?usp=drive_link"
+                target="_blank"
+                rel="noreferrer noopener"
+                class="btn-download" data-translate="download"
+              >
+                تنزيل
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="template-card reveal extra-template hidden-template">
+          <div class="template-thumb">
+            <img src="templates/template021.jpg" alt="template021" loading="lazy" />
+          </div>
+          <div class="template-info">
+            <div class="template-name">template021</div>
+            <div class="template-price">
+              <a
+                href="https://drive.google.com/file/d/1icWQDLeodTCfwFhGGmcfGRg8BIDZP1f-/view?usp=drive_link"
+                target="_blank"
+                rel="noreferrer noopener"
+                class="btn-download" data-translate="download"
+              >
+                تنزيل
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="template-card reveal extra-template hidden-template">
+          <div class="template-thumb">
+            <img src="templates/template022.jpg" alt="template022" loading="lazy" />
+          </div>
+          <div class="template-info">
+            <div class="template-name">template022</div>
+            <div class="template-price">
+              <a
+                href="https://drive.google.com/file/d/1UX0urixrxVJgyh5iNmSy-5uUH628LBIW/view?usp=drive_link"
+                target="_blank"
+                rel="noreferrer noopener"
+                class="btn-download" data-translate="download"
+              >
+                تنزيل
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="templates-actions">
+        <button id="showMoreTemplatesBtn" class="lang-toggle templates-toggle-btn" data-translate="show_more" data-state="hidden" onclick="toggleMoreTemplates()">إظهار المزيد</button>
+      </div>
+    </section>
+
+    <!-- ACADEMY -->
+    <section id="academy">
+      <div class="section-header">
+        <div>
+          <div class="section-label" data-translate="academy_label">الأكاديمية التعليمية</div>
+          <h2 class="section-title reveal" data-translate="academy_title">فيديوهات تعليمية احترافية</h2>
+          <p class="section-subtitle reveal" data-translate="academy_subtitle">تعلم مهارات التصميم والعروض التقديمية من خلال محتوى تدريبي مبسط وعملي</p>
+        </div>
+      </div>
+      <div class="academy-videos">
+        <div class="videos-grid">
+          <!-- Thumbnails that open YouTube in a new tab (avoids embed restrictions) -->
+          <div class="video-card reveal">
+            <a class="video-link" href="https://youtu.be/30f0HZ6IFZM" target="_blank" rel="noopener noreferrer">
+              <img src="https://img.youtube.com/vi/30f0HZ6IFZM/hqdefault.jpg" alt="درس 01" />
+              <span class="play-overlay">▶</span>
+            </a>
+            <h4 class="video-title">درس 01</h4>
+          </div>
+
+          <div class="video-card reveal">
+            <a class="video-link" href="https://youtu.be/zqKZ_aF6nV0" target="_blank" rel="noopener noreferrer">
+              <img src="https://img.youtube.com/vi/zqKZ_aF6nV0/hqdefault.jpg" alt="درس 02" />
+              <span class="play-overlay">▶</span>
+            </a>
+            <h4 class="video-title">درس 02</h4>
+          </div>
+
+          <div class="video-card reveal">
+            <a class="video-link" href="https://youtu.be/N12YBy9QVy8" target="_blank" rel="noopener noreferrer">
+              <img src="https://img.youtube.com/vi/N12YBy9QVy8/hqdefault.jpg" alt="درس 03" />
+              <span class="play-overlay">▶</span>
+            </a>
+            <h4 class="video-title">درس 03</h4>
+          </div>
+          <div class="video-card reveal">
+            <a class="video-link" href="https://youtu.be/LNJOoEjp5cs" target="_blank" rel="noopener noreferrer">
+              <img src="https://img.youtube.com/vi/LNJOoEjp5cs/hqdefault.jpg" alt="درس 04" />
+              <span class="play-overlay">▶</span>
+            </a>
+            <h4 class="video-title">درس 04</h4>
+          </div>
+
+          <div class="video-card reveal">
+            <a class="video-link" href="https://youtu.be/35kJ2S7Mwew" target="_blank" rel="noopener noreferrer">
+              <img src="https://img.youtube.com/vi/35kJ2S7Mwew/hqdefault.jpg" alt="درس 05" />
+              <span class="play-overlay">▶</span>
+            </a>
+            <h4 class="video-title">درس 05</h4>
+          </div>
+
+          <div class="video-card reveal">
+            <a class="video-link" href="https://youtu.be/VnvkdVAAWio" target="_blank" rel="noopener noreferrer">
+              <img src="https://img.youtube.com/vi/VnvkdVAAWio/hqdefault.jpg" alt="درس 06" />
+              <span class="play-overlay">▶</span>
+            </a>
+            <h4 class="video-title">درس 06</h4>
+          </div>
+          <div class="extra-videos hidden-video">
+          <div class="video-card reveal">
+            <a class="video-link" href="https://youtu.be/8WGDGaF7EDk" target="_blank" rel="noopener noreferrer">
+              <img src="https://img.youtube.com/vi/8WGDGaF7EDk/hqdefault.jpg" alt="درس 07" />
+              <span class="play-overlay">▶</span>
+            </a>
+            <h4 class="video-title">درس 07</h4>
+          </div>
+
+          <div class="video-card reveal">
+            <a class="video-link" href="https://youtu.be/Ga0c9sctIog" target="_blank" rel="noopener noreferrer">
+              <img src="https://img.youtube.com/vi/Ga0c9sctIog/hqdefault.jpg" alt="درس 08" />
+              <span class="play-overlay">▶</span>
+            </a>
+            <h4 class="video-title">درس 08</h4>
+          </div>
+
+          <div class="video-card reveal">
+            <a class="video-link" href="https://youtu.be/gojqtVY44yE" target="_blank" rel="noopener noreferrer">
+              <img src="https://img.youtube.com/vi/gojqtVY44yE/hqdefault.jpg" alt="درس 09" />
+              <span class="play-overlay">▶</span>
+            </a>
+            <h4 class="video-title">درس 09</h4>
+          </div>
+
+          <div class="video-card reveal">
+            <a class="video-link" href="https://youtu.be/8YbqdUDbuoA" target="_blank" rel="noopener noreferrer">
+              <img src="https://img.youtube.com/vi/8YbqdUDbuoA/hqdefault.jpg" alt="درس 10" />
+              <span class="play-overlay">▶</span>
+            </a>
+            <h4 class="video-title">درس 10</h4>
+          </div>
+
+          <div class="video-card reveal">
+            <a class="video-link" href="https://youtu.be/_cIwRBZV31U" target="_blank" rel="noopener noreferrer">
+              <img src="https://img.youtube.com/vi/_cIwRBZV31U/hqdefault.jpg" alt="درس 11" />
+              <span class="play-overlay">▶</span>
+            </a>
+            <h4 class="video-title">درس 11</h4>
+          </div>
+
+          <div class="video-card reveal">
+            <a class="video-link" href="https://youtu.be/K5-RPkdt-Q0" target="_blank" rel="noopener noreferrer">
+              <img src="https://img.youtube.com/vi/K5-RPkdt-Q0/hqdefault.jpg" alt="درس 12" />
+              <span class="play-overlay">▶</span>
+            </a>
+            <h4 class="video-title">درس 12</h4>
+          </div>
+
+          <div class="video-card reveal">
+            <a class="video-link" href="https://youtu.be/z612drogG0I" target="_blank" rel="noopener noreferrer">
+              <img src="https://img.youtube.com/vi/z612drogG0I/hqdefault.jpg" alt="درس 13" />
+              <span class="play-overlay">▶</span>
+            </a>
+            <h4 class="video-title">درس 13</h4>
+          </div>
+
+          <div class="video-card reveal">
+            <a class="video-link" href="https://youtu.be/7rL0ERgjn1E" target="_blank" rel="noopener noreferrer">
+              <img src="https://img.youtube.com/vi/7rL0ERgjn1E/hqdefault.jpg" alt="درس 14" />
+              <span class="play-overlay">▶</span>
+            </a>
+            <h4 class="video-title">درس 14</h4>
+          </div>
+
+          <div class="video-card reveal">
+            <a class="video-link" href="https://youtu.be/_pmclOQsOps" target="_blank" rel="noopener noreferrer">
+              <img src="https://img.youtube.com/vi/_pmclOQsOps/hqdefault.jpg" alt="درس 15" />
+              <span class="play-overlay">▶</span>
+            </a>
+            <h4 class="video-title">درس 15</h4>
+          </div>
+
+          <div class="video-card reveal">
+            <a class="video-link" href="https://youtu.be/r1ngrhahE0E" target="_blank" rel="noopener noreferrer">
+              <img src="https://img.youtube.com/vi/r1ngrhahE0E/hqdefault.jpg" alt="درس 16" />
+              <span class="play-overlay">▶</span>
+            </a>
+            <h4 class="video-title">درس 16</h4>
+          </div>
+
+          <div class="video-card reveal">
+            <a class="video-link" href="https://youtu.be/oVl7QsbaZ7o" target="_blank" rel="noopener noreferrer">
+              <img src="https://img.youtube.com/vi/oVl7QsbaZ7o/hqdefault.jpg" alt="درس 17" />
+              <span class="play-overlay">▶</span>
+            </a>
+            <h4 class="video-title">درس 17</h4>
+          </div>
+
+          <div class="video-card reveal">
+            <a class="video-link" href="https://youtu.be/BUgN6xxtIqY" target="_blank" rel="noopener noreferrer">
+              <img src="https://img.youtube.com/vi/BUgN6xxtIqY/hqdefault.jpg" alt="درس 18" />
+              <span class="play-overlay">▶</span>
+            </a>
+            <h4 class="video-title">درس 18</h4>
+          </div>
+
+          <div class="video-card reveal">
+            <a class="video-link" href="https://youtu.be/ZVdF2zBfzHs" target="_blank" rel="noopener noreferrer">
+              <img src="https://img.youtube.com/vi/ZVdF2zBfzHs/hqdefault.jpg" alt="درس 19" />
+              <span class="play-overlay">▶</span>
+            </a>
+            <h4 class="video-title">درس 19</h4>
+          </div>
+
+          <div class="video-card reveal">
+            <a class="video-link" href="https://youtu.be/eGQjO9bAP2c" target="_blank" rel="noopener noreferrer">
+              <img src="https://img.youtube.com/vi/eGQjO9bAP2c/hqdefault.jpg" alt="درس 20" />
+              <span class="play-overlay">▶</span>
+            </a>
+            <h4 class="video-title">درس 20</h4>
+          </div>
+
+          <div class="video-card reveal">
+            <a class="video-link" href="https://youtu.be/iUf5SBmdMBk" target="_blank" rel="noopener noreferrer">
+              <img src="https://img.youtube.com/vi/iUf5SBmdMBk/hqdefault.jpg" alt="درس 21" />
+              <span class="play-overlay">▶</span>
+            </a>
+            <h4 class="video-title">درس 21</h4>
+          </div>
+
+          <div class="video-card reveal">
+            <a class="video-link" href="https://youtu.be/BOezyYdFe9U" target="_blank" rel="noopener noreferrer">
+              <img src="https://img.youtube.com/vi/BOezyYdFe9U/hqdefault.jpg" alt="درس 22" />
+              <span class="play-overlay">▶</span>
+            </a>
+            <h4 class="video-title">درس 22</h4>
+          </div>
+        </div>
+        </div>
+      <div class="academy-actions">
+        <button id="showMoreAcademyBtn" class="lang-toggle templates-toggle-btn" data-translate="show_more" data-state="hidden" onclick="toggleMoreAcademy()">إظهار المزيد</button>
+      </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process" style="background: var(--darkest)">
+      <div style="text-align: center; margin-bottom: 56px">
+        <div class="section-label" style="justify-content: center" data-translate="process_label">
+          كيف نعمل
+        </div>
+        <h2 class="section-title reveal" style="text-align: center" data-translate="process_title">
+          4 خطوات بسيطة للحصول على عرضك
+        </h2>
+      </div>
+      <div class="process-steps">
+        <div class="process-step reveal">
+          <div class="step-num">1</div>
+          <h3 class="step-title" data-translate="step_1">تواصل معنا</h3>
+          <p class="step-desc" data-translate="step_1_desc">
+            أرسل لنا تفاصيل مشروعك عبر النموذج أو واتساب
+          </p>
+        </div>
+        <div class="process-step reveal reveal-delay-1">
+          <div class="step-num">2</div>
+          <h3 class="step-title" data-translate="step_2">الفهم والتخطيط</h3>
+          <p class="step-desc" data-translate="step_2_desc">
+            نفهم احتياجاتك ونضع خطة تصميمية واضحة
+          </p>
+        </div>
+        <div class="process-step reveal reveal-delay-2">
+          <div class="step-num">3</div>
+          <h3 class="step-title" data-translate="step_3">التصميم والتنفيذ</h3>
+          <p class="step-desc" data-translate="step_3_desc">
+            نُنجز العمل باحترافية عالية خلال 48-72 ساعة
+          </p>
+        </div>
+        <div class="process-step reveal reveal-delay-3">
+          <div class="step-num">4</div>
+          <h3 class="step-title" data-translate="step_4">التسليم والمراجعة</h3>
+          <p class="step-desc" data-translate="step_4_desc">
+            تستلم عملك مع مراجعتين مجانيتين لضمان رضاك
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials">
+      <div class="section-header">
+        <div>
+          <div class="section-label" data-translate="testimonials_label">آراء العملاء</div>
+          <h2 class="section-title reveal" data-translate="testimonials_title">
+            ماذا يقول عملاؤنا؟
+          </h2>
+          <p class="section-subtitle reveal" data-translate="testimonials_subtitle">
+            آراء حقيقية من عملاء حقيقيين — رضاهم هو نجاحنا
+          </p>
+        </div>
+      </div>
+
+      <div class="testi-loop-wrap" id="testiWrap">
+        <div class="testi-loop-track" id="testiTrack">
+          <div class="testimonial-card">
+            <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial-text" data-translate="testimonial_1">
+              "شكرا جزيلا على العمل الرائع ، والسرعة في الإنجاز، والدقه والحرص على مراجعه ومتابعة
+              العمل كاملاً"
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar" data-translate="rr_1">أس</div>
+              <div>
+                <div class="author-name" data-translate="name_1">اسماء</div>
+                <div class="author-role" data-translate-html="role_1"><img src="image/Khmsat.png" alt="خمسات" class="inline-logo" /></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial-text" data-translate="testimonial_2">
+              "ما شاء الله شغل جميل جدا"
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar" data-translate="rr_2">اح</div>
+              <div>
+                <div class="author-name" data-translate="name_2">احمد</div>
+                <div class="author-role" data-translate-html="role_2"><img src="image/Khmsat.png" alt="خمسات" class="inline-logo" /></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial-text" data-translate="testimonial_3">
+              "رجل مبدع ويفهمك على السريع ولا راح تتعب معه ابدا يعطيه العافية.."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar" data-translate="rr_3">هي</div>
+              <div>
+                <div class="author-name" data-translate="name_3">هيا</div>
+                <div class="author-role" data-translate-html="role_3"><img src="image/Khmsat.png" alt="خمسات" class="inline-logo" /></div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial-text" data-translate="testimonial_4">
+              "سرعة في الانجاز و تعاون و دقة في العمل كل الشكر"
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar" data-translate="rr_4">عب</div>
+              <div>
+                <div class="author-name" data-translate="name_4">عبدالوهاب</div>
+                <div class="author-role" data-translate-html="role_4"><img src="image/Khmsat.png" alt="خمسات" class="inline-logo" /></div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial-text" data-translate="testimonial_5">
+              "تم إنجاز العمل بجودة عالية وفق المطلوب، مع الالتزام بالوقت، والتواصل ممتاز. انصح
+              بالتعامل معه"
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar" data-translate="rr_5">مه</div>
+              <div>
+                <div class="author-name" data-translate="name_5">مهند</div>
+                <div class="author-role" data-translate-html="role_5"><img src="image/Khmsat.png" alt="خمسات" class="inline-logo" /></div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial-text" data-translate="testimonial_6">"فنان تسلم الايادي"</p>
+            <div class="testimonial-author">
+              <div class="author-avatar" data-translate="rr_6">نو</div>
+              <div>
+                <div class="author-name" data-translate="name_6">نواف</div>
+                <div class="author-role" data-translate-html="role_6"><img src="image/Khmsat.png" alt="خمسات" class="inline-logo" /></div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial-text" data-translate="testimonial_7">
+              "انسان عظيم ، ألف ألف شكر على هذا الابداع والسرعة والاتقان"
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar" data-translate="rr_7">فا</div>
+              <div>
+                <div class="author-name" data-translate="name_7">فاطمة</div>
+                <div class="author-role" data-translate-html="role_7"><img src="image/Khmsat.png" alt="خمسات" class="inline-logo" /></div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial-text" data-translate="testimonial_8">
+              "دايم وابدًا مو أول تعامل ولا آخر سرعة وتجاوب واحتراااافية عالية"
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar" data-translate="rr_8">ته</div>
+              <div>
+                <div class="author-name" data-translate="name_8">تهاني</div>
+                <div class="author-role" data-translate-html="role_8"><img src="image/Khmsat.png" alt="خمسات" class="inline-logo" /></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- CTA -->
+    <section id="cta">
+      <div class="cta-box reveal">
+        <h2 class="cta-title">
+          <span data-translate="cta_title_1">جاهز لتُحدث فارقاً</span>
+          <br />
+          <span style="color: var(--red)" data-translate="cta_title_2">بعروضك التقديمية؟</span>
+        </h2>
+        <p class="cta-subtitle" data-translate="cta_subtitle">
+          ابدأ اليوم — أطلب قالبك الآن، أو تواصل معنا لعرض مخصص احترافي
+        </p>
+        <div class="cta-actions">
+          <a
+            href="https://khamsat.com/designing/presentation/4121621"
+            target="_blank"
+            class="btn-primary"
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M8 3v7M5 8l3 3 3-3M3 13h10"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <span data-translate-html="cta_btn_1">
+              أطلب الخدمة من <img src="image/Khmsat.png" alt="خمسات" class="inline-logo" />
+            </span>
+          </a>
+          <a
+            href="https://wa.me/963935919037"
+            target="_blank"
+            class="btn-outline"
+            data-translate="cta_btn_2"
+          >
+             تواصل عبر واتساب
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-container">
+        <!-- القسم الأول: العلامة التجارية -->
+        <div class="footer-brand">
+          <a href="#" class="footer-logo-link">
+            <img src="image/logoo.png" alt="شعار الموقع" class="footer-logo" />
+          </a>
+          <p data-translate="footer_brand">
+            عروض تقديمية تُلهم، أفكار تُأثر. نُساعدك على التميز والإقناع بأفضل العروض الاحترافية.
+          </p>
+          <!-- أيقونات التواصل الاجتماعي مع إضافة خمسات والبريد -->
+          <div class="social-links">
+            <a
+              href="https://wa.me/963935919037"
+              target="_blank"
+              class="social-btn"
+              title="WhatsApp"
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21z" />
+                <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1z" />
+                <path d="M14 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1z" />
+                <path d="M9.5 13.5c1.5 1.5 3.5 1.5 5 0" />
+              </svg>
+            </a>
+            <a
+              href="https://khamsat.com/designing/presentation/4121621"
+              target="_blank"
+              class="social-btn"
+              title="Khamsat"
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 8v8M8 12h8" />
+              </svg>
+            </a>
+
+            <a
+              href="https://www.youtube.com/@Mr.PowerPoint.O"
+              target="_blank"
+              class="social-btn"
+              title="YouTube"
+            >
+              ▶
+            </a>
+            <a
+              href="https://www.facebook.com/profile.php?id=61580898852109"
+              target="_blank"
+              class="social-btn"
+              title="Facebook"
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+              </svg>
+            </a>
+            <a
+              href="https://www.instagram.com/mrpowerpoint0/"
+              target="_blank"
+              class="social-btn"
+              title="Instagram"
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <circle cx="12" cy="12" r="4.5" />
+                <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- الروابط الرئيسية (مثل الناف بار) -->
+        <div class="footer-links-col">
+          <h4 data-translate="footer_nav_title">الروابط الرئيسية</h4>
+          <ul>
+            <li><a href="#services" data-translate="nav_services">الخدمات</a></li>
+            <li><a href="#works" data-translate="nav_works">الأعمال</a></li>
+            <li><a href="#templates" data-translate="nav_templates">القوالب</a></li>
+            <li><a href="#academy" data-translate="nav_academy">الأكاديمية التعليمية</a></li>
+            <li><a href="#testimonials" data-translate="nav_testimonials">الآراء</a></li>
+          </ul>
+        </div>
+
+        <!-- روابط إضافية (سياسة الخصوصية، الشروط، المدونة) -->
+        <div class="footer-links-col">
+          <h4 data-translate="footer_legal_title">قانوني</h4>
+          <ul>
+            <li><a href="privacy.html" data-translate="footer_link_3">سياسة الخصوصية</a></li>
+            <li><a href="terms.html" data-translate="footer_terms">شروط الاستخدام</a></li>
+            <li><a href="" data-translate="footer_link_2">المدونة</a></li>
+            <li><a href="https://wa.me/963935919037" target="_blank" data-translate="footer_link_4">تواصل معنا</a></li>
+          </ul>
+        </div>
+
+        <!-- QR Code + تواصل مباشر -->
+        <div class="footer-contact">
+          <h4 data-translate="footer_contact_title">تواصل بسرعة</h4>
+          <div class="qr-placeholder">
+            <!-- استبدل src بمسار الباركود الخاص بك -->
+            <img
+              src="image/qr.jpg"
+              alt="QR Code"
+              id="footer-qr"
+              class="qr-code"
+              style="width: 100%; max-width: 100px; border-radius: 12px; display: block"
+              onerror="
+                this.style.display = 'none';
+                this.nextElementSibling.style.display = 'block';
+              "
+            />
+            <span
+              class="qr-fallback"
+              style="display: none; font-size: 12px; color: rgba(255, 255, 255, 0.5)"
+            >
+              (أضف باركود الواتساب)
+            </span>
+          </div>
+          <p class="qr-note" data-translate="qr_note">امسح الكود للتواصل عبر واتساب</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>
+          © 2026 Mr PowerPoint —
+          <span data-translate="copyright">جميع الحقوق محفوظة</span>
+        </span>
+        <span class="footer-credit" data-translate="footer_credit">
+          تصميم عروض احترافية | من الصفر إلى الاحتراف
+        </span>
+      </div>
+    </footer>
+
+    <!-- MODAL -->
+    <div
+      class="modal-overlay"
+      id="downloadModal"
+      onclick="if (event.target === this) closeModal();"
+    >
+      <div class="modal">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div style="text-align: center; margin-bottom: 24px">
+          <div
+            style="
+              width: 64px;
+              height: 64px;
+              background: rgba(230, 19, 18, 0.15);
+              border-radius: 16px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 32px;
+              margin: 0 auto 16px;
+            "
+          >
+            🎁
+          </div>
+          <h3
+            style="font-size: 22px; font-weight: 800; margin-bottom: 8px"
+            data-translate="modal_title"
+          >
+            احصل على القالب المجاني
+          </h3>
+          <p
+            style="font-size: 14px; color: rgba(255, 255, 255, 0.5); font-weight: 400"
+            data-translate="modal_subtitle"
+          >
+            أدخل بريدك الإلكتروني ونُرسل لك القالب فوراً
+          </p>
+        </div>
+        <div class="email-form">
+          <input
+            type="text"
+            class="form-input"
+            data-translate-placeholder="modal_name"
+            placeholder="اسمك الكريم"
+          />
+          <input
+            type="email"
+            class="form-input"
+            data-translate-placeholder="modal_email"
+            placeholder="بريدك الإلكتروني"
+          />
+          <button
+            class="btn-primary"
+            style="width: 100%; justify-content: center"
+            onclick="handleModalSubmit(this)"
+          >
+            <span data-translate="modal_btn">📥 تحميل القالب المجاني</span>
+          </button>
+          <p class="form-note" data-translate="modal_note">
+            لن نرسل لك سبام. يمكنك إلغاء الاشتراك في أي وقت.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/963935919037" target="_blank" class="whatsapp-float" id="whatsappFloat">
+      <div class="whatsapp-icon">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="white">
+          <path
+            d="M12.032 2.002c-5.514 0-9.999 4.485-9.999 9.998 0 1.766.458 3.424 1.257 4.896l-1.293 4.065 4.166-1.266c1.407.75 3.008 1.18 4.707 1.18 5.514 0 9.998-4.485 9.998-9.998 0-5.513-4.484-9.998-9.998-9.998zm0 18.398c-1.609 0-3.227-.418-4.616-1.229l-.332-.196-2.937.893.942-2.864-.216-.343c-.885-1.392-1.349-2.999-1.349-4.657 0-4.626 3.765-8.39 8.391-8.39 4.626 0 8.391 3.764 8.391 8.39 0 4.626-3.765 8.391-8.391 8.391zm4.597-6.284c-.252-.126-1.488-.734-1.718-.818-.23-.084-.398-.126-.566.126-.168.252-.651.818-.798.986-.147.168-.294.189-.546.063-.252-.126-1.065-.392-2.028-1.252-.75-.67-1.256-1.496-1.403-1.748-.147-.252-.016-.388.111-.513.113-.113.252-.293.378-.44.126-.147.168-.252.252-.42.084-.168.042-.315-.021-.44-.063-.126-.565-1.36-.774-1.862-.204-.49-.412-.423-.566-.43-.147-.008-.315-.008-.483-.008-.168 0-.44.063-.672.315-.231.252-.882.863-.882 2.104s.903 2.44 1.03 2.61c.126.168 1.779 2.717 4.311 3.817.603.262 1.073.418 1.44.535.605.194 1.155.167 1.591.101.486-.074 1.488-.609 1.698-1.196.21-.587.21-1.089.147-1.194-.063-.105-.231-.168-.483-.294z"
+          />
+        </svg>
+      </div>
+      <span class="whatsapp-tooltip">تواصل معنا</span>
+    </a>
+    <script src="main.js"></script>
+    <script>
+      function toggleMoreAcademy(){
+        const extra = document.querySelector('.extra-videos');
+        const btn = document.getElementById('showMoreAcademyBtn');
+        if(!extra) return;
+        if(extra.classList.contains('hidden-video')){
+          extra.classList.remove('hidden-video');
+          btn.textContent = translations[currentLang].hide;
+          btn.setAttribute('data-translate', 'hide');
+          btn.setAttribute('data-state','visible');
+        } else {
+          extra.classList.add('hidden-video');
+          btn.textContent = translations[currentLang].show_more;
+          btn.setAttribute('data-translate', 'show_more');
+          btn.setAttribute('data-state','hidden');
+          // scroll back to academy section
+          const top = document.getElementById('academy');
+          if(top) top.scrollIntoView({behavior:'smooth'});
+        }
+      }
+    </script>
+    <style>
+      .videos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:20px}
+      .video-card{background:transparent;transition:transform 0.28s ease,box-shadow 0.28s ease}
+      .video-link{display:block;position:relative;border-radius:12px;overflow:hidden;border:1px solid transparent;transition:border-color 0.28s ease,box-shadow 0.28s ease}
+      .video-link img{width:100%;height:200px;object-fit:cover;display:block;transition:transform 0.35s ease}
+      .video-card:hover .video-link img{transform:scale(1.04)}
+      .video-link:hover{border-color:rgba(230,19,18,0.55);box-shadow:0 8px 30px rgba(230,19,18,0.06)}
+      .play-overlay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:rgba(0,0,0,0.6);color:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;transition:background-color 0.22s ease,color 0.22s ease,transform 0.22s ease}
+      .video-card:hover .play-overlay{background:rgba(230,19,18,0.08);color:var(--red);transform:translate(-50%,-50%) scale(1.06)}
+      .video-title{color:rgba(255,255,255,0.9);font-size:16px;margin:8px 0 0;text-align:start;font-weight:300}
+      .hidden-video{display:none}
+      .extra-videos{display:contents}
+      .extra-videos.hidden-video{display:none}
+      .academy-actions{display:flex;justify-content:center;align-items:center;margin-top:18px}
+      .academy-actions button{min-width:180px;padding:12px 24px}
+      @media(max-width:900px){.videos-grid{grid-template-columns:repeat(2,1fr)}}
+      @media(max-width:600px){.videos-grid{grid-template-columns:1fr}}
+    </style>
+    <style>
+      /* Video modal styles */
+      .video-modal{display:none;position:fixed;inset:0;background:var(--overlay);backdrop-filter:blur(12px);z-index:4000;align-items:center;justify-content:center;padding:24px}
+      .video-modal.active{display:flex}
+      .video-wrapper{width:80%;max-width:980px;aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.6)}
+      .video-wrapper iframe{width:100%;height:100%;display:block;border:0}
+      .video-close{position:absolute;top:20px;right:20px;z-index:4010;background:rgba(0,0,0,0.56);color:#fff;border:none;padding:8px 12px;border-radius:8px;cursor:pointer;font-size:18px}
+      @media(max-width:900px){.video-wrapper{width:95%}}
+    </style>
+  </body>
+</html>
+
