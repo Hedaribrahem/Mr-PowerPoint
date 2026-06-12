@@ -1139,7 +1139,7 @@ function updateLogo() {
   const logoImg = document.querySelector('.logo-img');
   const isLightMode = document.body.classList.contains('light-mode');
   const logoSrc = isLightMode ? 'image/logo.png' : 'image/logoo.png';
-  
+
   if (logoImg) {
     logoImg.src = logoSrc;
   }
