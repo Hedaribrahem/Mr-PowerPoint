@@ -1,4 +1,4 @@
-// Translation Dictionary
+https://youtu.be/eyXUmAFexCY// Translation Dictionary
 const translations = {
   ar: {
     nav_home: 'الرئيسية',
