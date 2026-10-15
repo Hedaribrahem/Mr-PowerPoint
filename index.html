@@ -12,17 +12,42 @@
       content="Mr PowerPoint - عروض تقديمية احترافية، قوالب جاهزة، دروس تعليمية. من الصفر إلى الاحتراف."
     />
     <title>Mr PowerPoint</title>
+    <link rel="canonical" href="https://hedaribrahem.github.io/Mr-PowerPoint/" />
+    <meta name="theme-color" content="#E61312" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ar_AR" />
+    <meta property="og:site_name" content="Mr PowerPoint" />
+    <meta property="og:title" content="Mr PowerPoint - عروض تقديمية احترافية وقوالب جاهزة" />
+    <meta property="og:description" content="تصميم عروض تقديمية احترافية، قوالب PowerPoint جاهزة، ودروس تعليمية. من الصفر إلى الاحتراف." />
+    <meta property="og:url" content="https://hedaribrahem.github.io/Mr-PowerPoint/" />
+    <meta property="og:image" content="https://hedaribrahem.github.io/Mr-PowerPoint/image/logoo.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Mr PowerPoint - عروض تقديمية احترافية وقوالب جاهزة" />
+    <meta name="twitter:description" content="تصميم عروض تقديمية احترافية، قوالب PowerPoint جاهزة، ودروس تعليمية." />
+    <meta name="twitter:image" content="https://hedaribrahem.github.io/Mr-PowerPoint/image/logoo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&family=Tajawal:wght@300;400;500;700;900&display=swap"
       rel="stylesheet"
     />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <script>
+      /* تطبيق الثيم واللغة المحفوظين قبل أول رسم لمنع الوميض */
+      (function () {
+        try {
+          var t = localStorage.getItem('theme'), l = localStorage.getItem('lang');
+          if (t === 'light') document.body.classList.add('light-mode');
+          if (l === 'en') {
+            document.documentElement.lang = 'en';
+            document.documentElement.dir = 'ltr';
+            document.body.dir = 'ltr';
+          }
+        } catch (e) {}
+      })();
+    </script>
     <!-- NAVBAR -->
     <nav id="navbar">
       <a href="#" class="nav-logo">
@@ -60,6 +85,8 @@
           id="hamburger"
           onclick="toggleMobileMenu()"
           aria-label="القائمة"
+          aria-expanded="false"
+          aria-controls="mobileMenu"
         >
           <span></span>
           <span></span>
@@ -97,255 +124,75 @@
           style="font-size: 14px; padding: 11px 24px"
           data-translate="nav_cta"
         >
-          ابدأ مجاناً
+          تواصل معنا
         </a>
       </div>
     </div>
 
-    <!-- HERO -->
-    <section id="hero">
-      <div class="hero-bg"></div>
-      <div class="hero-grid-lines"></div>
-
-      <div class="hero-content">
-        <div class="hero-tag" data-translate="hero_tag"> عروض تقديمية تُلهم . أفكار تُأثر</div>
-
-        <h1 class="hero-title">
-          <span data-translate="hero_title_prefix">عروضك التقديمية</span>
-          <span class="line-red" data-translate="hero_title_highlight">تستحق الأفضل</span>
-          <span data-translate="hero_title_suffix">من الصفر إلى الاحتراف</span>
-        </h1>
-
-        <p class="hero-subtitle" data-translate="hero_subtitle">
-          نصمم عروضاً تقديمية احترافية تُقنع، نُعلّم المهارات التي تُميّزك، ونُقدّم قوالب جاهزة
-          تُوفر وقتك وتُضاعف تأثيرك.
-        </p>
-
-        <div class="hero-actions">
-          <a href="#services" class="btn-primary">
-            <span data-translate="hero_btn1">شاهد خدماتنا</span>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path
-                d="M3 8h10M9 4l4 4-4 4"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </a>
+    <!-- HERO (شرائح بشاشة كاملة) -->
+    <section id="home" class="hx" aria-roledescription="carousel" aria-label="Mr PowerPoint">
+      <div class="hx-slides">
+      <div class="hx-slide active" data-z="in" aria-roledescription="slide">
+        <div class="hx-bg">
+          <img src="image/hero/hero-1-bg.jpg" alt="" decoding="async" fetchpriority="high" onerror="this.remove()" />
         </div>
-
-        <div class="hero-stats">
-          <div class="stat-item">
-            <span class="stat-number">+60</span>
-            <div class="stat-label" data-translate="stat_1">عميل راضٍ</div>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">+100</span>
-            <div class="stat-label" data-translate="stat_2">قوالب جاهزة</div>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">+40</span>
-            <div class="stat-label" data-translate="stat_3">درس تعليمي</div>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">4.9★</span>
-            <div class="stat-label" data-translate="stat_4">تقييم العملاء</div>
+        <div class="hx-shade"></div>
+        <div class="hx-inner">
+          <div class="hx-text">
+            <div class="hx-tag hx-r" style="--d:.1s" data-translate="hero_tag">عروض تقديمية تُلهم. أفكار تُؤثّر</div>
+            <h1 class="hx-title"><span class="ln" style="--i:0"><span data-translate="hero_title_prefix">عروضك التقديمية</span></span><span class="ln red" style="--i:1"><span data-translate="hero_title_highlight">تستحق الأفضل</span></span><span class="ln" style="--i:2"><span data-translate="hero_title_suffix">من الصفر إلى الاحتراف</span></span></h1>
+            <p class="hx-sub hx-r" style="--d:.65s" data-translate="hero_subtitle">نصمم عروضاً تقديمية احترافية تُقنع، نُعلّم المهارات التي تُميّزك، ونُقدّم قوالب جاهزة تُوفر وقتك وتُضاعف تأثيرك.</p>
+            <div class="hx-actions hx-r" style="--d:.8s"><a href="#services" class="btn-primary"><span data-translate="hero_btn1">اكتشف خدماتنا</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg></a></div>
           </div>
         </div>
       </div>
-
-      <div class="hero-visual">
-        <div class="hero-mockup">
-          <!-- SVG احترافي بدلاً من الصورة -->
-          <svg
-            class="hero-svg"
-            viewBox="0 0 600 420"
-            xmlns="http://www.w3.org/2000/svg"
-            style="
-              width: 100%;
-              height: auto;
-              border-radius: 20px;
-              display: block;
-            "
-          >
-            <defs>
-              <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#0d0d0d" />
-                <stop offset="100%" stop-color="#1a1a1a" />
-              </linearGradient>
-              <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#E61312" />
-                <stop offset="100%" stop-color="#ff4a4a" />
-              </linearGradient>
-              <linearGradient id="slideGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.08" />
-                <stop offset="100%" stop-color="#ffffff" stop-opacity="0.02" />
-              </linearGradient>
-              <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-                <feGaussianBlur in="SourceAlpha" stdDeviation="4" />
-                <feMerge>
-                  <feMergeNode in="offsetblur" />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
-              </filter>
-            </defs>
-
-            <!-- الخلفية الرئيسية -->
-            <rect class="hero-svg-bg" width="600" height="420" rx="20" fill="url(#bgGrad)" />
-
-            <!-- شبكة خلفية (حبيبات) -->
-            <g opacity="0.03">
-              <line x1="0" y1="60" x2="600" y2="60" stroke="white" stroke-width="0.5" />
-              <line x1="0" y1="120" x2="600" y2="120" stroke="white" stroke-width="0.5" />
-              <line x1="0" y1="180" x2="600" y2="180" stroke="white" stroke-width="0.5" />
-              <line x1="0" y1="240" x2="600" y2="240" stroke="white" stroke-width="0.5" />
-              <line x1="0" y1="300" x2="600" y2="300" stroke="white" stroke-width="0.5" />
-              <line x1="0" y1="360" x2="600" y2="360" stroke="white" stroke-width="0.5" />
-              <line x1="100" y1="0" x2="100" y2="420" stroke="white" stroke-width="0.5" />
-              <line x1="200" y1="0" x2="200" y2="420" stroke="white" stroke-width="0.5" />
-              <line x1="300" y1="0" x2="300" y2="420" stroke="white" stroke-width="0.5" />
-              <line x1="400" y1="0" x2="400" y2="420" stroke="white" stroke-width="0.5" />
-              <line x1="500" y1="0" x2="500" y2="420" stroke="white" stroke-width="0.5" />
-            </g>
-
-            <!-- شريحة عرض رئيسية (Mockup) -->
-            <g transform="translate(60, 50)">
-              <!-- ظل الشريحة -->
-              <rect class="hero-slide-shadow" x="5" y="8" width="380" height="220" rx="16" fill="#000000" opacity="0.4" />
-              <!-- الشريحة نفسها -->
-              <rect
-                x="0"
-                y="0"
-                width="380"
-                height="220"
-                rx="16"
-                fill="url(#slideGrad)"
-                stroke="rgba(230,19,18,0.3)"
-                stroke-width="1.5"
-              />
-
-              <!-- محتوى الشريحة -->
-              <!-- شريط علوي أحمر -->
-              <rect x="0" y="0" width="380" height="8" rx="4" fill="url(#redGrad)" />
-
-              <!-- عنوان تجريبي -->
-              <rect x="30" y="35" width="180" height="12" rx="6" fill="#E61312" opacity="0.9" />
-              <rect x="30" y="55" width="250" height="8" rx="4" fill="rgba(255,255,255,0.2)" />
-
-              <!-- أيقونة الرسم البياني -->
-              <g transform="translate(240, 80)">
-                <rect x="0" y="40" width="30" height="50" rx="4" fill="#E61312" opacity="0.8" />
-                <rect x="35" y="20" width="30" height="70" rx="4" fill="#E61312" opacity="0.5" />
-                <rect x="70" y="55" width="30" height="35" rx="4" fill="#E61312" opacity="0.3" />
-                <polyline
-                  points="0,90 15,90 15,65 50,65 50,40 85,40 85,25 100,25"
-                  stroke="#E61312"
-                  stroke-width="2"
-                  fill="none"
-                  opacity="0.7"
-                />
-              </g>
-
-              <!-- دائرة بيانية -->
-              <g transform="translate(40, 120)">
-                <circle
-                  cx="40"
-                  cy="40"
-                  r="35"
-                  fill="none"
-                  stroke="#E61312"
-                  stroke-width="6"
-                  opacity="0.5"
-                />
-                <circle
-                  cx="40"
-                  cy="40"
-                  r="35"
-                  fill="none"
-                  stroke="#E61312"
-                  stroke-width="6"
-                  stroke-dasharray="180 40"
-                  stroke-dashoffset="0"
-                />
-                <circle cx="40" cy="40" r="20" fill="#E61312" opacity="0.15" />
-                <text
-                  x="40"
-                  y="45"
-                  text-anchor="middle"
-                  fill="white"
-                  font-size="11"
-                  font-family="monospace"
-                  opacity="0.8"
-                >
-                  75%
-                </text>
-              </g>
-
-              <!-- قائمة نقطية مزيفة -->
-              <g transform="translate(160, 130)">
-                <circle cx="5" cy="8" r="3" fill="#E61312" />
-                <rect x="14" y="5" width="90" height="6" rx="3" fill="rgba(255,255,255,0.15)" />
-                <circle cx="5" cy="24" r="3" fill="#E61312" />
-                <rect x="14" y="21" width="70" height="6" rx="3" fill="rgba(255,255,255,0.15)" />
-                <circle cx="5" cy="40" r="3" fill="#E61312" />
-                <rect x="14" y="37" width="110" height="6" rx="3" fill="rgba(255,255,255,0.15)" />
-              </g>
-
-              <!-- شعار PowerPoint صغير -->
-              <g transform="translate(310, 180)">
-                <rect x="0" y="0" width="40" height="40" rx="8" fill="#E61312" />
-                <text
-                  x="20"
-                  y="27"
-                  text-anchor="middle"
-                  font-family="Arial"
-                  font-weight="900"
-                  font-size="22"
-                  fill="white"
-                >
-                  P
-                </text>
-              </g>
-            </g>
-
-            <!-- عناصر دائرية عائمة -->
-            <circle cx="480" cy="80" r="40" fill="url(#redGrad)" opacity="0.1" />
-            <circle cx="520" cy="100" r="15" fill="url(#redGrad)" opacity="0.3" />
-            <circle cx="50" cy="350" r="25" fill="url(#redGrad)" opacity="0.08" />
-            <circle cx="550" cy="320" r="60" fill="url(#redGrad)" opacity="0.05" />
-
-            <g transform="translate(460, 200)" opacity="0.4">
-              <path d="M0,30 L20,0 L40,30 L20,60 Z" fill="none" stroke="#E61312" stroke-width="2" />
-              <text x="20" y="38" text-anchor="middle" fill="#E61312" font-size="10">✓</text>
-            </g>
-
-            <g transform="translate(80, 280)" opacity="0.3">
-              <rect
-                x="0"
-                y="0"
-                width="24"
-                height="18"
-                rx="3"
-                fill="none"
-                stroke="#E61312"
-                stroke-width="1.5"
-              />
-              <polygon points="12,3 12,15" stroke="#E61312" stroke-width="1.5" />
-              <polygon points="6,9 12,3 18,9" fill="#E61312" />
-            </g>
-          </svg>
-
-          <div class="floating-badge top-right">
-            <span class="icon"></span>
-            <span class="badge-text" data-translate="badge_1">عرض احترافي جاهز خلال 48 ساعة</span>
-          </div>
-          <div class="floating-badge bottom-left">
-            <span class="icon"></span>
-            <span class="badge-text" data-translate="badge_2">+100 قوالب جاهزة للتحميل</span>
+      <div class="hx-slide" aria-roledescription="slide">
+        <div class="hx-bg">
+          <img src="image/hero/hero-2-bg.jpg" alt="" decoding="async" onerror="this.remove()" />
+          
+        </div>
+        <div class="hx-shade"></div>
+        <div class="hx-inner">
+          <div class="hx-text">
+            <div class="hx-tag hx-r" style="--d:.1s" data-translate="s2_tag">قوالب جاهزة</div>
+            <div class="hx-title" role="heading" aria-level="2"><span class="ln" style="--i:0"><span data-translate="s2_t1">قوالب احترافية</span></span><span class="ln red" style="--i:1"><span data-translate="s2_hl">توفّر وقتك</span></span></div>
+            <p class="hx-sub hx-r" style="--d:.65s" data-translate="s2_sub">{templates} قالباً جاهزاً للتحميل بتصاميم عصرية. حمّلها وعدّل عليها فوراً.</p>
+            <div class="hx-actions hx-r" style="--d:.8s"><a href="templates.html" class="btn-primary"><span data-translate="s2_btn">تصفّح القوالب</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg></a></div>
           </div>
         </div>
+      </div>
+      <div class="hx-slide" aria-roledescription="slide">
+        <div class="hx-bg">
+          <img src="image/hero/hero-3-bg.jpg" alt="" decoding="async" onerror="this.remove()" />
+          
+        </div>
+        <div class="hx-shade"></div>
+        <div class="hx-inner">
+          <div class="hx-text">
+            <div class="hx-tag hx-r" style="--d:.1s" data-translate="s3_tag">الأكاديمية</div>
+            <div class="hx-title" role="heading" aria-level="2"><span class="ln" style="--i:0"><span data-translate="s3_t1">تعلّم PowerPoint</span></span><span class="ln red" style="--i:1"><span data-translate="s3_hl">بخطوات بسيطة</span></span></div>
+            <p class="hx-sub hx-r" style="--d:.65s" data-translate="s3_sub">{lessons} درساً تعليمياً على يوتيوب تنقلك من المبتدئ إلى المصمم المحترف.</p>
+            <div class="hx-actions hx-r" style="--d:.8s"><a href="#academy" class="btn-primary"><span data-translate="s3_btn">ابدأ التعلّم</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg></a></div>
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class="hx-ctrl">
+        <button class="hx-arrow hx-prev" type="button" aria-label="السابق"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7.5 4.5 13 10l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="hx-bars"><button class="hx-bar" type="button" aria-label="1"><i></i></button><button class="hx-bar" type="button" aria-label="2"><i></i></button><button class="hx-bar" type="button" aria-label="3"><i></i></button></div>
+        <button class="hx-arrow hx-next" type="button" aria-label="التالي"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7.5 4.5 13 10l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+      <a href="#stats" class="hx-scroll" aria-label="مرّر للأسفل"><span></span></a>
+      <svg class="hx-wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 80V44C240 4 480 4 720 34s480 48 720 8v38z" fill="currentColor"/></svg>
+    </section>
+
+    <!-- STATS -->
+    <section id="stats" class="stats-strip">
+      <div class="strip-grid">
+        <div class="strip-item reveal"><span class="strip-num" data-to="60" data-pre="+">+60</span><span class="strip-label" data-translate="stat_1">عميل راضٍ</span></div>
+        <div class="strip-item reveal reveal-delay-1"><span class="strip-num" data-to="100" data-pre="+" data-count="templates">+100</span><span class="strip-label" data-translate="stat_2">قوالب جاهزة</span></div>
+        <div class="strip-item reveal reveal-delay-2"><span class="strip-num" data-to="40" data-pre="+" data-count="lessons">+40</span><span class="strip-label" data-translate="stat_3">درس تعليمي</span></div>
+        <div class="strip-item reveal reveal-delay-3"><span class="strip-num" data-to="4.9" data-dec="1" data-suf="★">4.9★</span><span class="strip-label" data-translate="stat_4">تقييم العملاء</span></div>
       </div>
     </section>
 
@@ -717,109 +564,65 @@
         </div>
       </div>
 
-      <div class="works-grid">
-        <div class="work-item reveal" data-full-img="image/jop1.JPG">
-          <img src="image/jop1.JPG" alt="عمل 1" />
-          <div class="work-overlay">
-            <div class="work-label" data-translate="work_1">تعلم PowerPoint احترافياً</div>
-            <button
-              class="work-preview-btn"
-              onclick="openLightbox('image/jop1.JPG')"
-              data-translate="preview_btn"
-            >
-              معاينة
-            </button>
+      <div class="wk-grid">
+        <article class="wk-card" data-full-img="image/jop1.JPG" style="--d:0.00s" tabindex="0" role="button" aria-label="نموذج عمل: تطبيقات موبايل">
+          <div class="wk-inner">
+            <img class="wk-img" loading="lazy" decoding="async" src="image/jop1.JPG" alt="نموذج عمل: تطبيقات موبايل" />
+            <span class="wk-spot"></span>
+            <span class="wk-idx">01</span>
+            <span class="wk-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="wk-cap" data-translate="work_1">تطبيقات موبايل</div>
           </div>
-        </div>
-
-        <div class="work-item reveal reveal-delay-1" data-full-img="image/jop2.JPG">
-          <img src="image/jop2.JPG" alt="هوية Mr PowerPoint" />
-          <div class="work-overlay">
-            <div class="work-label" data-translate="work_2">هوية بصرية - Mr PowerPoint</div>
-            <button
-              class="work-preview-btn"
-              onclick="openLightbox('image/jop2.JPG')"
-              data-translate="preview_btn"
-            >
-              معاينة
-            </button>
+        </article>
+        <article class="wk-card" data-full-img="image/jop2.JPG" style="--d:0.09s" tabindex="0" role="button" aria-label="نموذج عمل: عروض للشركات">
+          <div class="wk-inner">
+            <img class="wk-img" loading="lazy" decoding="async" src="image/jop2.JPG" alt="نموذج عمل: عروض للشركات" />
+            <span class="wk-spot"></span>
+            <span class="wk-idx">02</span>
+            <span class="wk-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="wk-cap" data-translate="work_2">عروض للشركات</div>
           </div>
-        </div>
-
-        <div class="work-item reveal reveal-delay-2" data-full-img="image/jop4.JPG">
-          <img src="image/jop4.JPG" alt="قناة Mr PowerPoint" />
-          <div class="work-overlay">
-            <div class="work-label" data-translate="work_3">تصميم قناة يوتيوب</div>
-            <button
-              class="work-preview-btn"
-              onclick="openLightbox('image/jop4.JPG')"
-              data-translate="preview_btn"
-            >
-              معاينة
-            </button>
+        </article>
+        <article class="wk-card" data-full-img="image/jop4.JPG" style="--d:0.18s" tabindex="0" role="button" aria-label="نموذج عمل: عروض أبحاث جامعية">
+          <div class="wk-inner">
+            <img class="wk-img" loading="lazy" decoding="async" src="image/jop4.JPG" alt="نموذج عمل: عروض أبحاث جامعية" />
+            <span class="wk-spot"></span>
+            <span class="wk-idx">03</span>
+            <span class="wk-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="wk-cap" data-translate="work_3">عروض أبحاث جامعية</div>
           </div>
-        </div>
-
-        <div class="work-item reveal reveal-delay-3" data-full-img="image/jop5.JPG">
-          <img src="image/jop5.JPG" alt="قالب عرض" />
-          <div class="work-overlay">
-            <div class="work-label" data-translate="work_4">خلفية قالب احترافي</div>
-            <button
-              class="work-preview-btn"
-              onclick="openLightbox('image/jop5.JPG')"
-              data-translate="preview_btn"
-            >
-              معاينة
-            </button>
+        </article>
+        <article class="wk-card" data-full-img="image/jop5.JPG" style="--d:0.27s" tabindex="0" role="button" aria-label="نموذج عمل: إنفوغرافيك">
+          <div class="wk-inner">
+            <img class="wk-img" loading="lazy" decoding="async" src="image/jop5.JPG" alt="نموذج عمل: إنفوغرافيك" />
+            <span class="wk-spot"></span>
+            <span class="wk-idx">04</span>
+            <span class="wk-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="wk-cap" data-translate="work_4">إنفوغرافيك</div>
           </div>
-        </div>
-
-        <div class="work-item reveal reveal-delay-4" data-full-img="image/jop6.JPG">
-          <img src="image/jop6.JPG" alt="قالب عرض 2" />
-          <div class="work-overlay">
-            <div class="work-label" data-translate="work_5">تصميم شريحة بيانية</div>
-            <button
-              class="work-preview-btn"
-              onclick="openLightbox('image/jop6.JPG')"
-              data-translate="preview_btn"
-            >
-              معاينة
-            </button>
+        </article>
+        <article class="wk-card" data-full-img="image/jop6.JPG" style="--d:0.36s" tabindex="0" role="button" aria-label="نموذج عمل: تبسيط المعلومات">
+          <div class="wk-inner">
+            <img class="wk-img" loading="lazy" decoding="async" src="image/jop6.JPG" alt="نموذج عمل: تبسيط المعلومات" />
+            <span class="wk-spot"></span>
+            <span class="wk-idx">05</span>
+            <span class="wk-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="wk-cap" data-translate="work_5">تبسيط المعلومات</div>
           </div>
-        </div>
-
-        <div class="work-item reveal reveal-delay-5" data-full-img="image/jop7.JPG">
-          <img src="image/jop7.JPG" alt="قالب عرض 3" />
-          <div class="work-overlay">
-            <div class="work-label" data-translate="work_6">إنفوغرافيك تفاعلي</div>
-            <button
-              class="work-preview-btn"
-              onclick="openLightbox('image/jop7.JPG')"
-              data-translate="preview_btn"
-            >
-              معاينة
-            </button>
+        </article>
+        <article class="wk-card" data-full-img="image/jop7.JPG" style="--d:0.45s" tabindex="0" role="button" aria-label="نموذج عمل: مشاريع جديدة">
+          <div class="wk-inner">
+            <img class="wk-img" loading="lazy" decoding="async" src="image/jop7.JPG" alt="نموذج عمل: مشاريع جديدة" />
+            <span class="wk-spot"></span>
+            <span class="wk-idx">06</span>
+            <span class="wk-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="wk-cap" data-translate="work_6">مشاريع جديدة</div>
           </div>
-        </div>
+        </article>
       </div>
     </section>
 
-    <!-- Lightbox Modal لعرض الصور بشكل أكبر -->
-    <div id="lightboxModal" class="lightbox-modal" onclick="closeLightboxOnBackground(event)">
-      <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-      <img class="lightbox-content" id="lightboxImg" alt="صورة مكبرة" />
-      <div class="lightbox-caption" id="lightboxCaption"></div>
-    </div>
-
-    <!-- Video Modal (embedded YouTube) -->
-    <div id="videoModal" class="video-modal" onclick="if(event.target===this) closeVideoModal()">
-      <button class="video-close" onclick="closeVideoModal()">✕</button>
-      <div class="video-wrapper">
-        <div id="videoPlayer"></div>
-      </div>
-    </div>
-
-    <!-- TEMPLATES SECTION (طلب عبر واتساب) -->
+    <!-- TEMPLATES SECTION: أحدث 6 قوالب (البيانات في templates-data.js) -->
     <section id="templates">
       <div class="section-header">
         <div>
@@ -831,576 +634,15 @@
         </div>
       </div>
 
-      <div class="templates-showcase">
-        <div class="template-card reveal">
-          <div class="template-thumb">
-            <img src="templates/template001.jpg" alt="template001" loading="lazy" />
-          </div>
-          <div class="template-info">
-            <div class="template-name">template001</div>
-            <div class="template-price">
-              <a
-                href="https://drive.google.com/file/d/1ktIl8oyWsuL3CURDav_eDz8XLxvfV38b/view?usp=drive_link"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="btn-download" data-translate="download"
-              >
-                تنزيل
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="template-card reveal">
-          <div class="template-thumb">
-            <img src="templates/template002.jpg" alt="template002" loading="lazy" />
-          </div>
-          <div class="template-info">
-            <div class="template-name">template002</div>
-            <div class="template-price">
-              <a
-                href="https://drive.google.com/file/d/1Znkx_ZV9Ccv8-A_aRrT5ZCVRc3zP3VFn/view?usp=drive_link"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="btn-download" data-translate="download"
-              >
-                تنزيل
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="template-card reveal">
-          <div class="template-thumb">
-            <img src="templates/template003.jpg" alt="template003" loading="lazy" />
-          </div>
-          <div class="template-info">
-            <div class="template-name">template003</div>
-            <div class="template-price">
-              <a
-                href="https://drive.google.com/file/d/1ssnRzp8IBGD9lSjneWycTkaJuMy197EA/view?usp=drive_link"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="btn-download" data-translate="download"
-              >
-                تنزيل
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="template-card reveal">
-          <div class="template-thumb">
-            <img src="templates/template004.jpg" alt="template004" loading="lazy" />
-          </div>
-          <div class="template-info">
-            <div class="template-name">template004</div>
-            <div class="template-price">
-              <a
-                href="https://drive.google.com/file/d/1kYEgD6zPIGLGLveIiLSEsMF9nfRjvMe6/view?usp=drive_link"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="btn-download" data-translate="download"
-              >
-                تنزيل
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="template-card reveal">
-          <div class="template-thumb">
-            <img src="templates/template005.jpg" alt="template005" loading="lazy" />
-          </div>
-          <div class="template-info">
-            <div class="template-name">template005</div>
-            <div class="template-price">
-              <a
-                href="https://drive.google.com/file/d/1AN5p8KnMf31ATONf_H7gDNlXcKGduRiQ/view?usp=drive_link"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="btn-download" data-translate="download"
-              >
-                تنزيل
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="template-card reveal">
-          <div class="template-thumb">
-            <img src="templates/template006.jpg" alt="template006" loading="lazy" />
-          </div>
-          <div class="template-info">
-            <div class="template-name">template006</div>
-            <div class="template-price">
-              <a
-                href="https://drive.google.com/file/d/10rNpydv3NS5kqpgwb9mdA7eQ8MOpV62f/view?usp=drive_link"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="btn-download" data-translate="download"
-              >
-                تنزيل
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="template-card reveal">
-          <div class="template-thumb">
-            <img src="templates/template007.jpg" alt="template007" loading="lazy" />
-          </div>
-          <div class="template-info">
-            <div class="template-name">template007</div>
-            <div class="template-price">
-              <a
-                href="https://drive.google.com/file/d/15VdgZ1NIt4ksboGVmd9FbRqwlr4eNSQd/view?usp=drive_link"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="btn-download" data-translate="download"
-              >
-                تنزيل
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="template-card reveal">
-          <div class="template-thumb">
-            <img src="templates/template008.jpg" alt="template008" loading="lazy" />
-          </div>
-          <div class="template-info">
-            <div class="template-name">template008</div>
-            <div class="template-price">
-              <a
-                href="https://drive.google.com/file/d/1kLsL9ifq66Y7J7T8OnU7cT4aw2EK_sxC/view?usp=drive_link"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="btn-download" data-translate="download"
-              >
-                تنزيل
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="template-card reveal extra-template hidden-template">
-          <div class="template-thumb">
-            <img src="templates/template009.jpg" alt="template009" loading="lazy" />
-          </div>
-          <div class="template-info">
-            <div class="template-name">template009</div>
-            <div class="template-price">
-              <a
-                href="https://drive.google.com/file/d/146jGjaqPeOh4eXTeuBhj2C4XQayt7zoR/view?usp=drive_link"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="btn-download" data-translate="download"
-              >
-                تنزيل
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="template-card reveal extra-template hidden-template">
-          <div class="template-thumb">
-            <img src="templates/template010.jpg" alt="template010" loading="lazy" />
-          </div>
-          <div class="template-info">
-            <div class="template-name">template010</div>
-            <div class="template-price">
-              <a
-                href="https://drive.google.com/file/d/11AyxIyjrr9szAi-qC6lIP9X92r-hufg5/view?usp=drive_link"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="btn-download" data-translate="download"
-              >
-                تنزيل
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="template-card reveal extra-template hidden-template">
-          <div class="template-thumb">
-            <img src="templates/template011.jpg" alt="template011" loading="lazy" />
-          </div>
-          <div class="template-info">
-            <div class="template-name">template011</div>
-            <div class="template-price">
-              <a
-                href="https://drive.google.com/file/d/1MKIgUgrBA8ZTvCZ-zm_5Zo5m0lr5yO-m/view?usp=drive_link"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="btn-download" data-translate="download"
-              >
-                تنزيل
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="template-card reveal extra-template hidden-template">
-          <div class="template-thumb">
-            <img src="templates/template012.jpg" alt="template012" loading="lazy" />
-          </div>
-          <div class="template-info">
-            <div class="template-name">template012</div>
-            <div class="template-price">
-              <a
-                href="https://drive.google.com/file/d/1Wb1_4episOg-JLMHNVWYIppdqLhH_OM8/view?usp=drive_link"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="btn-download" data-translate="download"
-              >
-                تنزيل
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="template-card reveal extra-template hidden-template">
-          <div class="template-thumb">
-            <img src="templates/template013.jpg" alt="template013" loading="lazy" />
-          </div>
-          <div class="template-info">
-            <div class="template-name">template013</div>
-            <div class="template-price">
-              <a
-                href="https://drive.google.com/file/d/1YeRgfI9sN4_NKhRs6l4Xt7Vr8SioXZg8/view?usp=drive_link"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="btn-download" data-translate="download"
-              >
-                تنزيل
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="template-card reveal extra-template hidden-template">
-          <div class="template-thumb">
-            <img src="templates/template014.jpg" alt="template014" loading="lazy" />
-          </div>
-          <div class="template-info">
-            <div class="template-name">template014</div>
-            <div class="template-price">
-              <a
-                href="https://drive.google.com/file/d/1ahdVu4mWLuQOr7PwoVO880N35F1Wwflv/view?usp=drive_link"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="btn-download" data-translate="download"
-              >
-                تنزيل
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="template-card reveal extra-template hidden-template">
-          <div class="template-thumb">
-            <img src="templates/template015.jpg" alt="template015" loading="lazy" />
-          </div>
-          <div class="template-info">
-            <div class="template-name">template015</div>
-            <div class="template-price">
-              <a
-                href="https://drive.google.com/file/d/11-p21plyyJm0p8UJQrMfSkhNhKsqTAxu/view?usp=drive_link"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="btn-download" data-translate="download"
-              >
-                تنزيل
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="template-card reveal extra-template hidden-template">
-          <div class="template-thumb">
-            <img src="templates/template016.jpg" alt="template016" loading="lazy" />
-          </div>
-          <div class="template-info">
-            <div class="template-name">template016</div>
-            <div class="template-price">
-              <a
-                href="https://drive.google.com/file/d/19HJB3UVQIuWOR1hCqAqNGM3mg-aUVIdN/view?usp=drive_link"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="btn-download" data-translate="download"
-              >
-                تنزيل
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="template-card reveal extra-template hidden-template">
-          <div class="template-thumb">
-            <img src="templates/template017.jpg" alt="template017" loading="lazy" />
-          </div>
-          <div class="template-info">
-            <div class="template-name">template017</div>
-            <div class="template-price">
-              <a
-                href="https://drive.google.com/file/d/1Wm-DiB_MLPRR6erIfUYHZJJDGTGzTR9M/view?usp=drive_link"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="btn-download" data-translate="download"
-              >
-                تنزيل
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="template-card reveal extra-template hidden-template">
-          <div class="template-thumb">
-            <img src="templates/template018.jpg" alt="template018" loading="lazy" />
-          </div>
-          <div class="template-info">
-            <div class="template-name">template018</div>
-            <div class="template-price">
-              <a
-                href="https://drive.google.com/file/d/1eVlir97Q1Xwyv15i0Agjqs0EF3DIZDxk/view?usp=drive_link"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="btn-download" data-translate="download"
-              >
-                تنزيل
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="template-card reveal extra-template hidden-template">
-          <div class="template-thumb">
-            <img src="templates/template019.jpg" alt="template019" loading="lazy" />
-          </div>
-          <div class="template-info">
-            <div class="template-name">template019</div>
-            <div class="template-price">
-              <a
-                href="https://drive.google.com/file/d/1ykKJBJwJswtmrwYReKY09-Aouc9QNN0l/view?usp=drive_link"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="btn-download" data-translate="download"
-              >
-                تنزيل
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="template-card reveal extra-template hidden-template">
-          <div class="template-thumb">
-            <img src="templates/template020.jpg" alt="template020" loading="lazy" />
-          </div>
-          <div class="template-info">
-            <div class="template-name">template020</div>
-            <div class="template-price">
-              <a
-                href="https://drive.google.com/file/d/15eXrOnLrKiuPFprL9jcGeKRarboA16AP/view?usp=drive_link"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="btn-download" data-translate="download"
-              >
-                تنزيل
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="template-card reveal extra-template hidden-template">
-          <div class="template-thumb">
-            <img src="templates/template021.jpg" alt="template021" loading="lazy" />
-          </div>
-          <div class="template-info">
-            <div class="template-name">template021</div>
-            <div class="template-price">
-              <a
-                href="https://drive.google.com/file/d/1icWQDLeodTCfwFhGGmcfGRg8BIDZP1f-/view?usp=drive_link"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="btn-download" data-translate="download"
-              >
-                تنزيل
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="template-card reveal extra-template hidden-template">
-          <div class="template-thumb">
-            <img src="templates/template022.jpg" alt="template022" loading="lazy" />
-          </div>
-          <div class="template-info">
-            <div class="template-name">template022</div>
-            <div class="template-price">
-              <a
-                href="https://drive.google.com/file/d/1UX0urixrxVJgyh5iNmSy-5uUH628LBIW/view?usp=drive_link"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="btn-download" data-translate="download"
-              >
-                تنزيل
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="template-card reveal extra-template hidden-template">
-          <div class="template-thumb">
-            <img src="templates/template023.png" alt="template023" loading="lazy" />
-          </div>
-          <div class="template-info">
-            <div class="template-name">template023</div>
-            <div class="template-price">
-              <a
-                href="https://drive.google.com/file/d/1o21pRzjCEpUk7wQ8_CWR67_ViagNr8lL/view?usp=sharing"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="btn-download" data-translate="download"
-              >
-                تنزيل
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="template-card reveal extra-template hidden-template">
-          <div class="template-thumb">
-            <img src="templates/template024.png" alt="template024" loading="lazy" />
-          </div>
-          <div class="template-info">
-            <div class="template-name">template024</div>
-            <div class="template-price">
-              <a
-                href="https://drive.google.com/file/d/17KlmghMN4-UdlIBzRi-pnLh7zNgJDOOg/view?usp=sharing"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="btn-download" data-translate="download"
-              >
-                تنزيل
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="template-card reveal extra-template hidden-template">
-          <div class="template-thumb">
-            <img src="templates/template025.png" alt="template025" loading="lazy" />
-          </div>
-          <div class="template-info">
-            <div class="template-name">template025</div>
-            <div class="template-price">
-              <a
-                href="https://drive.google.com/file/d/1BEK-5e6rReuekp0HsYS_usSyxHJAc3AQ/view?usp=sharing"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="btn-download" data-translate="download"
-              >
-                تنزيل
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="template-card reveal extra-template hidden-template">
-          <div class="template-thumb">
-            <img src="templates/template026.jpg" alt="template026" loading="lazy" />
-          </div>
-          <div class="template-info">
-            <div class="template-name">template026</div>
-            <div class="template-price">
-              <a
-                href="https://drive.google.com/file/d/12F4f8wyrOVUKDsBejUhimaxjaQU_Mv2k/view?usp=drive_link"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="btn-download" data-translate="download"
-              >
-                تنزيل
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="template-card reveal extra-template hidden-template">
-          <div class="template-thumb">
-            <img src="templates/template027.JPG" alt="template027" loading="lazy" />
-          </div>
-          <div class="template-info">
-            <div class="template-name">template027</div>
-            <div class="template-price">
-              <a
-                href="https://drive.google.com/file/d/1QrKq5b4w2SG1x06064bej8-PgDMswkTj/view?usp=drive_link"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="btn-download" data-translate="download"
-              >
-                تنزيل
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="template-card reveal extra-template hidden-template">
-          <div class="template-thumb">
-            <img src="templates/template027%20gift1.jpg" alt="template027 gift1" loading="lazy" />
-          </div>
-          <div class="template-info">
-            <div class="template-name">template027 gift1</div>
-            <div class="template-price">
-              <a
-                href="https://drive.google.com/file/d/138JoFEeCS6d4N10f3P4RIbXTjedzEj2f/view?usp=drive_link"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="btn-download" data-translate="download"
-              >
-                تنزيل
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="template-card reveal extra-template hidden-template">
-          <div class="template-thumb">
-            <img src="templates/template027%20gift2.jpg" alt="template027 gift2" loading="lazy" />
-          </div>
-          <div class="template-info">
-            <div class="template-name">template027 gift2</div>
-            <div class="template-price">
-              <a
-                href="https://drive.google.com/file/d/103GwDD5SBCJI29TY0eZ2gpZVbACvF0--/view?usp=drive_link"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="btn-download" data-translate="download"
-              >
-                تنزيل
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="template-card reveal extra-template hidden-template">
-          <div class="template-thumb">
-            <img src="templates/template028.JPG" alt="template028" loading="lazy" />
-          </div>
-          <div class="template-info">
-            <div class="template-name">template028</div>
-            <div class="template-price">
-              <a
-                href="https://drive.google.com/file/d/1PgXZ6n11Bld1QHPwT_x4u7h34hc4TbJe/view?usp=sharing"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="btn-download" data-translate="download"
-              >
-                تنزيل
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="template-card reveal extra-template hidden-template">
-          <div class="template-thumb">
-            <img src="templates/template029.JPG" alt="template029" loading="lazy" />
-          </div>
-          <div class="template-info">
-            <div class="template-name">template029</div>
-            <div class="template-price">
-              <a
-                href="https://drive.google.com/file/d/1Ij3Gi2YsZM3E2aPl3oz-zV3o6F5LqAua/view?usp=drive_link"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="btn-download" data-translate="download"
-              >
-                تنزيل
-              </a>
-            </div>
-          </div>
-        </div>
+      <div class="tl" id="tlLatest">
+        <div class="tl-line"><div class="tl-line-fill"></div></div>
       </div>
-      <div class="templates-actions">
-        <button id="showMoreTemplatesBtn" class="lang-toggle templates-toggle-btn" data-translate="show_more" data-state="hidden" onclick="toggleMoreTemplates()">إظهار المزيد</button>
+
+      <div class="tl-cta reveal">
+        <a href="templates.html" class="btn-primary">
+          <span data-translate="view_all">عرض جميع النماذج</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        </a>
       </div>
     </section>
 
@@ -1413,244 +655,7 @@
           <p class="section-subtitle reveal" data-translate="academy_subtitle">تعلم مهارات التصميم والعروض التقديمية من خلال محتوى تدريبي مبسط وعملي</p>
         </div>
       </div>
-      <div class="academy-videos">
-        <div class="videos-grid">
-          <!-- Thumbnails that open YouTube in a new tab (avoids embed restrictions) -->
-          <div class="video-card reveal">
-            <a class="video-link" href="https://youtu.be/30f0HZ6IFZM" target="_blank" rel="noopener noreferrer">
-              <img src="https://img.youtube.com/vi/30f0HZ6IFZM/hqdefault.jpg" alt="درس 01" />
-              <span class="play-overlay">▶</span>
-            </a>
-            <h4 class="video-title">درس 01</h4>
-          </div>
-
-          <div class="video-card reveal">
-            <a class="video-link" href="https://youtu.be/zqKZ_aF6nV0" target="_blank" rel="noopener noreferrer">
-              <img src="https://img.youtube.com/vi/zqKZ_aF6nV0/hqdefault.jpg" alt="درس 02" />
-              <span class="play-overlay">▶</span>
-            </a>
-            <h4 class="video-title">درس 02</h4>
-          </div>
-
-          <div class="video-card reveal">
-            <a class="video-link" href="https://youtu.be/N12YBy9QVy8" target="_blank" rel="noopener noreferrer">
-              <img src="https://img.youtube.com/vi/N12YBy9QVy8/hqdefault.jpg" alt="درس 03" />
-              <span class="play-overlay">▶</span>
-            </a>
-            <h4 class="video-title">درس 03</h4>
-          </div>
-          <div class="video-card reveal">
-            <a class="video-link" href="https://youtu.be/LNJOoEjp5cs" target="_blank" rel="noopener noreferrer">
-              <img src="https://img.youtube.com/vi/LNJOoEjp5cs/hqdefault.jpg" alt="درس 04" />
-              <span class="play-overlay">▶</span>
-            </a>
-            <h4 class="video-title">درس 04</h4>
-          </div>
-
-          <div class="video-card reveal">
-            <a class="video-link" href="https://youtu.be/35kJ2S7Mwew" target="_blank" rel="noopener noreferrer">
-              <img src="https://img.youtube.com/vi/35kJ2S7Mwew/hqdefault.jpg" alt="درس 05" />
-              <span class="play-overlay">▶</span>
-            </a>
-            <h4 class="video-title">درس 05</h4>
-          </div>
-
-          <div class="video-card reveal">
-            <a class="video-link" href="https://youtu.be/VnvkdVAAWio" target="_blank" rel="noopener noreferrer">
-              <img src="https://img.youtube.com/vi/VnvkdVAAWio/hqdefault.jpg" alt="درس 06" />
-              <span class="play-overlay">▶</span>
-            </a>
-            <h4 class="video-title">درس 06</h4>
-          </div>
-          <div class="extra-videos hidden-video">
-          <div class="video-card reveal">
-            <a class="video-link" href="https://youtu.be/8WGDGaF7EDk" target="_blank" rel="noopener noreferrer">
-              <img src="https://img.youtube.com/vi/8WGDGaF7EDk/hqdefault.jpg" alt="درس 07" />
-              <span class="play-overlay">▶</span>
-            </a>
-            <h4 class="video-title">درس 07</h4>
-          </div>
-
-          <div class="video-card reveal">
-            <a class="video-link" href="https://youtu.be/Ga0c9sctIog" target="_blank" rel="noopener noreferrer">
-              <img src="https://img.youtube.com/vi/Ga0c9sctIog/hqdefault.jpg" alt="درس 08" />
-              <span class="play-overlay">▶</span>
-            </a>
-            <h4 class="video-title">درس 08</h4>
-          </div>
-
-          <div class="video-card reveal">
-            <a class="video-link" href="https://youtu.be/gojqtVY44yE" target="_blank" rel="noopener noreferrer">
-              <img src="https://img.youtube.com/vi/gojqtVY44yE/hqdefault.jpg" alt="درس 09" />
-              <span class="play-overlay">▶</span>
-            </a>
-            <h4 class="video-title">درس 09</h4>
-          </div>
-
-          <div class="video-card reveal">
-            <a class="video-link" href="https://youtu.be/8YbqdUDbuoA" target="_blank" rel="noopener noreferrer">
-              <img src="https://img.youtube.com/vi/8YbqdUDbuoA/hqdefault.jpg" alt="درس 10" />
-              <span class="play-overlay">▶</span>
-            </a>
-            <h4 class="video-title">درس 10</h4>
-          </div>
-
-          <div class="video-card reveal">
-            <a class="video-link" href="https://youtu.be/_cIwRBZV31U" target="_blank" rel="noopener noreferrer">
-              <img src="https://img.youtube.com/vi/_cIwRBZV31U/hqdefault.jpg" alt="درس 11" />
-              <span class="play-overlay">▶</span>
-            </a>
-            <h4 class="video-title">درس 11</h4>
-          </div>
-
-          <div class="video-card reveal">
-            <a class="video-link" href="https://youtu.be/K5-RPkdt-Q0" target="_blank" rel="noopener noreferrer">
-              <img src="https://img.youtube.com/vi/K5-RPkdt-Q0/hqdefault.jpg" alt="درس 12" />
-              <span class="play-overlay">▶</span>
-            </a>
-            <h4 class="video-title">درس 12</h4>
-          </div>
-
-          <div class="video-card reveal">
-            <a class="video-link" href="https://youtu.be/z612drogG0I" target="_blank" rel="noopener noreferrer">
-              <img src="https://img.youtube.com/vi/z612drogG0I/hqdefault.jpg" alt="درس 13" />
-              <span class="play-overlay">▶</span>
-            </a>
-            <h4 class="video-title">درس 13</h4>
-          </div>
-
-          <div class="video-card reveal">
-            <a class="video-link" href="https://youtu.be/7rL0ERgjn1E" target="_blank" rel="noopener noreferrer">
-              <img src="https://img.youtube.com/vi/7rL0ERgjn1E/hqdefault.jpg" alt="درس 14" />
-              <span class="play-overlay">▶</span>
-            </a>
-            <h4 class="video-title">درس 14</h4>
-          </div>
-
-          <div class="video-card reveal">
-            <a class="video-link" href="https://youtu.be/_pmclOQsOps" target="_blank" rel="noopener noreferrer">
-              <img src="https://img.youtube.com/vi/_pmclOQsOps/hqdefault.jpg" alt="درس 15" />
-              <span class="play-overlay">▶</span>
-            </a>
-            <h4 class="video-title">درس 15</h4>
-          </div>
-
-          <div class="video-card reveal">
-            <a class="video-link" href="https://youtu.be/r1ngrhahE0E" target="_blank" rel="noopener noreferrer">
-              <img src="https://img.youtube.com/vi/r1ngrhahE0E/hqdefault.jpg" alt="درس 16" />
-              <span class="play-overlay">▶</span>
-            </a>
-            <h4 class="video-title">درس 16</h4>
-          </div>
-
-          <div class="video-card reveal">
-            <a class="video-link" href="https://youtu.be/oVl7QsbaZ7o" target="_blank" rel="noopener noreferrer">
-              <img src="https://img.youtube.com/vi/oVl7QsbaZ7o/hqdefault.jpg" alt="درس 17" />
-              <span class="play-overlay">▶</span>
-            </a>
-            <h4 class="video-title">درس 17</h4>
-          </div>
-
-          <div class="video-card reveal">
-            <a class="video-link" href="https://youtu.be/BUgN6xxtIqY" target="_blank" rel="noopener noreferrer">
-              <img src="https://img.youtube.com/vi/BUgN6xxtIqY/hqdefault.jpg" alt="درس 18" />
-              <span class="play-overlay">▶</span>
-            </a>
-            <h4 class="video-title">درس 18</h4>
-          </div>
-
-          <div class="video-card reveal">
-            <a class="video-link" href="https://youtu.be/ZVdF2zBfzHs" target="_blank" rel="noopener noreferrer">
-              <img src="https://img.youtube.com/vi/ZVdF2zBfzHs/hqdefault.jpg" alt="درس 19" />
-              <span class="play-overlay">▶</span>
-            </a>
-            <h4 class="video-title">درس 19</h4>
-          </div>
-
-          <div class="video-card reveal">
-            <a class="video-link" href="https://youtu.be/eGQjO9bAP2c" target="_blank" rel="noopener noreferrer">
-              <img src="https://img.youtube.com/vi/eGQjO9bAP2c/hqdefault.jpg" alt="درس 20" />
-              <span class="play-overlay">▶</span>
-            </a>
-            <h4 class="video-title">درس 20</h4>
-          </div>
-
-          <div class="video-card reveal">
-            <a class="video-link" href="https://youtu.be/iUf5SBmdMBk" target="_blank" rel="noopener noreferrer">
-              <img src="https://img.youtube.com/vi/iUf5SBmdMBk/hqdefault.jpg" alt="درس 21" />
-              <span class="play-overlay">▶</span>
-            </a>
-            <h4 class="video-title">درس 21</h4>
-          </div>
-
-          <div class="video-card reveal">
-            <a class="video-link" href="https://youtu.be/BOezyYdFe9U" target="_blank" rel="noopener noreferrer">
-              <img src="https://img.youtube.com/vi/BOezyYdFe9U/hqdefault.jpg" alt="درس 22" />
-              <span class="play-overlay">▶</span>
-            </a>
-            <h4 class="video-title">درس 22</h4>
-          </div>
-
-          <div class="video-card reveal">
-            <a class="video-link" href="https://youtu.be/5eFkFaFfuuQ" target="_blank" rel="noopener noreferrer">
-              <img src="https://img.youtube.com/vi/5eFkFaFfuuQ/hqdefault.jpg" alt="درس 23" />
-              <span class="play-overlay">▶</span>
-            </a>
-            <h4 class="video-title">درس 23</h4>
-          </div>
-
-          <div class="video-card reveal">
-            <a class="video-link" href="https://youtu.be/eyXUmAFexCY" target="_blank" rel="noopener noreferrer">
-              <img src="https://img.youtube.com/vi/eyXUmAFexCY/hqdefault.jpg" alt="درس 24" />
-              <span class="play-overlay">▶</span>
-            </a>
-            <h4 class="video-title">درس 24</h4>
-          </div>
-
-          <div class="video-card reveal">
-            <a class="video-link" href="https://youtu.be/L4Gwpz9JCAY" target="_blank" rel="noopener noreferrer">
-              <img src="https://img.youtube.com/vi/L4Gwpz9JCAY/hqdefault.jpg" alt="درس 25" />
-              <span class="play-overlay">▶</span>
-            </a>
-            <h4 class="video-title">درس 25</h4>
-          </div>
-
-          <div class="video-card reveal">
-            <a class="video-link" href="https://youtu.be/1HSJqdru-J8" target="_blank" rel="noopener noreferrer">
-              <img src="https://img.youtube.com/vi/1HSJqdru-J8/hqdefault.jpg" alt="درس 26" />
-              <span class="play-overlay">▶</span>
-            </a>
-            <h4 class="video-title">درس 26</h4>
-          </div>
-
-          <div class="video-card reveal">
-            <a class="video-link" href="https://youtu.be/P-tld9sNwgw" target="_blank" rel="noopener noreferrer">
-              <img src="https://img.youtube.com/vi/P-tld9sNwgw/hqdefault.jpg" alt="درس 27" />
-              <span class="play-overlay">▶</span>
-            </a>
-            <h4 class="video-title">درس 27</h4>
-          </div>
-
-          <div class="video-card reveal">
-            <a class="video-link" href="https://youtu.be/jIu4PzWdcfE" target="_blank" rel="noopener noreferrer">
-              <img src="https://img.youtube.com/vi/jIu4PzWdcfE/hqdefault.jpg" alt="درس 28" />
-              <span class="play-overlay">▶</span>
-            </a>
-            <h4 class="video-title">درس 28</h4>
-          </div>
-
-          <div class="video-card reveal">
-            <a class="video-link" href="https://youtu.be/afvqW9dI_Ys" target="_blank" rel="noopener noreferrer">
-              <img src="https://img.youtube.com/vi/afvqW9dI_Ys/hqdefault.jpg" alt="درس 29" />
-              <span class="play-overlay">▶</span>
-            </a>
-            <h4 class="video-title">درس 29</h4>
-          </div>
-        </div>
-      </div>
-      <div class="academy-actions">
-        <button id="showMoreAcademyBtn" class="lang-toggle templates-toggle-btn" data-translate="show_more" data-state="hidden" onclick="toggleMoreAcademy()">إظهار المزيد</button>
-      </div>
+      <div class="ac" id="acBox"></div>
     </section>
 
     <!-- PROCESS -->
@@ -1704,7 +709,7 @@
             ماذا يقول عملاؤنا؟
           </h2>
           <p class="section-subtitle reveal" data-translate="testimonials_subtitle">
-            آراء حقيقية من عملاء حقيقيين — رضاهم هو نجاحنا
+            آراء حقيقية من عملاء حقيقيين. رضاهم هو نجاحنا
           </p>
         </div>
       </div>
@@ -1712,7 +717,7 @@
       <div class="testi-loop-wrap" id="testiWrap">
         <div class="testi-loop-track" id="testiTrack">
           <div class="testimonial-card">
-            <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+            <div class="testimonial-stars" role="img" aria-label="5 من 5 نجوم">⭐⭐⭐⭐⭐</div>
             <p class="testimonial-text" data-translate="testimonial_1">
               "شكرا جزيلا على العمل الرائع ، والسرعة في الإنجاز، والدقه والحرص على مراجعه ومتابعة
               العمل كاملاً"
@@ -1721,13 +726,13 @@
               <div class="author-avatar" data-translate="rr_1">أس</div>
               <div>
                 <div class="author-name" data-translate="name_1">اسماء</div>
-                <div class="author-role" data-translate-html="role_1"><img src="image/Khmsat.png" alt="خمسات" class="inline-logo" /></div>
+                <div class="author-role" data-translate-html="role_1"><img loading="lazy" decoding="async" src="image/Khmsat.png" alt="خمسات" class="inline-logo" /></div>
               </div>
             </div>
           </div>
 
           <div class="testimonial-card">
-            <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+            <div class="testimonial-stars" role="img" aria-label="5 من 5 نجوم">⭐⭐⭐⭐⭐</div>
             <p class="testimonial-text" data-translate="testimonial_2">
               "ما شاء الله شغل جميل جدا"
             </p>
@@ -1735,13 +740,13 @@
               <div class="author-avatar" data-translate="rr_2">اح</div>
               <div>
                 <div class="author-name" data-translate="name_2">احمد</div>
-                <div class="author-role" data-translate-html="role_2"><img src="image/Khmsat.png" alt="خمسات" class="inline-logo" /></div>
+                <div class="author-role" data-translate-html="role_2"><img loading="lazy" decoding="async" src="image/Khmsat.png" alt="خمسات" class="inline-logo" /></div>
               </div>
             </div>
           </div>
 
           <div class="testimonial-card">
-            <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+            <div class="testimonial-stars" role="img" aria-label="5 من 5 نجوم">⭐⭐⭐⭐⭐</div>
             <p class="testimonial-text" data-translate="testimonial_3">
               "رجل مبدع ويفهمك على السريع ولا راح تتعب معه ابدا يعطيه العافية.."
             </p>
@@ -1749,12 +754,12 @@
               <div class="author-avatar" data-translate="rr_3">هي</div>
               <div>
                 <div class="author-name" data-translate="name_3">هيا</div>
-                <div class="author-role" data-translate-html="role_3"><img src="image/Khmsat.png" alt="خمسات" class="inline-logo" /></div>
+                <div class="author-role" data-translate-html="role_3"><img loading="lazy" decoding="async" src="image/Khmsat.png" alt="خمسات" class="inline-logo" /></div>
               </div>
             </div>
           </div>
           <div class="testimonial-card">
-            <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+            <div class="testimonial-stars" role="img" aria-label="5 من 5 نجوم">⭐⭐⭐⭐⭐</div>
             <p class="testimonial-text" data-translate="testimonial_4">
               "سرعة في الانجاز و تعاون و دقة في العمل كل الشكر"
             </p>
@@ -1762,12 +767,12 @@
               <div class="author-avatar" data-translate="rr_4">عب</div>
               <div>
                 <div class="author-name" data-translate="name_4">عبدالوهاب</div>
-                <div class="author-role" data-translate-html="role_4"><img src="image/Khmsat.png" alt="خمسات" class="inline-logo" /></div>
+                <div class="author-role" data-translate-html="role_4"><img loading="lazy" decoding="async" src="image/Khmsat.png" alt="خمسات" class="inline-logo" /></div>
               </div>
             </div>
           </div>
           <div class="testimonial-card">
-            <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+            <div class="testimonial-stars" role="img" aria-label="5 من 5 نجوم">⭐⭐⭐⭐⭐</div>
             <p class="testimonial-text" data-translate="testimonial_5">
               "تم إنجاز العمل بجودة عالية وفق المطلوب، مع الالتزام بالوقت، والتواصل ممتاز. انصح
               بالتعامل معه"
@@ -1776,23 +781,23 @@
               <div class="author-avatar" data-translate="rr_5">مه</div>
               <div>
                 <div class="author-name" data-translate="name_5">مهند</div>
-                <div class="author-role" data-translate-html="role_5"><img src="image/Khmsat.png" alt="خمسات" class="inline-logo" /></div>
+                <div class="author-role" data-translate-html="role_5"><img loading="lazy" decoding="async" src="image/Khmsat.png" alt="خمسات" class="inline-logo" /></div>
               </div>
             </div>
           </div>
           <div class="testimonial-card">
-            <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+            <div class="testimonial-stars" role="img" aria-label="5 من 5 نجوم">⭐⭐⭐⭐⭐</div>
             <p class="testimonial-text" data-translate="testimonial_6">"فنان تسلم الايادي"</p>
             <div class="testimonial-author">
               <div class="author-avatar" data-translate="rr_6">نو</div>
               <div>
                 <div class="author-name" data-translate="name_6">نواف</div>
-                <div class="author-role" data-translate-html="role_6"><img src="image/Khmsat.png" alt="خمسات" class="inline-logo" /></div>
+                <div class="author-role" data-translate-html="role_6"><img loading="lazy" decoding="async" src="image/Khmsat.png" alt="خمسات" class="inline-logo" /></div>
               </div>
             </div>
           </div>
           <div class="testimonial-card">
-            <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+            <div class="testimonial-stars" role="img" aria-label="5 من 5 نجوم">⭐⭐⭐⭐⭐</div>
             <p class="testimonial-text" data-translate="testimonial_7">
               "انسان عظيم ، ألف ألف شكر على هذا الابداع والسرعة والاتقان"
             </p>
@@ -1800,12 +805,12 @@
               <div class="author-avatar" data-translate="rr_7">فا</div>
               <div>
                 <div class="author-name" data-translate="name_7">فاطمة</div>
-                <div class="author-role" data-translate-html="role_7"><img src="image/Khmsat.png" alt="خمسات" class="inline-logo" /></div>
+                <div class="author-role" data-translate-html="role_7"><img loading="lazy" decoding="async" src="image/Khmsat.png" alt="خمسات" class="inline-logo" /></div>
               </div>
             </div>
           </div>
           <div class="testimonial-card">
-            <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+            <div class="testimonial-stars" role="img" aria-label="5 من 5 نجوم">⭐⭐⭐⭐⭐</div>
             <p class="testimonial-text" data-translate="testimonial_8">
               "دايم وابدًا مو أول تعامل ولا آخر سرعة وتجاوب واحتراااافية عالية"
             </p>
@@ -1813,7 +818,7 @@
               <div class="author-avatar" data-translate="rr_8">ته</div>
               <div>
                 <div class="author-name" data-translate="name_8">تهاني</div>
-                <div class="author-role" data-translate-html="role_8"><img src="image/Khmsat.png" alt="خمسات" class="inline-logo" /></div>
+                <div class="author-role" data-translate-html="role_8"><img loading="lazy" decoding="async" src="image/Khmsat.png" alt="خمسات" class="inline-logo" /></div>
               </div>
             </div>
           </div>
@@ -1829,7 +834,7 @@
           <span style="color: var(--red)" data-translate="cta_title_2">بعروضك التقديمية؟</span>
         </h2>
         <p class="cta-subtitle" data-translate="cta_subtitle">
-          ابدأ اليوم — أطلب قالبك الآن، أو تواصل معنا لعرض مخصص احترافي
+          ابدأ اليوم واطلب قالبك الآن، أو تواصل معنا لعرض مخصص احترافي
         </p>
         <div class="cta-actions">
           <a
@@ -1847,7 +852,7 @@
               />
             </svg>
             <span data-translate-html="cta_btn_1">
-              أطلب الخدمة من <img src="image/Khmsat.png" alt="خمسات" class="inline-logo" />
+              أطلب الخدمة من <img loading="lazy" decoding="async" src="image/Khmsat.png" alt="خمسات" class="inline-logo" />
             </span>
           </a>
           <a
@@ -1868,10 +873,10 @@
         <!-- القسم الأول: العلامة التجارية -->
         <div class="footer-brand">
           <a href="#" class="footer-logo-link">
-            <img src="image/logoo.png" alt="شعار الموقع" class="footer-logo" />
+            <img loading="lazy" decoding="async" src="image/logoo.png" alt="شعار الموقع" class="footer-logo" />
           </a>
           <p data-translate="footer_brand">
-            عروض تقديمية تُلهم، أفكار تُأثر. نُساعدك على التميز والإقناع بأفضل العروض الاحترافية.
+            عروض تقديمية تُلهم، أفكار تُؤثّر. نُساعدك على التميز والإقناع بأفضل العروض الاحترافية.
           </p>
           <!-- أيقونات التواصل الاجتماعي مع إضافة خمسات والبريد -->
           <div class="social-links">
@@ -1979,7 +984,6 @@
           <ul>
             <li><a href="privacy.html" data-translate="footer_link_3">سياسة الخصوصية</a></li>
             <li><a href="terms.html" data-translate="footer_terms">شروط الاستخدام</a></li>
-            <li><a href="" data-translate="footer_link_2">المدونة</a></li>
             <li><a href="https://wa.me/963935919037" target="_blank" data-translate="footer_link_4">تواصل معنا</a></li>
           </ul>
         </div>
@@ -1989,7 +993,7 @@
           <h4 data-translate="footer_contact_title">تواصل بسرعة</h4>
           <div class="qr-placeholder">
             <!-- استبدل src بمسار الباركود الخاص بك -->
-            <img
+            <img loading="lazy" decoding="async"
               src="image/qr.jpg"
               alt="QR Code"
               id="footer-qr"
@@ -2013,7 +1017,7 @@
 
       <div class="footer-bottom">
         <span>
-          © 2026 Mr PowerPoint —
+          © 2026 Mr PowerPoint
           <span data-translate="copyright">جميع الحقوق محفوظة</span>
         </span>
         <span class="footer-credit" data-translate="footer_credit">
@@ -2022,69 +1026,6 @@
       </div>
     </footer>
 
-    <!-- MODAL -->
-    <div
-      class="modal-overlay"
-      id="downloadModal"
-      onclick="if (event.target === this) closeModal();"
-    >
-      <div class="modal">
-        <button class="modal-close" onclick="closeModal()">✕</button>
-        <div style="text-align: center; margin-bottom: 24px">
-          <div
-            style="
-              width: 64px;
-              height: 64px;
-              background: rgba(230, 19, 18, 0.15);
-              border-radius: 16px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              font-size: 32px;
-              margin: 0 auto 16px;
-            "
-          >
-            🎁
-          </div>
-          <h3
-            style="font-size: 22px; font-weight: 800; margin-bottom: 8px"
-            data-translate="modal_title"
-          >
-            احصل على القالب المجاني
-          </h3>
-          <p
-            style="font-size: 14px; color: rgba(255, 255, 255, 0.5); font-weight: 400"
-            data-translate="modal_subtitle"
-          >
-            أدخل بريدك الإلكتروني ونُرسل لك القالب فوراً
-          </p>
-        </div>
-        <div class="email-form">
-          <input
-            type="text"
-            class="form-input"
-            data-translate-placeholder="modal_name"
-            placeholder="اسمك الكريم"
-          />
-          <input
-            type="email"
-            class="form-input"
-            data-translate-placeholder="modal_email"
-            placeholder="بريدك الإلكتروني"
-          />
-          <button
-            class="btn-primary"
-            style="width: 100%; justify-content: center"
-            onclick="handleModalSubmit(this)"
-          >
-            <span data-translate="modal_btn">📥 تحميل القالب المجاني</span>
-          </button>
-          <p class="form-note" data-translate="modal_note">
-            لن نرسل لك سبام. يمكنك إلغاء الاشتراك في أي وقت.
-          </p>
-        </div>
-      </div>
-    </div>
     <!-- WhatsApp Floating Button -->
     <a href="https://wa.me/963935919037" target="_blank" class="whatsapp-float" id="whatsappFloat">
       <div class="whatsapp-icon">
@@ -2096,55 +1037,12 @@
       </div>
       <span class="whatsapp-tooltip">تواصل معنا</span>
     </a>
+    <script src="hero.js"></script>
+    <script src="lessons-data.js"></script>
+    <script src="templates-data.js"></script>
+    <script src="ui.js"></script>
+    <script src="templates.js"></script>
     <script src="main.js"></script>
-    <script>
-      function toggleMoreAcademy(){
-        const extra = document.querySelector('.extra-videos');
-        const btn = document.getElementById('showMoreAcademyBtn');
-        if(!extra) return;
-        if(extra.classList.contains('hidden-video')){
-          extra.classList.remove('hidden-video');
-          btn.textContent = translations[currentLang].hide;
-          btn.setAttribute('data-translate', 'hide');
-          btn.setAttribute('data-state','visible');
-        } else {
-          extra.classList.add('hidden-video');
-          btn.textContent = translations[currentLang].show_more;
-          btn.setAttribute('data-translate', 'show_more');
-          btn.setAttribute('data-state','hidden');
-          // scroll back to academy section
-          const top = document.getElementById('academy');
-          if(top) top.scrollIntoView({behavior:'smooth'});
-        }
-      }
-    </script>
-    <style>
-      .videos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:20px}
-      .video-card{background:transparent;transition:transform 0.28s ease,box-shadow 0.28s ease}
-      .video-link{display:block;position:relative;border-radius:12px;overflow:hidden;border:1px solid transparent;transition:border-color 0.28s ease,box-shadow 0.28s ease}
-      .video-link img{width:100%;height:200px;object-fit:cover;display:block;transition:transform 0.35s ease}
-      .video-card:hover .video-link img{transform:scale(1.04)}
-      .video-link:hover{border-color:rgba(230,19,18,0.55);box-shadow:0 8px 30px rgba(230,19,18,0.06)}
-      .play-overlay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:rgba(0,0,0,0.6);color:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;transition:background-color 0.22s ease,color 0.22s ease,transform 0.22s ease}
-      .video-card:hover .play-overlay{background:rgba(230,19,18,0.08);color:var(--red);transform:translate(-50%,-50%) scale(1.06)}
-      .video-title{color:rgba(255,255,255,0.9);font-size:16px;margin:8px 0 0;text-align:start;font-weight:300}
-      .hidden-video{display:none}
-      .extra-videos{display:contents}
-      .extra-videos.hidden-video{display:none}
-      .academy-actions{display:flex;justify-content:center;align-items:center;margin-top:18px}
-      .academy-actions button{min-width:180px;padding:12px 24px}
-      @media(max-width:900px){.videos-grid{grid-template-columns:repeat(2,1fr)}}
-      @media(max-width:600px){.videos-grid{grid-template-columns:1fr}}
-    </style>
-    <style>
-      /* Video modal styles */
-      .video-modal{display:none;position:fixed;inset:0;background:var(--overlay);backdrop-filter:blur(12px);z-index:4000;align-items:center;justify-content:center;padding:24px}
-      .video-modal.active{display:flex}
-      .video-wrapper{width:80%;max-width:980px;aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.6)}
-      .video-wrapper iframe{width:100%;height:100%;display:block;border:0}
-      .video-close{position:absolute;top:20px;right:20px;z-index:4010;background:rgba(0,0,0,0.56);color:#fff;border:none;padding:8px 12px;border-radius:8px;cursor:pointer;font-size:18px}
-      @media(max-width:900px){.video-wrapper{width:95%}}
-    </style>
   </body>
 </html>
 

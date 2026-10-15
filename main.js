@@ -8,7 +8,7 @@ const translations = {
     nav_courses: 'الكورسات',
     nav_testimonials: 'الآراء',
     nav_cta: 'تواصل معنا',
-    hero_tag: 'عروض تقديمية تُلهم . أفكار تُأثر',
+    hero_tag: 'عروض تقديمية تُلهم. أفكار تُؤثّر',
     hero_title_prefix: 'عروضك التقديمية',
     hero_title_highlight: 'تستحق الأفضل',
     hero_title_suffix: 'من الصفر إلى الاحتراف',
@@ -20,6 +20,16 @@ const translations = {
     stat_2: 'قوالب جاهزة',
     stat_3: 'درس تعليمي',
     stat_4: 'تقييم العملاء',
+    s2_tag: 'قوالب جاهزة',
+    s2_t1: 'قوالب احترافية',
+    s2_hl: 'توفّر وقتك',
+    s2_sub: '{templates} قالباً جاهزاً للتحميل بتصاميم عصرية. حمّلها وعدّل عليها فوراً.',
+    s2_btn: 'تصفّح القوالب',
+    s3_tag: 'الأكاديمية',
+    s3_t1: 'تعلّم PowerPoint',
+    s3_hl: 'بخطوات بسيطة',
+    s3_sub: '{lessons} درساً تعليمياً على يوتيوب تنقلك من المبتدئ إلى المصمم المحترف.',
+    s3_btn: 'ابدأ التعلّم',
     badge_1: ' عرض احترافي جاهز خلال 48 ساعة',
     badge_2: ' +100 قالب جاهز للتحميل',
     ticker_1: 'تصميم عروض احترافية',
@@ -97,11 +107,11 @@ const translations = {
     works_title: 'أعمالنا تتحدث عنا',
     works_subtitle: 'نماذج من عروضنا التقديمية لعملاء من مختلف القطاعات',
     works_all: 'عرض الكل →',
-    work_1: 'تعلم PowerPoint احترافياً',
-    work_2: 'هوية بصرية - Mr PowerPoint',
-    work_3: 'تصميم قناة يوتيوب',
-    work_4: 'خلفية قالب احترافي',
-    work_5: 'أعمال إضافية قريباً',
+    work_1: 'تطبيقات موبايل',
+    work_2: 'عروض للشركات',
+    work_3: 'عروض أبحاث جامعية',
+    work_4: 'إنفوغرافيك',
+    work_5: 'تبسيط المعلومات',
     work_6: 'مشاريع جديدة',
     works_btn: 'تصفح كل الأعمال',
     templates_label: 'المنتجات الرقمية',
@@ -119,7 +129,15 @@ const translations = {
     buy: 'شراء',
     free: 'مجاناً',
     download: 'تحميل',
+    view_all: 'عرض جميع النماذج',
+    new_badge: 'جديد',
+    back_home: 'العودة إلى الرئيسية',
+    templates_page_title: 'جميع النماذج الجاهزة',
+    templates_page_subtitle: 'اختر القالب المناسب وحمّله مباشرة، ونضيف قوالب جديدة باستمرار',
     show_more: 'إظهار المزيد',
+    ac_newest: 'الأحدث',
+    ac_older: 'الدروس السابقة',
+    ac_watch: 'شاهد على يوتيوب',
     hide: 'إخفاء',
     free_section_label: 'تحميل مجاني',
     free_title: 'احصل على قوالب مجانية',
@@ -144,7 +162,7 @@ const translations = {
     step_4_desc: 'تستلم عملك مع مراجعتين مجانيتين لضمان رضاك',
     courses_label: 'التعليم',
     courses_title: 'تعلم PowerPoint باحتراف',
-    courses_subtitle: 'من الصفر إلى الاحتراف — دروس مجانية ومدفوعة لكل المستويات',
+    courses_subtitle: 'من الصفر إلى الاحتراف: دروس مجانية ومدفوعة لكل المستويات',
     courses_all: 'كل الكورسات →',
     level_1: 'مبتدئ',
     level_2: 'متوسط',
@@ -156,7 +174,7 @@ const translations = {
     enroll: 'التسجيل',
     testimonials_label: 'آراء العملاء',
     testimonials_title: 'ماذا يقول عملاؤنا؟',
-    testimonials_subtitle: 'آراء حقيقية من عملاء حقيقيين — رضاهم هو نجاحنا',
+    testimonials_subtitle: 'آراء حقيقية من عملاء حقيقيين. رضاهم هو نجاحنا',
     testimonial_1:
       '"شكرا جزيلا على العمل الرائع ، والسرعة في الإنجاز، والدقه والحرص على مراجعه ومتابعة العمل كاملاً"',
     testimonial_2: '"ما شاء الله شغل جميل جدا"',
@@ -194,27 +212,27 @@ const translations = {
     roadmap_label: 'خارطة الطريق',
     roadmap_title: 'نحو منصة رقمية متكاملة',
     roadmap_subtitle: 'تم تصميم كل قالب لتوفير وقتك ورفع جودة عرضك التقديمي على الفور',
-    phase_1: 'المرحلة الأولى — مكتملة ✓',
+    phase_1: 'المرحلة الأولى: مكتملة ✓',
     phase_1_title: 'Landing Page + خدمات التصميم',
     phase_1_desc: 'موقع احترافي يعرض الخدمات ويستقبل الطلبات مع نظام جذب العملاء.',
-    phase_2: 'المرحلة الثانية — جارية',
+    phase_2: 'المرحلة الثانية: جارية',
     phase_2_title: 'متجر القوالب الرقمية',
     phase_2_desc: 'منصة E-commerce لبيع القوالب مع بوابة دفع عربية ولوحة تحكم للمشتريات.',
-    phase_3: 'المرحلة الثالثة — قريباً',
+    phase_3: 'المرحلة الثالثة: قريباً',
     phase_3_title: 'منصة التعليم الإلكتروني',
     phase_3_desc: 'Learning Management System مع فيديوهات، اختبارات، شهادات، ومجتمع متفاعل.',
-    phase_4: 'المرحلة الرابعة — المستقبل',
+    phase_4: 'المرحلة الرابعة: المستقبل',
     phase_4_title: 'منصة رقمية متكاملة',
     phase_4_desc:
       'AI-powered tools لإنشاء عروض تلقائياً، واشتراكات شهرية، وبرنامج إتاحة لصانعي المحتوى.',
     cta_title_1: 'جاهز لتُحدث فارقاً',
     cta_title_2: 'بعروضك التقديمية؟',
-    cta_subtitle: 'ابدأ اليوم — أطلب قالبك الآن، أو تواصل معنا لعرض مخصص احترافي',
+    cta_subtitle: 'ابدأ اليوم واطلب قالبك الآن، أو تواصل معنا لعرض مخصص احترافي',
     cta_btn_1:
       'أطلب الخدمة من <img src="image/Khmsat.png" alt="خمسات" class="inline-logo" />',
     cta_btn_2: ' تواصل عبر واتساب',
     footer_brand:
-      'عروض تقديمية تُلهم، أفكار تُأثر. نُساعدك على التميز والإقناع بأفضل العروض الاحترافية.',
+      'عروض تقديمية تُلهم، أفكار تُؤثّر. نُساعدك على التميز والإقناع بأفضل العروض الاحترافية.',
     footer_services: 'الخدمات',
     footer_service_1: 'تصميم عروض مخصصة',
     footer_service_2: 'قوالب جاهزة',
@@ -231,12 +249,6 @@ const translations = {
     footer_link_3: 'سياسة الخصوصية',
     footer_link_4: 'تواصل معنا',
     copyright: 'جميع الحقوق محفوظة',
-    modal_title: 'احصل على القالب المجاني',
-    modal_subtitle: 'أدخل بريدك الإلكتروني ونُرسل لك القالب فوراً',
-    modal_name: 'اسمك الكريم',
-    modal_email: 'بريدك الإلكتروني',
-    modal_btn: '📥 تحميل القالب المجاني',
-    modal_note: 'لن نرسل لك سبام. يمكنك إلغاء الاشتراك في أي وقت.',
     preview_btn: 'معاينة',
     template_name_1: 'أعمال وشركات',
     template_name_2: 'تقارير سنوية',
@@ -332,7 +344,7 @@ const translations = {
     nav_courses: 'Courses',
     nav_testimonials: 'Testimonials',
     nav_cta: 'Contact Me',
-    hero_tag: 'Presentations That Inspire . Ideas That Impact',
+    hero_tag: 'Presentations That Inspire. Ideas That Impact',
     hero_title_prefix: 'Your Presentations',
     hero_title_highlight: 'Deserve the Best',
     hero_title_suffix: 'From Zero to Pro',
@@ -344,6 +356,16 @@ const translations = {
     stat_2: 'Ready Templates',
     stat_3: 'Video Lessons',
     stat_4: 'Client Rating',
+    s2_tag: 'Ready Templates',
+    s2_t1: 'Professional templates',
+    s2_hl: 'that save your time',
+    s2_sub: '{templates} modern, ready-to-download templates. Grab one and edit it right away.',
+    s2_btn: 'Browse Templates',
+    s3_tag: 'Academy',
+    s3_t1: 'Learn PowerPoint',
+    s3_hl: 'step by step',
+    s3_sub: '{lessons} YouTube lessons that take you from beginner to professional designer.',
+    s3_btn: 'Start Learning',
     badge_1: ' Professional ready in 48 hours',
     badge_2: ' +100 Templates ready to download',
     ticker_1: 'Professional Presentation Design',
@@ -425,11 +447,11 @@ const translations = {
     works_title: 'Our Work Speaks for Us',
     works_subtitle: 'Samples of our presentations for clients from various sectors',
     works_all: 'View All →',
-    work_1: 'Learn PowerPoint Professionally',
-    work_2: 'Brand Identity - Mr PowerPoint',
-    work_3: 'YouTube Channel Design',
-    work_4: 'Professional Template Background',
-    work_5: 'More Work Soon',
+    work_1: 'Mobile Apps',
+    work_2: 'Corporate Presentations',
+    work_3: 'University Research Presentations',
+    work_4: 'Infographics',
+    work_5: 'Information Simplification',
     work_6: 'New Projects',
     works_btn: 'Browse All Work',
     templates_label: 'Digital Products',
@@ -448,7 +470,15 @@ const translations = {
     buy: 'Buy',
     free: 'Free',
     download: 'Download',
+    view_all: 'View All Templates',
+    new_badge: 'New',
+    back_home: 'Back to Home',
+    templates_page_title: 'All Ready-made Templates',
+    templates_page_subtitle: 'Pick the right template and download it instantly. New ones added regularly',
     show_more: 'Show More',
+    ac_newest: 'Newest',
+    ac_older: 'Previous Lessons',
+    ac_watch: 'Watch on YouTube',
     hide: 'Hide',
     free_section_label: 'Free Download',
     free_title: 'Get Free Templates',
@@ -473,7 +503,7 @@ const translations = {
     step_4_desc: 'Receive your work with 2 free revisions guaranteed',
     courses_label: 'Education',
     courses_title: 'Learn PowerPoint Professionally',
-    courses_subtitle: 'From zero to pro — free and paid lessons for all levels',
+    courses_subtitle: 'From zero to pro: free and paid lessons for all levels',
     courses_all: 'All Courses →',
     level_1: 'Beginner',
     level_2: 'Intermediate',
@@ -485,7 +515,7 @@ const translations = {
     enroll: 'Enroll',
     testimonials_label: 'Testimonials',
     testimonials_title: 'What Our Clients Say?',
-    testimonials_subtitle: 'Real reviews from real clients — their satisfaction is our success',
+    testimonials_subtitle: 'Real reviews from real clients. Their satisfaction is our success',
     testimonial_1:
       '"Thank you so much for the excellent work, the speed of completion, and the accuracy and diligence in reviewing and following up on the entire project"',
     testimonial_2: '"Wow, very beautiful work!"',
@@ -528,25 +558,25 @@ const translations = {
     roadmap_title: 'Towards an Integrated Digital Platform',
     roadmap_subtitle:
       "Building Mr PowerPoint's future step by step toward a global education and digital sales platform.",
-    phase_1: 'Phase 1 — Completed ✓',
+    phase_1: 'Phase 1: Completed ✓',
     phase_1_title: 'Landing Page + Design Services',
     phase_1_desc:
       'Professional website showcasing services and receiving requests with lead generation system.',
-    phase_2: 'Phase 2 — In Progress',
+    phase_2: 'Phase 2: In Progress',
     phase_2_title: 'Digital Template Store',
     phase_2_desc:
       'E-commerce platform for selling templates with Arabic payment gateway and purchase dashboard.',
-    phase_3: 'Phase 3 — Coming Soon',
+    phase_3: 'Phase 3: Coming Soon',
     phase_3_title: 'E-Learning Platform',
     phase_3_desc: 'LMS with videos, quizzes, certificates, and an interactive community.',
-    phase_4: 'Phase 4 — Future',
+    phase_4: 'Phase 4: Future',
     phase_4_title: 'Integrated Digital Platform',
     phase_4_desc:
       'AI-powered tools for automatic presentation creation, subscriptions, and affiliate program.',
     cta_title_1: 'Ready to Make a Difference',
     cta_title_2: 'With Your Presentations?',
     cta_subtitle:
-      'Start today — order your template now, or contact us for a professional custom offer.',
+      'Start today and order your template now, or contact us for a professional custom offer.',
     cta_btn_1:
       'Order the service from <img src="image/Khmsat.png" alt="Khamsat" class="inline-logo" />',
     cta_btn_2: ' Contact via WhatsApp',
@@ -568,12 +598,6 @@ const translations = {
     footer_link_3: 'Privacy Policy',
     footer_link_4: 'Contact Us',
     copyright: 'All Rights Reserved',
-    modal_title: 'Get the Free Template',
-    modal_subtitle: "Enter your email and we'll send the template immediately",
-    modal_name: 'Your Name',
-    modal_email: 'Your Email',
-    modal_btn: '📥 Download Free Template',
-    modal_note: 'No spam. You can unsubscribe anytime.',
     preview_btn: 'Preview',
     template_name_1: 'Business Pro',
     template_name_2: 'Annual Report',
@@ -664,6 +688,49 @@ const translations = {
 
 let currentLang = 'ar';
 
+// تخزين آمن: قد يرمي localStorage خطأً (وضع خاص / تخزين محظور)
+function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+function lsSet(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+
+// أرقام ديناميكية من ملفات البيانات: {templates} و{lessons}
+function fillTokens(str) {
+  const T = (window.TEMPLATES || []).filter((t) => !t.bonus).length;
+  const L = (window.LESSONS || []).length;
+  return str.replace(/\{templates\}/g, T).replace(/\{lessons\}/g, L);
+}
+
+// نصوص الوصول (aria/alt) التي تُولَّد أو تُكتب بالعربية، تتبدّل مع اللغة
+function updateA11yLabels() {
+  const en = currentLang === 'en';
+  const ham = document.getElementById('hamburger');
+  if (ham) ham.setAttribute('aria-label', en ? 'Menu' : 'القائمة');
+  const th = document.querySelector('.theme-toggle');
+  if (th) th.setAttribute('aria-label', en ? 'Toggle theme' : 'تبديل الوضع');
+  document.querySelectorAll('.testimonial-stars').forEach((el) => {
+    el.setAttribute('role', 'img');
+    el.setAttribute('aria-label', en ? '5 out of 5 stars' : '5 من 5 نجوم');
+  });
+  const prev = document.querySelector('.ac-prev'), next = document.querySelector('.ac-next');
+  if (prev) prev.setAttribute('aria-label', en ? 'Previous' : 'السابق');
+  if (next) next.setAttribute('aria-label', en ? 'Next' : 'التالي');
+  document.querySelectorAll('.tl-card').forEach((c) => {
+    const nm = c.querySelector('.tl-name');
+    if (!nm) return;
+    const name = nm.textContent, num = (name.match(/\d+/) || [''])[0];
+    c.setAttribute('aria-label', (en ? 'Preview ' : 'معاينة ') + name);
+    const img = c.querySelector('img');
+    if (img) img.alt = en ? 'Ready-made PowerPoint template no. ' + num : 'قالب PowerPoint جاهز رقم ' + num;
+  });
+  document.querySelectorAll('.wk-card').forEach((c) => {
+    const cap = c.querySelector('.wk-cap');
+    if (!cap) return;
+    const label = (en ? 'Work sample: ' : 'نموذج عمل: ') + cap.textContent.trim();
+    c.setAttribute('aria-label', label);
+    const img = c.querySelector('.wk-img');
+    if (img) img.alt = label;
+  });
+}
+
 function updateTranslations() {
   const lang = currentLang;
   document.documentElement.lang = lang === 'ar' ? 'ar' : 'en';
@@ -673,12 +740,12 @@ function updateTranslations() {
 
   document.querySelectorAll('[data-translate]').forEach((el) => {
     const key = el.getAttribute('data-translate');
-    if (translations[lang][key]) el.textContent = translations[lang][key];
+    if (translations[lang][key]) el.textContent = fillTokens(translations[lang][key]);
   });
 
   document.querySelectorAll('[data-translate-html]').forEach((el) => {
     const key = el.getAttribute('data-translate-html');
-    if (translations[lang][key]) el.innerHTML = translations[lang][key];
+    if (translations[lang][key]) el.innerHTML = fillTokens(translations[lang][key]);
   });
 
   document.querySelectorAll('[data-translate-placeholder]').forEach((el) => {
@@ -703,6 +770,7 @@ function updateTranslations() {
   }
 
   updateAcademyVideoTitles();
+  updateA11yLabels();
 }
 
 function updateAcademyVideoTitles() {
@@ -737,9 +805,8 @@ function toggleLang() {
   setTimeout(() => {
     // Update language
     currentLang = newLang;
-    localStorage.setItem('lang', newLang); // Save language preference
+    lsSet('lang', newLang); // Save language preference
     updateTranslations();
-    updateHeroSvg(); // Update hero SVG colors after language change
     updateTestimonialLogos(); // Keep testimonial logo consistent after language switch
 
     // Show toast
@@ -765,27 +832,32 @@ function showToast(message) {
   setTimeout(() => toast.remove(), 2500);
 }
 
-// Navbar scroll effect
+// Navbar: شفاف أعلى الرئيسية، وزجاجي بلوري عند التمرير (وضعان نهاري/ليلي)
 function updateNavbarStyle() {
   const nav = document.getElementById('navbar');
-  const isLightMode = document.body.classList.contains('light-mode');
-  if (window.scrollY > 50) {
-    if (isLightMode) {
-      nav.style.background = 'rgba(255,255,255,0.98)';
-      nav.style.boxShadow = '0 4px 30px rgba(0,0,0,0.1)';
-    } else {
-      nav.style.background = 'rgba(13,13,13,0.97)';
-      nav.style.boxShadow = '0 4px 30px rgba(0,0,0,0.3)';
-    }
+  if (!nav) return;
+  const isLight = document.body.classList.contains('light-mode');
+  const hasHero = !!document.getElementById('home');
+  const atTop = hasHero && window.scrollY < 40;
+  const wasTop = nav.classList.contains('nav-top');
+  nav.classList.toggle('nav-top', atTop);
+  const blur = (v) => { nav.style.backdropFilter = v; nav.style.webkitBackdropFilter = v; };
+  if (atTop) {
+    nav.style.background = '';
+    nav.style.boxShadow = '';
+    blur('');
+  } else if (hasHero) {
+    nav.style.background = isLight ? 'rgba(255,255,255,0.62)' : 'rgba(13,13,13,0.55)';
+    nav.style.boxShadow = isLight ? '0 4px 30px rgba(0,0,0,0.08)' : '0 4px 30px rgba(0,0,0,0.35)';
+    blur('blur(18px) saturate(160%)');
+  } else if (window.scrollY > 50) {
+    nav.style.background = isLight ? 'rgba(255,255,255,0.98)' : 'rgba(13,13,13,0.97)';
+    nav.style.boxShadow = isLight ? '0 4px 30px rgba(0,0,0,0.1)' : '0 4px 30px rgba(0,0,0,0.3)';
   } else {
-    if (isLightMode) {
-      nav.style.background = 'rgba(255,255,255,0.96)';
-      nav.style.boxShadow = 'none';
-    } else {
-      nav.style.background = 'rgba(13,13,13,0.85)';
-      nav.style.boxShadow = 'none';
-    }
+    nav.style.background = isLight ? 'rgba(255,255,255,0.96)' : 'rgba(13,13,13,0.85)';
+    nav.style.boxShadow = 'none';
   }
+  if (wasTop !== atTop) updateLogo();
 }
 
 // Scroll reveal
@@ -799,192 +871,30 @@ const observer = new IntersectionObserver(
 );
 document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 
-// Modal
-function openModal() {
-  document.getElementById('downloadModal').classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-function closeModal() {
-  document.getElementById('downloadModal').classList.remove('active');
-  document.body.style.overflow = '';
-}
-
-// Form handlers
-function handleEmailSubmit(btn) {
-  const orig = btn.innerHTML;
-  btn.innerHTML = '✓ تم الإرسال! تحقق من بريدك';
-  btn.style.background = '#16a34a';
-  setTimeout(() => {
-    btn.innerHTML = orig;
-    btn.style.background = '';
-  }, 3000);
-}
-
-function handleModalSubmit(btn) {
-  const orig = btn.innerHTML;
-  btn.innerHTML = '✓ جاري الإرسال...';
-  setTimeout(() => {
-    btn.innerHTML = '✅ تم! تحقق من بريدك الإلكتروني';
-    btn.style.background = '#16a34a';
-    setTimeout(() => {
-      closeModal();
-      btn.innerHTML = orig;
-      btn.style.background = '';
-    }, 2000);
-  }, 1000);
-}
-
-// Active nav link
+// Active nav link (مُخفَّف بـ rAF، والرئيسية تُميَّز أعلى الصفحة)
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
-window.addEventListener('scroll', () => {
+let navTick = false;
+function updateActiveLink() {
+  navTick = false;
   let current = '';
   sections.forEach((sec) => {
     if (window.scrollY >= sec.offsetTop - 100) current = sec.id;
   });
+  const key = current === '' || current === 'home' || current === 'stats' ? '#' : '#' + current;
   navLinks.forEach((link) => {
-    link.style.color = link.getAttribute('href') === '#' + current ? '#E61312' : '';
+    link.style.color = link.getAttribute('href') === key ? '#E61312' : '';
   });
-});
+}
+window.addEventListener('scroll', () => {
+  if (!navTick) { navTick = true; requestAnimationFrame(updateActiveLink); }
+}, { passive: true });
+updateActiveLink();
 
 // Animation keyframes
 const styleEl = document.createElement('style');
 styleEl.textContent = `@keyframes slideInRight { from { transform: translateX(-100px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }`;
 document.head.appendChild(styleEl);
-// Lightbox functions
-function openLightbox(imgSrc) {
-  const modal = document.getElementById('lightboxModal');
-  const img = document.getElementById('lightboxImg');
-  img.src = imgSrc;
-  modal.classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeLightbox() {
-  const modal = document.getElementById('lightboxModal');
-  modal.classList.remove('active');
-  document.body.style.overflow = '';
-}
-
-function toggleMoreTemplates() {
-  const btn = document.getElementById('showMoreTemplatesBtn');
-  const extraCards = document.querySelectorAll('.template-card.extra-template');
-  if (!btn) return;
-
-  if (btn.dataset.state === 'shown') {
-    extraCards.forEach((card) => {
-      card.classList.add('hidden-template');
-    });
-    btn.setAttribute('data-translate', 'show_more');
-    btn.textContent = translations[currentLang].show_more;
-    btn.dataset.state = 'hidden';
-    document.getElementById('templates').scrollIntoView({ behavior: 'smooth' });
-    return;
-  }
-
-  extraCards.forEach((card) => {
-    card.classList.remove('hidden-template');
-  });
-  btn.setAttribute('data-translate', 'hide');
-  btn.textContent = translations[currentLang].hide;
-  btn.dataset.state = 'shown';
-}
-
-function closeLightboxOnBackground(event) {
-  if (event.target === event.currentTarget) {
-    closeLightbox();
-  }
-}
-
-// إغلاق Lightbox بالضغط على زر Escape
-document.addEventListener('keydown', function (e) {
-  if (e.key === 'Escape') {
-    closeLightbox();
-  }
-});
-
-// Video modal: open embedded YouTube instead of new tab
-let YT_API_Ready = false;
-let YT_API_Promise = null;
-let ytPlayer = null;
-let currentVideoHref = null;
-
-function loadYouTubeAPI() {
-  if (YT_API_Promise) return YT_API_Promise;
-  YT_API_Promise = new Promise((resolve) => {
-    if (window.YT && window.YT.Player) {
-      YT_API_Ready = true;
-      resolve(window.YT);
-      return;
-    }
-    const tag = document.createElement('script');
-    tag.src = 'https://www.youtube.com/iframe_api';
-    const firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-    window.onYouTubeIframeAPIReady = function () {
-      YT_API_Ready = true;
-      resolve(window.YT);
-    };
-  });
-  return YT_API_Promise;
-}
-
-function openVideoModal(videoId, hrefFallback) {
-  const modal = document.getElementById('videoModal');
-  if (!modal) return;
-  currentVideoHref = hrefFallback || `https://youtu.be/${videoId}`;
-  loadYouTubeAPI().then((YT) => {
-    // remove previous player if exists
-    if (ytPlayer) {
-      try { ytPlayer.destroy(); } catch (e) {}
-      ytPlayer = null;
-    }
-
-    ytPlayer = new YT.Player('videoPlayer', {
-      height: '100%',
-      width: '100%',
-      videoId: videoId,
-      playerVars: { rel: 0, autoplay: 1, modestbranding: 1 },
-      events: {
-        onReady: function (e) {
-          e.target.playVideo();
-          modal.classList.add('active');
-          document.body.style.overflow = 'hidden';
-        },
-        onError: function (event) {
-          // common embed errors: 101, 150 (embedding disabled)
-          const code = event && event.data;
-          showToast('تعذر تشغيل الفيديو داخل الموقع — يفتح في YouTube');
-          closeVideoModal();
-          // fallback: open in new tab
-          if (currentVideoHref) window.open(currentVideoHref, '_blank');
-        }
-      }
-    });
-  }).catch(() => {
-    // if API failed, fallback
-    window.open(currentVideoHref || `https://youtu.be/${videoId}`, '_blank');
-  });
-}
-
-function closeVideoModal() {
-  const modal = document.getElementById('videoModal');
-  if (!modal) return;
-  try {
-    if (ytPlayer && typeof ytPlayer.destroy === 'function') ytPlayer.destroy();
-  } catch (e) {}
-  ytPlayer = null;
-  modal.classList.remove('active');
-  document.body.style.overflow = '';
-}
-
-// Capture clicks on video links and open modal with the YouTube id (or fallback)
-// Removed interception of .video-link clicks so links open YouTube directly
-
-// Close video modal with Escape too
-document.addEventListener('keydown', function (e) {
-  if (e.key === 'Escape') closeVideoModal();
-});
 
 //
 // ── Testimonials Infinite Loop ──
@@ -993,17 +903,35 @@ document.addEventListener('keydown', function (e) {
   const track = document.getElementById('testiTrack');
   if (!wrap || !track) return;
 
-  const CARDS_PER_SET = 8; // ← عدد بطاقاتك الحقيقي
-  const CARD_WIDTH = 340;
-  const GAP = 24;
-  const SET_WIDTH = (CARD_WIDTH + GAP) * CARDS_PER_SET; // 2912px
-
+  // عدد البطاقات الأصلية يُحسب تلقائياً، والنسخ المكررة تُخفى عن قارئ الشاشة
+  const originals = Array.from(track.children);
+  const CARDS_PER_SET = originals.length;
   const COPIES = 4;
-  track.innerHTML = track.innerHTML.repeat(COPIES);
+  for (let i = 1; i < COPIES; i++) {
+    originals.forEach((c) => {
+      const cl = c.cloneNode(true);
+      cl.setAttribute('aria-hidden', 'true');
+      cl.querySelectorAll('a, button').forEach((el) => (el.tabIndex = -1));
+      track.appendChild(cl);
+    });
+  }
+
+  let x = 0;
+  // عرض الدفعة الواحدة يُقاس من الصفحة (يتغيّر بين الحاسوب 340px والجوال 280px)
+  let SET_WIDTH = 0;
+  function measure() {
+    const first = track.children[0];
+    if (!first) return;
+    const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+    SET_WIDTH = (first.getBoundingClientRect().width + gap) * CARDS_PER_SET;
+    if (SET_WIDTH && Math.abs(x) >= SET_WIDTH) x = x % SET_WIDTH;
+  }
 
   const SPEED = 0.6;
-  let x = 0;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let paused = false;
+  measure();
+  window.addEventListener('resize', measure);
 
   let isDragging = false;
   let dragStartX = 0;
@@ -1028,7 +956,7 @@ document.addEventListener('keydown', function (e) {
     if (!isDragging) return;
     const delta = clientX - dragStartX;
     x = dragStartOffset + delta;
-    if (Math.abs(x) >= SET_WIDTH) {
+    if (SET_WIDTH && Math.abs(x) >= SET_WIDTH) {
       x += Math.sign(x) * SET_WIDTH * -1;
     }
     track.style.transform = `translateX(${x}px)`;
@@ -1055,15 +983,15 @@ document.addEventListener('keydown', function (e) {
 
   wrap.addEventListener('pointerup', (event) => {
     endDrag();
-    wrap.releasePointerCapture(event.pointerId);
+    if (wrap.hasPointerCapture(event.pointerId)) wrap.releasePointerCapture(event.pointerId);
   });
 
   wrap.addEventListener('pointercancel', endDrag);
 
   function tick() {
-    if (!paused) {
+    if (!paused && !reduceMotion) {
       x -= SPEED;
-      if (Math.abs(x) >= SET_WIDTH) x += SET_WIDTH;
+      if (SET_WIDTH && Math.abs(x) >= SET_WIDTH) x += SET_WIDTH;
       track.style.transform = `translateX(${x}px)`;
     }
     requestAnimationFrame(tick);
@@ -1079,12 +1007,15 @@ function toggleMobileMenu() {
   const isOpen = menu.classList.contains('open');
   menu.classList.toggle('open', !isOpen);
   btn.classList.toggle('open', !isOpen);
+  btn.setAttribute('aria-expanded', String(!isOpen));
   document.body.style.overflow = isOpen ? '' : 'hidden';
 }
 
 function closeMobileMenu() {
   document.getElementById('mobileMenu').classList.remove('open');
-  document.getElementById('hamburger').classList.remove('open');
+  const hb = document.getElementById('hamburger');
+  hb.classList.remove('open');
+  hb.setAttribute('aria-expanded', 'false');
   document.body.style.overflow = '';
 }
 
@@ -1106,11 +1037,10 @@ document.addEventListener('click', function (e) {
 function toggleTheme() {
   document.body.classList.toggle('light-mode');
   const theme = document.body.classList.contains('light-mode') ? 'light' : 'dark';
-  localStorage.setItem('theme', theme);
+  lsSet('theme', theme);
   updateThemeIcon();
   updateLogo(); // Update logo immediately after theme change
   updateNavbarStyle(); // Update navbar immediately after theme change
-  updateHeroSvg(); // Update hero SVG colors
   updateTestimonialLogos(); // Ensure testimonial logos match the current theme
 }
 
@@ -1137,38 +1067,15 @@ function updateThemeIcon() {
 function updateLogo() {
   const logoImg = document.querySelector('.logo-img');
   const isLightMode = document.body.classList.contains('light-mode');
-  const logoSrc = isLightMode ? 'image/logo.png' : 'image/logoo.png';
+  const nav = document.getElementById('navbar');
+  const overHero = !!nav && nav.classList.contains('nav-top');
+  const logoSrc = isLightMode && !overHero ? 'image/logo.png' : 'image/logoo.png';
 
   if (logoImg) {
     logoImg.src = logoSrc;
   }
 }
 
-function updateHeroSvg() {
-  const svg = document.querySelector('.hero-svg');
-  if (!svg) return;
-
-  const isLightMode = document.body.classList.contains('light-mode');
-  const bgGrad = svg.querySelector('#bgGrad');
-  if (bgGrad) {
-    const stops = bgGrad.querySelectorAll('stop');
-    if (isLightMode) {
-      // Change to light background colors
-      stops[0].setAttribute('stop-color', '#ffffff');
-      stops[1].setAttribute('stop-color', '#ffffff');
-    } else {
-      // Change back to dark colors
-      stops[0].setAttribute('stop-color', '#0d0d0d');
-      stops[1].setAttribute('stop-color', '#1a1a1a');
-    }
-  }
-
-  // Update grid lines color
-  const gridLines = svg.querySelectorAll('line[stroke="white"]');
-  gridLines.forEach(line => {
-    line.setAttribute('stroke', isLightMode ? '#ffffff' : '#ffffff');
-  });
-}
 
 function updateTestimonialLogos() {
   const isLightMode = document.body.classList.contains('light-mode');
@@ -1184,21 +1091,27 @@ function updateTestimonialLogos() {
 
 // Load theme on page load
 document.addEventListener('DOMContentLoaded', () => {
-  const savedTheme = localStorage.getItem('theme');
+  const savedTheme = lsGet('theme');
   if (savedTheme === 'light') {
     document.body.classList.add('light-mode');
   }
-  const savedLang = localStorage.getItem('lang');
-  if (savedLang) {
+  const savedLang = lsGet('lang');
+  if (savedLang === 'ar' || savedLang === 'en') {
     currentLang = savedLang;
     updateTranslations();
+  } else {
+    // العربية افتراضياً: نملأ الأرقام الديناميكية فقط ونحدّث نصوص الوصول
+    document.querySelectorAll('[data-translate]').forEach((el) => {
+      const v = translations.ar[el.getAttribute('data-translate')];
+      if (v && v.indexOf('{') !== -1) el.textContent = fillTokens(v);
+    });
+    updateA11yLabels();
   }
   updateThemeIcon();
   updateLogo(); // Update logo on page load
   updateNavbarStyle(); // Ensure navbar is styled correctly on page load
-  updateHeroSvg(); // Update hero SVG on page load
   updateTestimonialLogos(); // Initialize testimonial logos based on saved theme
 });
 
 // Add scroll event listener for navbar style updates
-window.addEventListener('scroll', updateNavbarStyle);
+window.addEventListener('scroll', updateNavbarStyle, { passive: true });

@@ -1,0 +1,33 @@
+// أضف الدرس الجديد في آخر القائمة فقط (الأقدم أولاً). يظهر الأحدث تلقائياً في المقدّمة.
+// n = رقم الدرس، id = معرّف فيديو يوتيوب (الجزء بعد youtu.be/)
+window.LESSONS = [
+  { n: '01', id: '30f0HZ6IFZM' },
+  { n: '02', id: 'zqKZ_aF6nV0' },
+  { n: '03', id: 'N12YBy9QVy8' },
+  { n: '04', id: 'LNJOoEjp5cs' },
+  { n: '05', id: '35kJ2S7Mwew' },
+  { n: '06', id: 'VnvkdVAAWio' },
+  { n: '07', id: '8WGDGaF7EDk' },
+  { n: '08', id: 'Ga0c9sctIog' },
+  { n: '09', id: 'gojqtVY44yE' },
+  { n: '10', id: '8YbqdUDbuoA' },
+  { n: '11', id: '_cIwRBZV31U' },
+  { n: '12', id: 'K5-RPkdt-Q0' },
+  { n: '13', id: 'z612drogG0I' },
+  { n: '14', id: '7rL0ERgjn1E' },
+  { n: '15', id: '_pmclOQsOps' },
+  { n: '16', id: 'r1ngrhahE0E' },
+  { n: '17', id: 'oVl7QsbaZ7o' },
+  { n: '18', id: 'BUgN6xxtIqY' },
+  { n: '19', id: 'ZVdF2zBfzHs' },
+  { n: '20', id: 'eGQjO9bAP2c' },
+  { n: '21', id: 'iUf5SBmdMBk' },
+  { n: '22', id: 'BOezyYdFe9U' },
+  { n: '23', id: '5eFkFaFfuuQ' },
+  { n: '24', id: 'eyXUmAFexCY' },
+  { n: '25', id: 'L4Gwpz9JCAY' },
+  { n: '26', id: '1HSJqdru-J8' },
+  { n: '27', id: 'P-tld9sNwgw' },
+  { n: '28', id: 'jIu4PzWdcfE' },
+  { n: '29', id: 'afvqW9dI_Ys' }
+];

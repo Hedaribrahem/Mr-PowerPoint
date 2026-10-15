@@ -29,6 +29,20 @@
     </style>
   </head>
   <body>
+    <script>
+      /* تطبيق الثيم واللغة المحفوظين قبل أول رسم لمنع الوميض */
+      (function () {
+        try {
+          var t = localStorage.getItem('theme'), l = localStorage.getItem('lang');
+          if (t === 'light') document.body.classList.add('light-mode');
+          if (l === 'en') {
+            document.documentElement.lang = 'en';
+            document.documentElement.dir = 'ltr';
+            document.body.dir = 'ltr';
+          }
+        } catch (e) {}
+      })();
+    </script>
     <nav id="navbar">
       <a href="index.html" class="nav-logo">
         <img src="image/logoo.png" alt="Mr PowerPoint" class="logo-img" />
@@ -120,7 +134,7 @@
       </article>
 
       <div style="margin-top: 32px;">
-        <a href="index.html" class="btn-secondary" data-translate="terms_back_home" style="display: inline-block; padding: 12px 22px; text-decoration: none; border-radius: 999px; background: #E61312; color: #fff; border: 1px solid #E61312;">
+        <a href="index.html" class="btn-primary" data-translate="terms_back_home">
           العودة إلى الصفحة الرئيسية
         </a>
       </div>

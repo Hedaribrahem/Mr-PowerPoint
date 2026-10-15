@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>لوحة تحكم Mr PowerPoint</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0e0e11;--card:#17171c;--line:#2a2a33;--tx:#f2f2f5;--mut:#9a9aa8;--red:#E61312;--ok:#27c07d;--warn:#f5a524}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.6 Cairo,Tahoma,sans-serif}
+h1,h2,h3,p{margin:0}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer;background:#22222a;border:1px solid var(--line);border-radius:8px;padding:7px 14px}
+button:hover{border-color:#44444f}
+button:focus-visible,input:focus-visible,select:focus-visible,#drop:focus-within{outline:2px solid var(--red);outline-offset:2px}
+button.pri{background:var(--red);border-color:var(--red);font-weight:700}
+button:disabled{opacity:.4;cursor:not-allowed}
+input[type=text],input:not([type]),select{background:#101014;border:1px solid var(--line);border-radius:8px;padding:8px 10px;width:100%}
+header{position:sticky;top:0;z-index:5;background:#0e0e11ee;backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:12px 20px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+header b{font-size:17px}
+.sp{flex:1}
+.chip{color:var(--mut);font-size:13px}
+#gate{max-width:520px;margin:12vh auto;padding:0 20px;display:grid;gap:14px;text-align:center}
+#gate h1{font-size:26px}
+main{max-width:1040px;margin:0 auto;padding:20px}
+nav{display:flex;gap:6px;margin-bottom:18px;border-bottom:1px solid var(--line)}
+nav button{border:0;border-radius:8px 8px 0 0;background:none;padding:10px 18px;color:var(--mut)}
+nav button.on{color:var(--tx);box-shadow:inset 0 -3px var(--red)}
+.box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:18px}
+.box h3{margin-bottom:10px}
+.f{display:grid;grid-template-columns:1fr 110px auto;gap:10px;align-items:end}
+.f label,.l{font-size:13px;color:var(--mut);display:block;margin-bottom:3px}
+.row{display:grid;grid-template-columns:64px 96px 1fr auto auto;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+.row img{width:96px;border-radius:6px;aspect-ratio:16/9;object-fit:cover;background:#101014}
+.row small{display:block;color:var(--mut);direction:ltr;text-align:right}
+.row .num{text-align:center;padding:6px}
+a{color:#ff6b6a;text-decoration:none}
+.tags span{font-size:12px;padding:1px 8px;border-radius:99px;margin-inline-start:6px}
+.bad{color:#ff6b6a}.okc{color:var(--ok)}.warn{color:var(--warn)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.card img{width:100%;aspect-ratio:16/9;object-fit:cover;background:#101014}
+.card div{padding:10px;display:grid;gap:8px}
+.card b{display:flex;justify-content:space-between;gap:6px}
+.bonus{background:#f5a52422;color:var(--warn);font-size:12px;padding:1px 8px;border-radius:99px;font-weight:400}
+#drop{display:grid;place-items:center;min-height:110px;border:2px dashed #3a3a46;border-radius:10px;text-align:center;color:var(--mut);cursor:pointer;padding:10px}
+#drop.over{border-color:var(--red);color:var(--tx)}
+#drop img{max-height:150px;max-width:100%;border-radius:6px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.opts{display:flex;gap:18px;flex-wrap:wrap;margin:10px 0;align-items:center}
+pre{direction:ltr;text-align:left;background:#101014;border:1px solid var(--line);border-radius:8px;padding:12px;overflow:auto;margin:10px 0}
+.res{padding:8px 0;border-bottom:1px solid var(--line)}
+#toast{position:fixed;bottom:20px;inset-inline-start:20px;background:#22222a;border:1px solid var(--line);border-radius:10px;padding:10px 16px;opacity:0;transform:translateY(8px);transition:.2s;z-index:9;max-width:80vw}
+#toast.show{opacity:1;transform:none}#toast.err{border-color:var(--red)}
+.r2{display:grid;grid-template-columns:70px 130px 1fr auto;gap:10px;align-items:center;margin-top:8px}
+.r2 img{width:70px;aspect-ratio:16/9;object-fit:cover;border-radius:6px}
+.hd{cursor:grab;color:var(--mut);padding:0 4px;user-select:none;font-weight:400}
+.card.drop{outline:2px solid var(--red)}
+.card .tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:0}
+.card .tools label{font-size:13px;color:var(--mut)}
+.card .tools .btn{cursor:pointer;color:var(--tx);background:#22222a;border:1px solid var(--line);border-radius:8px;padding:5px 10px}
+@media(max-width:720px){.r2{grid-template-columns:50px 1fr auto}.r2 b{display:none}}
+@media(max-width:720px){.f,.two{grid-template-columns:1fr}.row{grid-template-columns:50px 1fr auto}.row img{display:none}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<section id="gate">
+  <h1>لوحة تحكم Mr PowerPoint</h1>
+  <p id="gmsg">اختر مجلد الموقع (المجلد الذي يحتوي على index.html). تحتاج هذا مرة واحدة فقط.</p>
+  <button class="pri" id="conn">اختيار مجلد الموقع</button>
+  <button id="reconn" hidden></button>
+  <p id="gerr" class="bad"></p>
+</section>
+
+<div id="app" hidden>
+<header>
+  <b>Mr PowerPoint</b><span class="chip" id="folder"></span><span class="chip" id="stats"></span>
+  <span class="sp"></span><span class="chip warn" id="dirty"></span>
+  <button class="pri" id="save" disabled>حفظ التغييرات</button>
+</header>
+<main>
+  <nav>
+    <button data-tab="L" class="on">الدروس</button>
+    <button data-tab="T">النماذج</button>
+    <button data-tab="B">النسخ الاحتياطية</button>
+    <button data-tab="C">فحص الموقع</button>
+  </nav>
+
+  <div id="git" class="box" hidden>
+    <h3 class="okc">تم الحفظ في ملفات الموقع</h3>
+    <p class="chip">لنشر التغييرات، شغّل هذه الأوامر في مجلد الموقع (أو افتح GitHub Desktop واضغط Commit ثم Push):</p>
+    <pre id="gitcmd"></pre>
+    <button id="copy">نسخ الأوامر</button>
+  </div>
+
+  <!-- الدروس -->
+  <section id="tab-L">
+    <div class="box">
+      <h3>إضافة درس جديد</h3>
+      <div class="f">
+        <div><label for="lurl">رابط الفيديو أو معرّفه</label><input id="lurl" dir="ltr" placeholder="https://youtu.be/xxxxxxxxxxx"></div>
+        <div><label for="lnum">رقم الدرس</label><input id="lnum"></div>
+        <button class="pri" id="ladd" disabled>إضافة الدرس</button>
+      </div>
+      <div id="lprev" class="chip" style="margin-top:10px"></div>
+    </div>
+    <div class="box"><h3>اكتشاف الفيديوهات الجديدة</h3>
+      <div class="f" style="grid-template-columns:1fr auto"><div><label for="vch">رابط القناة أو معرّفها</label><input id="vch" dir="ltr"></div><button id="vscan">فحص القناة</button></div>
+      <div id="vres" style="margin-top:10px"></div></div>
+    <div class="box"><h3>الدروس (الأحدث أولاً)</h3><div id="lessons"></div></div>
+  </section>
+
+  <!-- النماذج -->
+  <section id="tab-T" hidden>
+    <div class="box">
+      <h3>إضافة نموذج جديد</h3>
+      <div class="two">
+        <label id="drop" for="tfile"><input type="file" id="tfile" accept="image/*" multiple hidden><span id="dtxt">اسحب صورة أو عدة صور هنا، أو اضغط للاختيار</span></label>
+        <div>
+          <div class="opts">
+            <label><input type="radio" name="kind" value="t" checked> قالب جديد</label>
+            <label><input type="radio" name="kind" value="g"> هدية لقالب</label>
+          </div>
+          <div id="gwrap" hidden><label class="l" for="tpar">القالب الأساسي</label><select id="tpar"></select></div>
+          <p class="chip" id="tplan" style="margin-top:8px"></p>
+        </div>
+      </div>
+      <div id="batch"></div>
+      <div class="opts">
+        <label><input type="checkbox" id="topt" checked> تصغير الصورة وتحويلها إلى JPG (أخف على الموقع)</label>
+        <span class="sp"></span><button class="pri" id="tadd" disabled>إضافة النموذج</button>
+      </div>
+    </div>
+    <div class="grid" id="tgrid"></div>
+  </section>
+
+  <!-- النسخ الاحتياطية -->
+  <section id="tab-B" hidden><div class="box"><h3>النسخ الاحتياطية</h3><p class="chip" style="margin-bottom:10px">الاسترجاع يحمّل النسخة في اللوحة أولاً، ثم تراجعها وتضغط "حفظ التغييرات".</p><div id="bl"></div></div></section>
+
+  <!-- الفحص -->
+  <section id="tab-C" hidden>
+    <div class="box">
+      <h3>فحص سلامة الملفات</h3>
+      <p class="chip" style="margin-bottom:10px">يفحص الصور المفقودة، وحالة الأحرف (JPG مقابل jpg)، والمسافات في الأسماء، والتكرار، والصور الثقيلة.</p>
+      <button class="pri" id="runck">تشغيل الفحص</button>
+      <div id="ck" style="margin-top:12px"></div>
+    </div>
+  </section>
+</main>
+</div>
+<div id="toast" role="status"></div>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const ls=(k,v)=>{try{return v===undefined?localStorage.getItem(k):localStorage.setItem(k,v)}catch(e){}};
+const q=JSON.stringify,pad=(n,w)=>String(n).padStart(w,'0');
+let dir,L={head:'',list:[]},T={head:'',list:[]},orig={L:'',T:''},base={L:[],T:[]};
+let pend=new Map(),pv={},tc={},cur=null,titles={};
+try{titles=JSON.parse(ls('yt')||'{}')}catch(e){}
+
+function toast(m,bad){const t=$('#toast');t.textContent=m;t.className='show'+(bad?' err':'');clearTimeout(toast.t);toast.t=setTimeout(()=>t.className='',bad?6000:2800)}
+
+/* ---------- تخزين المجلد ---------- */
+const idb=()=>new Promise((res,rej)=>{const r=indexedDB.open('mrpp',1);r.onupgradeneeded=()=>r.result.createObjectStore('k');r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)});
+async function idbGet(k){try{const d=await idb();return await new Promise(r=>{const x=d.transaction('k').objectStore('k').get(k);x.onsuccess=()=>r(x.result);x.onerror=()=>r()})}catch(e){}}
+async function idbSet(k,v){try{const d=await idb();await new Promise(r=>{const t=d.transaction('k','readwrite');t.objectStore('k').put(v,k);t.oncomplete=()=>r()})}catch(e){}}
+
+/* ---------- قراءة/كتابة ---------- */
+const rd=async(d,n)=>(await(await d.getFileHandle(n)).getFile()).text();
+async function wr(d,n,data){const f=await d.getFileHandle(n,{create:true});const w=await f.createWritable();await w.write(data);await w.close()}
+function parse(txt,v){const i=txt.indexOf('window.'+v);if(i<0)throw Error('لم أجد window.'+v);const j=txt.indexOf('[',i),k=txt.lastIndexOf(']');return{head:txt.slice(0,i),list:new Function('return '+txt.slice(j,k+1))()}}
+const normL=()=>{L.list.forEach(x=>x.n=pad(parseInt(x.n)||0,2));L.list.sort((a,b)=>parseInt(a.n)-parseInt(b.n))};
+const serL=()=>{normL();return L.head+'window.LESSONS = [\n'+L.list.map(x=>`  { n: '${x.n}', id: '${x.id}' }`).join(',\n')+'\n];\n'};
+const serT=()=>T.head+'window.TEMPLATES = [\n'+T.list.map(x=>`  {"name": ${q(x.name)}, "img": ${q(x.img)}, "url": ${q(x.url||'')}, "bonus": ${!!x.bonus}}`).join(',\n')+'\n];\n';
+
+async function load(h){
+  const a=await rd(h,'lessons-data.js').catch(()=>null),b=await rd(h,'templates-data.js').catch(()=>null);
+  if(a===null||b===null)throw Error('هذا ليس مجلد الموقع: لم أجد lessons-data.js و templates-data.js');
+  dir=h;L=parse(a,'LESSONS');T=parse(b,'TEMPLATES');
+  orig={L:serL(),T:serT()};base={L:L.list.map(x=>x.id),T:T.list.map(x=>x.name)};
+  pend.clear();pv={};tc={};
+  $('#gate').hidden=true;$('#app').hidden=false;$('#folder').textContent='📁 '+h.name;
+  idbSet('dir',h);renderAll();
+}
+
+/* ---------- الاتصال بالمجلد ---------- */
+async function init(){
+  if(!window.showDirectoryPicker){$('#gmsg').textContent='';$('#gerr').textContent='هذا المتصفح لا يدعم الكتابة في المجلدات. افتح اللوحة في Chrome أو Edge.';$('#conn').hidden=true;return}
+  const h=await idbGet('dir');
+  if(h){
+    try{
+      const p=await h.queryPermission({mode:'readwrite'});
+      if(p==='granted')return await load(h);
+      const r=$('#reconn');r.hidden=false;r.textContent='المتابعة مع المجلد: '+h.name;
+      r.onclick=async()=>{try{if(await h.requestPermission({mode:'readwrite'})==='granted')await load(h);else $('#gerr').textContent='لم تُمنح صلاحية الكتابة.'}catch(e){$('#gerr').textContent=e.message}};
+    }catch(e){}
+  }
+}
+$('#conn').onclick=async()=>{try{await load(await showDirectoryPicker({mode:'readwrite'}));$('#gerr').textContent=''}catch(e){if(e.name!=='AbortError')$('#gerr').textContent=e.message}};
+
+/* ---------- حالة التغيير ---------- */
+function dirty(){return serL()!==orig.L||serT()!==orig.T||pend.size>0}
+function refresh(){
+  const d=dirty();$('#save').disabled=!d;$('#dirty').textContent=d?'● تغييرات غير محفوظة':'';
+  const nb=T.list.filter(x=>!x.bonus).length;
+  $('#stats').textContent=`${nb} قالباً · ${T.list.length-nb} هدية · ${L.list.length} درساً`;
+}
+addEventListener('beforeunload',e=>{if(dir&&dirty()){e.preventDefault();e.returnValue=''}});
+function renderAll(){rL();rT();refresh()}
+$$('nav button').forEach(b=>b.onclick=()=>{$$('nav button').forEach(x=>x.classList.toggle('on',x===b));['L','T','B','C'].forEach(t=>$('#tab-'+t).hidden=t!==b.dataset.tab);if(b.dataset.tab==='B')rB()});
+
+/* ---------- الدروس ---------- */
+function ytId(s){s=s.trim();const m=s.match(/(?:youtu\.be\/|[?&]v=|embed\/|shorts\/|live\/)([\w-]{11})/)||s.match(/^([\w-]{11})$/);return m&&m[1]}
+async function title(id){
+  if(titles[id])return titles[id];
+  for(const u of[`https://www.youtube.com/oembed?url=https://youtu.be/${id}&format=json`,`https://noembed.com/embed?url=https://youtu.be/${id}`]){
+    try{const j=await(await fetch(u)).json();if(j.title){titles[id]=j.title;ls('yt',q(titles));return j.title}}catch(e){}
+  }return''
+}
+let tl=false;
+async function loadTitles(){
+  if(tl)return;tl=true;let fails=0;
+  for(const x of L.list){
+    if(fails>=3)break;
+    if(!titles[x.id]&&!await title(x.id)){fails++;continue}
+    $$('[data-t="'+x.id+'"]').forEach(e=>e.textContent=titles[x.id]);
+  }tl=false;
+}
+function rL(){
+  const seen=new Set(),dup=new Set();L.list.forEach(x=>seen.has(x.id)?dup.add(x.id):seen.add(x.id));
+  $('#lnum').value=pad(Math.max(0,...L.list.map(x=>parseInt(x.n)||0))+1,2);
+  $('#lessons').innerHTML=[...L.list].map((x,i)=>[x,i]).reverse().map(([x,i])=>`
+  <div class="row">
+    <input class="num" value="${esc(x.n)}" aria-label="رقم الدرس" onchange="setN(${i},this.value)">
+    <img loading="lazy" src="https://img.youtube.com/vi/${esc(x.id)}/default.jpg" alt="">
+    <div><b data-t="${esc(x.id)}">${esc(titles[x.id]||'…')}</b><small>${esc(x.id)}</small>${dup.has(x.id)?'<span class="bad">معرّف مكرر</span>':''}</div>
+    <a href="https://youtu.be/${esc(x.id)}" target="_blank" rel="noopener">فتح</a>
+    <button onclick="delL(${i})">حذف</button>
+  </div>`).join('')||'<p class="chip">لا توجد دروس بعد.</p>';
+  loadTitles();
+}
+function setN(i,v){L.list[i].n=v;normL();rL();refresh()}
+function delL(i){const x=L.list[i];if(confirm(`حذف الدرس ${x.n}؟\n${titles[x.id]||x.id}`)){L.list.splice(i,1);rL();refresh()}}
+let lp=0;
+$('#lurl').oninput=async e=>{
+  const id=ytId(e.target.value),pv_=$('#lprev'),b=$('#ladd'),my=++lp;
+  b.disabled=true;
+  if(!e.target.value.trim()){pv_.textContent='';return}
+  if(!id){pv_.innerHTML='<span class="bad">لم أتعرف على رابط يوتيوب صحيح.</span>';return}
+  if(L.list.some(x=>x.id===id)){pv_.innerHTML='<span class="bad">هذا الفيديو مضاف مسبقاً.</span>';return}
+  pv_.innerHTML=`<img src="https://img.youtube.com/vi/${id}/mqdefault.jpg" alt="" width="160" style="border-radius:6px;vertical-align:middle"> <span id="pt">جارٍ جلب العنوان…</span>`;
+  b.disabled=false;
+  const t=await title(id);if(my===lp&&$('#pt'))$('#pt').textContent=t||'(تعذّر جلب العنوان، لا يؤثر على الإضافة)';
+};
+$('#ladd').onclick=()=>{
+  const id=ytId($('#lurl').value);if(!id)return;
+  L.list.push({n:$('#lnum').value||'0',id});normL();
+  $('#lurl').value='';$('#lprev').textContent='';$('#ladd').disabled=true;rL();refresh();toast('تمت إضافة الدرس. لا تنس الحفظ.');
+};
+
+/* ---------- النماذج ---------- */
+const numOf=n=>+(String(n).match(/\d+/)||[0])[0];
+const nonB=()=>T.list.filter(x=>!x.bonus);
+const rm=new Set();let curs=[],dg=-1;
+const gift=()=>document.querySelector('input[name=kind]:checked').value==='g';
+function plans(){
+  const g=gift(),p=$('#tpar').value;
+  const s=g?T.list.filter(x=>x.bonus&&x.name.startsWith(p+' gift')).length+1:Math.max(0,...nonB().map(x=>numOf(x.name)))+1;
+  return curs.map((_,i)=>g?{name:`${p} gift${s+i}`,file:`${p}-gift${s+i}`,p}:{name:'template'+pad(s+i,3),file:'template'+pad(s+i,3)});
+}
+function updBtn(){$('#tadd').disabled=!curs.length||curs.some(c=>!/^https:\/\//.test(c.url.trim()))}
+function rBatch(){
+  const ps=plans();$('#gwrap').hidden=!gift();
+  $('#tplan').textContent=curs.length?`سيُضاف ${curs.length} نموذج، وتأخذ أسماءً متتالية حسب ترتيب أسماء ملفات الصور.`:'';
+  $('#batch').innerHTML=curs.map((c,i)=>`<div class="r2"><img src="${c.u}" alt=""><b dir="ltr">${esc(ps[i].name)}</b><input dir="ltr" placeholder="رابط Google Drive لهذا النموذج" value="${esc(c.url)}" oninput="curs[${i}].url=this.value;updBtn()"><button onclick="curs.splice(${i},1);rBatch()" aria-label="إزالة">✕</button></div>`).join('');
+  updBtn();
+}
+document.querySelectorAll('input[name=kind]').forEach(r=>r.onchange=rBatch);$('#tpar').onchange=rBatch;
+function pick(fs){
+  const a=[...fs].filter(f=>f.type.startsWith('image/'));if(!a.length)return toast('اختر ملفات صور.',1);
+  a.forEach(f=>curs.push({f,url:'',u:URL.createObjectURL(f)}));
+  curs.sort((x,y)=>x.f.name.localeCompare(y.f.name,undefined,{numeric:true}));rBatch();
+}
+$('#tfile').onchange=e=>{pick(e.target.files);e.target.value=''};
+const dz=$('#drop');
+['dragenter','dragover'].forEach(v=>dz.addEventListener(v,e=>{e.preventDefault();dz.classList.add('over')}));
+['dragleave','drop'].forEach(v=>dz.addEventListener(v,e=>{e.preventDefault();dz.classList.remove('over')}));
+dz.addEventListener('drop',e=>pick(e.dataTransfer.files));
+async function optimize(f){
+  const bm=await createImageBitmap(f),s=Math.min(1,1600/bm.width),c=document.createElement('canvas');
+  c.width=Math.round(bm.width*s);c.height=Math.round(bm.height*s);
+  const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);x.drawImage(bm,0,0,c.width,c.height);
+  return new Promise(r=>c.toBlob(r,'image/jpeg',.86));
+}
+$('#tadd').onclick=async()=>{
+  const ps=plans(),opt=$('#topt').checked;$('#tadd').disabled=true;
+  for(let i=0;i<curs.length;i++){
+    const c=curs[i],p=ps[i];let blob=c.f,ext=(c.f.name.split('.').pop()||'jpg').toLowerCase().replace('jpeg','jpg');
+    if(opt){try{blob=await optimize(c.f);ext='jpg'}catch(e){toast('تعذّر تصغير '+c.f.name,1)}}
+    const file=`${p.file}.${ext}`,e={name:p.name,img:'templates/'+file,url:c.url.trim(),bonus:!!p.p};
+    pend.set(file,blob);pv[e.img]=c.u;
+    let at=T.list.length;
+    if(p.p){const idx=T.list.map((x,j)=>x.name===p.p||x.name.startsWith(p.p+' gift')?j:-1).filter(j=>j>=0);at=Math.max(...idx)+1}
+    T.list.splice(at,0,e);
+  }
+  const n=curs.length;curs=[];rBatch();rT();refresh();toast(`تمت إضافة ${n} نموذج. لا تنس الحفظ.`);
+};
+async function thumb(p){
+  if(pv[p])return pv[p];if(tc[p])return tc[p];
+  try{let d=dir;const a=p.split('/');for(const s of a.slice(0,-1))d=await d.getDirectoryHandle(s);return tc[p]=URL.createObjectURL(await(await d.getFileHandle(a.pop())).getFile())}catch(e){return''}
+}
+function rT(){
+  const par=$('#tpar'),v=par.value;
+  par.innerHTML=[...nonB()].reverse().map(x=>`<option>${esc(x.name)}</option>`).join('');if(v)par.value=v;
+  $('#tgrid').innerHTML=[...T.list].map((x,i)=>[x,i]).reverse().map(([x,i])=>`
+  <div class="card" ondragover="event.preventDefault();this.classList.add('drop')" ondragleave="this.classList.remove('drop')" ondrop="event.preventDefault();mv(${i})">
+    <img data-img="${esc(x.img)}" alt="${esc(x.name)}">
+    <div><b><input value="${esc(x.name)}" aria-label="اسم النموذج" onchange="setName(${i},this.value)"><span class="hd" draggable="true" title="اسحب لإعادة الترتيب" ondragstart="dg=${i};event.dataTransfer.setDragImage(this.closest('.card'),20,20)">⠿</span></b>
+    <input dir="ltr" value="${esc(x.url||'')}" aria-label="رابط التحميل" onchange="setU(${i},this.value)">
+    <div class="tools"><label><input type="checkbox" ${x.bonus?'checked':''} onchange="setBonus(${i},this.checked)"> هدية</label>
+    <label class="btn"><input type="file" accept="image/*" hidden onchange="repImg(${i},this.files[0])">استبدال الصورة</label>
+    <button onclick="delT(${i})">حذف</button></div></div></div>`).join('');
+  $$('[data-img]').forEach(async el=>{el.src=await thumb(el.dataset.img)});
+  rBatch();
+}
+function setU(i,v){T.list[i].url=v.trim();refresh()}
+function mv(to){if(dg<0||dg===to)return rT();const[x]=T.list.splice(dg,1);T.list.splice(to,0,x);dg=-1;rT();refresh()}
+function setName(i,v){v=v.trim();if(v)T.list[i].name=v;rT();refresh()}
+function setBonus(i,b){T.list[i].bonus=b;rT();refresh()}
+async function repImg(i,f){
+  if(!f)return;const x=T.list[i],old=x.img.split('/').pop();
+  let blob=f,ext=(f.name.split('.').pop()||'jpg').toLowerCase().replace('jpeg','jpg');
+  if($('#topt').checked){try{blob=await optimize(f);ext='jpg'}catch(e){}}
+  const b=old.replace(/\.[^.]+$/,''),v=+((b.match(/-v(\d+)$/)||[,1])[1]),file=b.replace(/-v\d+$/,'')+'-v'+(v+1)+'.'+ext;
+  pend.set(file,blob);pv['templates/'+file]=URL.createObjectURL(blob);rm.add(old);
+  x.img='templates/'+file;rT();refresh();toast('تم استبدال الصورة (اسم جديد لتجنّب الكاش). لا تنس الحفظ.');
+}
+function delT(i){
+  const x=T.list[i];if(!confirm(`حذف ${x.name} من القائمة؟`))return;
+  if(confirm('حذف ملف الصورة من المجلد أيضاً؟\n(موافق = حذف، إلغاء = إبقاء الملف)'))rm.add(x.img.split('/').pop());
+  T.list.splice(i,1);rT();refresh();
+}
+
+/* ---------- الحفظ ---------- */
+async function bk(n){
+  const old=await rd(dir,n),b=await dir.getDirectoryHandle('_backup',{create:true});
+  await wr(b,n+'.'+new Date().toISOString().replace(/[:.]/g,'-')+'.bak',old);
+  const ks=[];for await(const[k]of b.entries())if(k.startsWith(n+'.'))ks.push(k);
+  ks.sort();while(ks.length>10)await b.removeEntry(ks.shift());
+}
+function commitMsg(){
+  const aL=L.list.filter(x=>!base.L.includes(x.id)).map(x=>x.n),rL_=base.L.filter(id=>!L.list.some(x=>x.id===id)).length;
+  const aT=T.list.filter(x=>!base.T.includes(x.name)).map(x=>x.name),rT_=base.T.filter(n=>!T.list.some(x=>x.name===n)).length;
+  const m=[];if(aT.length)m.push('Add '+aT.join(', '));if(aL.length)m.push('Add lesson '+aL.join(', '));
+  if(rT_)m.push('Remove '+rT_+' template(s)');if(rL_)m.push('Remove '+rL_+' lesson(s)');
+  return m.join('; ')||'Update site data';
+}
+$('#save').onclick=async()=>{
+  try{
+    $('#save').disabled=true;
+    const msg=commitMsg(),newL=serL(),newT=serT();
+    await bk('lessons-data.js');await bk('templates-data.js');
+    const refd=new Set(T.list.map(x=>x.img.split('/').pop()));[...pend.keys()].forEach(n=>{if(!refd.has(n))pend.delete(n)});
+    if(pend.size){const td=await dir.getDirectoryHandle('templates',{create:true});for(const[n,b]of pend)await wr(td,n,b)}
+    await wr(dir,'lessons-data.js',newL);await wr(dir,'templates-data.js',newT);
+    if(rm.size){try{const td=await dir.getDirectoryHandle('templates');for(const n of rm)if(!refd.has(n))try{await td.removeEntry(n)}catch(e){}}catch(e){}rm.clear()}
+    orig={L:newL,T:newT};base={L:L.list.map(x=>x.id),T:T.list.map(x=>x.name)};pend.clear();
+    $('#gitcmd').textContent=`git add -A\ngit commit -m "${msg.replace(/"/g,"'")}"\ngit push`;$('#git').hidden=false;
+    renderAll();toast('تم الحفظ. تم أخذ نسخة احتياطية في _backup');scrollTo({top:0,behavior:'smooth'});
+  }catch(e){toast('فشل الحفظ: '+e.message,1);refresh()}
+};
+$('#copy').onclick=()=>navigator.clipboard.writeText($('#gitcmd').textContent).then(()=>toast('تم النسخ'),()=>toast('تعذّر النسخ، انسخ النص يدوياً.',1));
+
+/* ---------- النسخ الاحتياطية ---------- */
+async function rB(){
+  const o=$('#bl');o.textContent='جارٍ القراءة…';let b;
+  try{b=await dir.getDirectoryHandle('_backup')}catch(e){o.innerHTML='<p class="chip">لا توجد نسخ بعد. تُنشأ أول نسخة عند أول حفظ.</p>';return}
+  const ks=[];for await(const[k]of b.entries())if(k.endsWith('.bak'))ks.push(k);
+  ks.sort().reverse();let h='';
+  for(const k of ks){
+    const isL=k.startsWith('lessons'),m=k.match(/\.(\d{4}-\d\d-\d\d)T(\d\d)-(\d\d)-(\d\d)/);let n='?';
+    try{n=parse(await rd(b,k),isL?'LESSONS':'TEMPLATES').list.length}catch(e){}
+    const d=m?new Date(`${m[1]}T${m[2]}:${m[3]}:${m[4]}Z`).toLocaleString('ar'):'';
+    h+=`<div class="res"><b>${isL?'الدروس':'النماذج'}</b> · ${esc(d)} · ${n} عنصراً <button style="float:left" onclick="restore('${esc(k)}')">استرجاع</button></div>`;
+  }
+  o.innerHTML=h||'<p class="chip">لا توجد نسخ بعد.</p>';
+}
+async function restore(k){
+  if(!confirm('تحميل هذه النسخة في اللوحة بدل القائمة الحالية؟\nلن يُكتب شيء قبل أن تضغط "حفظ التغييرات".'))return;
+  try{
+    const isL=k.startsWith('lessons'),p=parse(await rd(await dir.getDirectoryHandle('_backup'),k),isL?'LESSONS':'TEMPLATES');
+    if(isL)L.list=p.list;else T.list=p.list;
+    renderAll();toast('تم تحميل النسخة. راجعها ثم اضغط حفظ التغييرات.');
+  }catch(e){toast('تعذّر الاسترجاع: '+e.message,1)}
+}
+
+/* ---------- اكتشاف الفيديوهات ---------- */
+let vids=[];
+$('#vch').value=ls('ch')||'https://www.youtube.com/@Mr.PowerPoint.O';
+const prox=u=>'https://api.allorigins.win/raw?url='+encodeURIComponent(u);
+async function getTxt(u){for(const f of[u,prox(u)]){try{const r=await fetch(f);if(r.ok)return await r.text()}catch(e){}}throw Error('تعذّر الاتصال بيوتيوب من هذا المتصفح. استخدم لصق الروابط بدلاً من ذلك.')}
+async function chanId(v){
+  v=v.trim();if(!v)throw Error('أدخل رابط القناة أو معرّفها (UC...).');
+  let m=v.match(/UC[\w-]{22}/);if(m)return m[0];
+  if(!/^https?:/.test(v))v='https://www.youtube.com/'+(v[0]==='@'?v:'@'+v);
+  m=(await getTxt(v)).match(/"(?:channelId|externalId)":"(UC[\w-]{22})"/);
+  if(!m)throw Error('لم أستطع استخراج معرّف القناة. الصقه يدوياً (يبدأ بـ UC).');return m[1];
+}
+const nextN=()=>pad(Math.max(0,...L.list.map(x=>parseInt(x.n)||0))+1,2);
+function rV(){
+  $('#vres').innerHTML=vids.length?`<button class="pri" onclick="addV(-1)">إضافة الكل (${vids.length})</button>`+vids.map((v,i)=>`<div class="row" style="grid-template-columns:96px 1fr auto"><img src="https://img.youtube.com/vi/${esc(v.id)}/default.jpg" alt=""><div><b>${esc(v.t)}</b><small>${esc(v.d)}</small></div><button onclick="addV(${i})">إضافة</button></div>`).join(''):'<span class="okc">✔ لا توجد فيديوهات جديدة بين آخر 15 فيديو على القناة.</span>';
+}
+function addV(i){
+  (i<0?vids:[vids[i]]).forEach(v=>L.list.push({n:nextN(),id:v.id}));
+  vids=i<0?[]:vids.filter((_,j)=>j!==i);normL();rL();rV();refresh();toast('تمت الإضافة. لا تنس الحفظ.');
+}
+$('#vscan').onclick=async()=>{
+  const b=$('#vscan'),o=$('#vres');b.disabled=true;o.textContent='جارٍ الفحص…';
+  try{
+    const id=await chanId($('#vch').value);ls('ch',$('#vch').value);
+    const x=new DOMParser().parseFromString(await getTxt('https://www.youtube.com/feeds/videos.xml?channel_id='+id),'text/xml'),g=(e,t)=>e.getElementsByTagName(t)[0].textContent;
+    vids=[...x.getElementsByTagName('entry')].map(e=>({id:g(e,'yt:videoId'),t:g(e,'title'),d:g(e,'published').slice(0,10)})).filter(v=>!L.list.some(l=>l.id===v.id)).reverse();
+    vids.forEach(v=>titles[v.id]=v.t);ls('yt',q(titles));rV();
+  }catch(e){o.innerHTML='<span class="bad">'+esc(e.message)+'</span>'}
+  b.disabled=false;
+};
+
+/* ---------- الفحص ---------- */
+$('#runck').onclick=async()=>{
+  const out=[],names=[],sizes={};
+  try{const td=await dir.getDirectoryHandle('templates');for await(const[k,h]of td.entries())if(h.kind==='file'){names.push(k);sizes[k]=(await h.getFile()).size}}
+  catch(e){out.push(['bad','مجلد templates غير موجود.'])}
+  const set=new Set(names),low=new Map(names.map(n=>[n.toLowerCase(),n])),used=new Set(),urls={},nm={};
+  T.list.forEach(x=>{
+    const f=x.img.split('/').pop();used.add(f.toLowerCase());
+    if(set.has(f)){if(sizes[f]>1.5*1048576)out.push(['warn',`${x.name}: الصورة ثقيلة (${(sizes[f]/1048576).toFixed(1)} MB)، يفضّل تصغيرها.`])}
+    else if(pend.has(f)){}
+    else if(low.has(f.toLowerCase()))out.push(['bad',`${x.name}: حالة الأحرف مختلفة. في القائمة "${f}" وعلى القرص "${low.get(f.toLowerCase())}". سيفشل على GitHub Pages.`]);
+    else out.push(['bad',`${x.name}: الصورة غير موجودة (${f}).`]);
+    if(/\s/.test(f))out.push(['warn',`${x.name}: اسم الصورة فيه مسافة.`]);
+    if(!/^https:\/\/drive\.google\.com\//.test(x.url||''))out.push(['warn',`${x.name}: رابط التحميل ليس من Google Drive أو فارغ.`]);
+    if(x.url&&urls[x.url])out.push(['warn',`${x.name} و ${urls[x.url]} لهما نفس رابط التحميل.`]);urls[x.url]=x.name;
+    if(nm[x.name])out.push(['bad',`الاسم مكرر: ${x.name}`]);nm[x.name]=1;
+  });
+  names.filter(n=>!used.has(n.toLowerCase())).forEach(n=>out.push(['warn',`صورة غير مستخدمة في القائمة: ${n}`]));
+  const ids={},ns={};
+  L.list.forEach(x=>{
+    if(!/^[\w-]{11}$/.test(x.id))out.push(['bad',`الدرس ${x.n}: معرّف فيديو غير صالح (${x.id}).`]);
+    if(ids[x.id])out.push(['bad',`الدرس ${x.n}: نفس الفيديو مضاف في الدرس ${ids[x.id]}.`]);ids[x.id]=x.n;
+    if(ns[x.n])out.push(['bad',`رقم الدرس ${x.n} مكرر.`]);ns[x.n]=1;
+  });
+  const mx=Math.max(0,...L.list.map(x=>+x.n));for(let i=1;i<mx;i++)if(!ns[pad(i,2)])out.push(['warn',`لا يوجد درس برقم ${pad(i,2)}.`]);
+  $('#ck').innerHTML=out.length?out.map(([t,m])=>`<div class="res ${t}">${t==='bad'?'✖':'⚠'} ${esc(m)}</div>`).join(''):'<div class="res okc">✔ كل شيء سليم.</div>';
+};
+
+init();
+</script>
+</body>
+</html>
