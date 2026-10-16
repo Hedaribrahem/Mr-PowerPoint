@@ -31,5 +31,6 @@ window.TEMPLATES = [
   {"name": "template027 gift1", "img": "templates/template027 gift1.jpg", "url": "https://drive.google.com/file/d/138JoFEeCS6d4N10f3P4RIbXTjedzEj2f/view?usp=drive_link", "bonus": true},
   {"name": "template027 gift2", "img": "templates/template027 gift2.jpg", "url": "https://drive.google.com/file/d/103GwDD5SBCJI29TY0eZ2gpZVbACvF0--/view?usp=drive_link", "bonus": true},
   {"name": "template028", "img": "templates/template028.JPG", "url": "https://drive.google.com/file/d/1PgXZ6n11Bld1QHPwT_x4u7h34hc4TbJe/view?usp=sharing", "bonus": false},
-  {"name": "template029", "img": "templates/template029.JPG", "url": "https://drive.google.com/file/d/1Ij3Gi2YsZM3E2aPl3oz-zV3o6F5LqAua/view?usp=drive_link", "bonus": false}
+  {"name": "template029", "img": "templates/template029.JPG", "url": "https://drive.google.com/file/d/1Ij3Gi2YsZM3E2aPl3oz-zV3o6F5LqAua/view?usp=drive_link", "bonus": false},
+  {"name": "template030", "img": "templates/template030.jpg", "url": "https://www.youtube.com/watch?v=lfcoqCeUq-E", "bonus": false}
 ];
