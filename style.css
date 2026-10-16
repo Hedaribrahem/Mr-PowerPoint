@@ -895,7 +895,8 @@ html[lang="en"] .service-card.featured::after {
 .service-card.featured::after {
   position: absolute;
   top: 20px;
-  left: 20px;
+  left: auto;
+  inset-inline-end: 20px;
   background: var(--red);
   color: white;
   font-size: 11px;
@@ -2864,3 +2865,25 @@ html[dir="rtl"] .wk-sheet, html[dir="rtl"] .wk-art { transform-origin: 100% 100%
 @media (max-width: 1024px) { .wk-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; } }
 @media (max-width: 640px) { .wk-grid { grid-template-columns: 1fr; } .wk-stack { width: 85%; } }
 @media (prefers-reduced-motion: reduce) { .wk-card { opacity: 1 !important; transform: none !important; } .wk-sheet, .wk-art, .wk-img { transition: none; } }
+
+/* ───────── إصلاحات الجوال ───────── */
+/* بطاقات القوالب: شريط زجاجي مدمج (الوصف والتقييم يظهران في المعاينة) */
+@media (max-width: 768px) {
+  .tl-glass .tl-desc, .tl-glass .rt-ro { display: none; }
+  .tl-glass { padding: 6px 6px 6px 12px; border-radius: 14px; }
+  .tl-name { font-size: 0.85rem; }
+  .tl-dl { padding: 7px 14px; font-size: 0.82rem; gap: 6px; }
+}
+/* الهيدر: كل العناصر تتسع في العرض ولا يخرج زر القائمة (☰) خارج الشاشة */
+@media (max-width: 768px) {
+  nav { gap: 8px; }
+  nav > div { gap: 6px !important; flex-shrink: 0; }
+  .nav-logo { min-width: 0; flex-shrink: 1; }
+  .lang-toggle { padding: 6px 10px; font-size: 12px; }
+  .theme-toggle { padding: 6px 10px; }
+  .nav-cta { padding: 7px 12px; font-size: 12px !important; }
+  .nav-hamburger { flex-shrink: 0; }
+}
+@media (max-width: 420px) {
+  .nav-cta { display: none !important; } /* الزر موجود داخل قائمة الجوال */
+}

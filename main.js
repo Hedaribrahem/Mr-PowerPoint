@@ -829,7 +829,7 @@ function showToast(message) {
   const toast = document.createElement('div');
   toast.textContent = message;
   toast.style.cssText =
-    'position:fixed;bottom:24px;left:24px;background:rgba(230,19,18,0.95);color:white;padding:12px 24px;border-radius:12px;font-size:14px;z-index:10000;backdrop-filter:blur(12px);animation:slideInRight 0.3s ease;';
+    'position:fixed;bottom:24px;'+(currentLang==='en'?'right:24px;':'left:24px;')+'background:rgba(230,19,18,0.95);color:white;padding:12px 24px;border-radius:12px;font-size:14px;z-index:10000;backdrop-filter:blur(12px);animation:slideInRight 0.3s ease;';
   document.body.appendChild(toast);
   setTimeout(() => toast.remove(), 2500);
 }
