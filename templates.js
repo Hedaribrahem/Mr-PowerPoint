@@ -4,6 +4,9 @@
   var fullList = T.slice().reverse();
   var curList = [], curIdx = 0;
   var EN = function () { return document.documentElement.lang === 'en'; };
+  var DD = { ar: 'قالب عرض تقديمي احترافي بتصميم عصري وقابل للتعديل بالكامل.', en: 'A modern, fully editable professional presentation template.' };
+  function descOf(t) { return EN() ? (t.e || DD.en) : (t.d || DD.ar); }
+  function escH(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); }
   var DL_ICON = '<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M4.5 7 8 10.5 11.5 7M3 13.5h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   var ZOOM_ICON = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M9.5 2H14v4.5M6.5 14H2V9.5M14 2 9.5 6.5M2 14l4.5-4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
@@ -14,7 +17,7 @@
       '<img loading="lazy" decoding="async" src="' + encodeURI(t.img) + '" alt="قالب PowerPoint جاهز رقم ' + num + '" />' +
       (isNew ? '<span class="tl-badge" data-translate="new_badge">جديد</span>' : '') +
       '<span class="tl-zoom" aria-hidden="true">' + ZOOM_ICON + '</span>' +
-      '<div class="tl-glass"><span class="tl-name">' + t.name + '</span>' +
+      '<div class="tl-glass"><div class="tl-info"><span class="tl-name">' + t.name + '</span><span class="tl-desc">' + escH(descOf(t)) + '</span><span class="rt-ro" data-rt="t_' + escH(t.name) + '"></span></div>' +
       '<a href="' + t.url + '" target="_blank" rel="noreferrer noopener" class="tl-dl">' + DL_ICON + '<span data-translate="download">تحميل</span></a></div></article>';
   }
 
@@ -29,11 +32,11 @@
     lb.innerHTML = '<button class="tpl-lb-close" type="button" aria-label="إغلاق"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 4l10 10M14 4 4 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>' +
       '<button class="tpl-lb-nav tpl-lb-prev" type="button" aria-label="السابق">' + CHEV + '</button>' +
       '<button class="tpl-lb-nav tpl-lb-next" type="button" aria-label="التالي">' + CHEV + '</button>' +
-      '<figure class="tpl-lb-fig"><img alt="" /><figcaption><div class="tpl-lb-meta"><span class="tpl-lb-name"></span><span class="tpl-lb-count"></span></div>' +
+      '<figure class="tpl-lb-fig"><img alt="" /><figcaption><div class="tpl-lb-left"><div class="tpl-lb-meta"><span class="tpl-lb-name"></span><span class="tpl-lb-count"></span></div><p class="tpl-lb-desc"></p><div class="tpl-lb-rt rt"></div></div>' +
       '<a class="tl-dl" target="_blank" rel="noreferrer noopener">' + DL_ICON + '<span class="tpl-lb-dl"></span></a></figcaption></figure>';
     document.body.appendChild(lb);
     lb.addEventListener('click', function (e) {
-      if (e.target.closest('.tl-dl') || e.target.closest('.tpl-lb-nav')) return;
+      if (e.target.closest('.tl-dl') || e.target.closest('.tpl-lb-nav') || e.target.closest('.tpl-lb-rt')) return;
       closePreview();
     });
     lb.querySelector('.tpl-lb-prev').addEventListener('click', function () { step(-1); });
@@ -53,6 +56,10 @@
     img.src = encodeURI(t.img); img.alt = t.name;
     lb.querySelector('.tpl-lb-name').textContent = t.name;
     lb.querySelector('.tpl-lb-count').textContent = (curIdx + 1) + ' / ' + curList.length;
+    var isT = t.bonus !== undefined, ds = isT ? descOf(t) : (t.desc || ''), dEl = lb.querySelector('.tpl-lb-desc'), rEl = lb.querySelector('.tpl-lb-rt');
+    dEl.textContent = ds; dEl.style.display = ds ? '' : 'none';
+    rEl.style.display = isT ? '' : 'none';
+    if (isT && window.MrRating) MrRating.mount(rEl, 't_' + t.name);
     var dl = lb.querySelector('.tl-dl'); dl.style.display = t.url ? '' : 'none'; if (t.url) dl.href = t.url;
     lb.querySelector('.tpl-lb-dl').textContent = EN() ? 'Download' : 'تحميل';
     lb.querySelector('.tpl-lb-close').setAttribute('aria-label', EN() ? 'Close' : 'إغلاق');
@@ -143,4 +150,9 @@
     }, { threshold: 0.12 });
     grid.querySelectorAll('.tpl-cell').forEach(function (c) { io2.observe(c); });
   }
+
+  function mountAll() { [].forEach.call(document.querySelectorAll('.rt-ro[data-rt]'), function (el) { if (window.MrRating) MrRating.mount(el, el.getAttribute('data-rt'), true); }); }
+  function relang() { [].forEach.call(document.querySelectorAll('.tl-card'), function (c) { var d = c.querySelector('.tl-desc'); if (d) d.textContent = descOf(T[+c.getAttribute('data-i')]); }); }
+  mountAll(); relang();
+  new MutationObserver(relang).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
 })();

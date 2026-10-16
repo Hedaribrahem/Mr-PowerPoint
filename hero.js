@@ -5,6 +5,15 @@
   var bars = [].slice.call(hero.querySelectorAll('.hx-bar'));
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var desktop = window.matchMedia('(min-width: 769px)').matches;
+  // صور الشرائح من site-data.js (تُدار من لوحة التحكم)
+  var cfg = window.SITE && window.SITE.hero;
+  if (cfg) slides.forEach(function (s, k) {
+    var c = cfg[k], bg = s.querySelector('.hx-bg');
+    if (!c || !c.img || !bg) return;
+    var im = bg.querySelector('img');
+    if (!im) { im = document.createElement('img'); im.alt = ''; im.decoding = 'async'; im.onerror = function () { im.remove(); }; bg.appendChild(im); }
+    if (im.getAttribute('src') !== c.img) im.src = encodeURI(c.img);
+  });
   var cur = 0, zin = true; // الشريحة الأولى تبدأ بتقريب
   var isRTL = function () { return document.documentElement.dir === 'rtl'; };
 

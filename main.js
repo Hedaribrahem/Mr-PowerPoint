@@ -138,6 +138,7 @@ const translations = {
     ac_newest: 'الأحدث',
     ac_older: 'الدروس السابقة',
     ac_watch: 'شاهد على يوتيوب',
+    ac_list: 'قائمة الدروس',
     hide: 'إخفاء',
     free_section_label: 'تحميل مجاني',
     free_title: 'احصل على قوالب مجانية',
@@ -320,7 +321,7 @@ const translations = {
         <p>ويحتفظ العميل بحق استخدام العمل النهائي بعد تسليمه وفق الاتفاق المبرم بين الطرفين.</p>
         <h2>4. مسؤولية المستخدم</h2>
         <p>يقر المستخدم بأن جميع المعلومات أو الملفات التي يقوم بإرسالها لا تنتهك أي حقوق ملكية أو حقوق قانونية تخص أي جهة أخرى.</p>
-        <p>ويت تحمل المستخدم المسؤولية الكاملة عن المحتوى الذي يقدمه.</p>
+        <p>ويتحمل المستخدم المسؤولية الكاملة عن المحتوى الذي يقدمه.</p>
         <h2>5. الدفع والاسترداد</h2>
         <p>قد تتطلب بعض الخدمات دفع مبلغ مقدم قبل بدء العمل. وسياسة الاسترداد أو التعديل يتم تحديدها حسب نوع المشروع والاتفاق مع العميل.</p>
         <h2>6. حدود المسؤولية</h2>
@@ -479,6 +480,7 @@ const translations = {
     ac_newest: 'Newest',
     ac_older: 'Previous Lessons',
     ac_watch: 'Watch on YouTube',
+    ac_list: 'Lessons',
     hide: 'Hide',
     free_section_label: 'Free Download',
     free_title: 'Get Free Templates',
@@ -998,6 +1000,16 @@ document.head.appendChild(styleEl);
   }
 
   requestAnimationFrame(() => requestAnimationFrame(tick));
+})();
+
+// إظهار شريط التمرير أثناء التمرير فقط
+(function () {
+  var t, root = document.documentElement;
+  window.addEventListener('scroll', function () {
+    root.classList.add('is-scrolling');
+    clearTimeout(t);
+    t = setTimeout(function () { root.classList.remove('is-scrolling'); }, 900);
+  }, { passive: true });
 })();
 
 // Mobile Menu

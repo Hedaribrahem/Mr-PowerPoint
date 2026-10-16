@@ -2,6 +2,15 @@
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
+  // ── إحصائيات من site-data.js (عدد العملاء والتقييم) ──
+  var ST = (window.SITE && window.SITE.stats) || {};
+  [].forEach.call(document.querySelectorAll('.strip-num[data-site]'), function (el) {
+    var v = ST[el.getAttribute('data-site')];
+    if (v == null) return;
+    el.setAttribute('data-to', v);
+    el.textContent = (el.getAttribute('data-pre') || '') + (+v).toFixed(+el.getAttribute('data-dec') || 0) + (el.getAttribute('data-suf') || '');
+  });
+
   // ── أرقام القوالب والدروس تُقرأ من ملفات البيانات بدل كتابتها يدوياً ──
   [].forEach.call(document.querySelectorAll('.strip-num[data-count]'), function (el) {
     var n = el.getAttribute('data-count') === 'templates'
@@ -33,39 +42,88 @@
     nums.forEach(function (el) { cio.observe(el); });
   }
 
-  // ── الأكاديمية: الأحدث مميّز + صف دروس أفقي (من الأحدث للأقدم) ──
+  // ── الأكاديمية: مشغّل على اليمين + قائمة دروس على اليسار (مثل يوتيوب) ──
   var LS = window.LESSONS || [], box = document.getElementById('acBox');
   if (box && LS.length) {
-    var list = LS.slice().reverse(), top = list[0], rest = list.slice(1);
-    var url = function (l) { return 'https://youtu.be/' + l.id; };
+    var list = LS.slice().reverse(), sel = 0, playing = false;
+    var EN2 = function () { return document.documentElement.lang === 'en'; };
+    var DD = { ar: 'في هذا الدرس نتعلم خطوة جديدة في تصميم العروض التقديمية بأسلوب مبسّط وعملي.', en: 'In this lesson we learn a new step in presentation design, in a simple and practical way.' };
+    var ld = function (l) { return EN2() ? (l.e || DD.en) : (l.d || DD.ar); };
+    var lt = function (l) { return (EN2() ? 'Lesson ' : 'درس ') + l.n; };
+    var th = function (l, q) { return 'https://img.youtube.com/vi/' + l.id + '/' + q + '.jpg'; };
+    var esc2 = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); };
+    var PLAY = '<svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>';
     box.innerHTML =
-      '<a class="ac-feature video-link reveal" href="' + url(top) + '" target="_blank" rel="noopener noreferrer">' +
-        '<img src="https://img.youtube.com/vi/' + top.id + '/maxresdefault.jpg" alt="درس ' + top.n + '" decoding="async" onerror="this.onerror=null;this.src=\'https://img.youtube.com/vi/' + top.id + '/hqdefault.jpg\'" />' +
-        '<span class="ac-badge" data-translate="ac_newest">الأحدث</span>' +
-        '<span class="ac-play"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg></span>' +
-        '<div class="ac-fcap"><h4 class="video-title">درس ' + top.n + '</h4><span class="btn-primary ac-fbtn"><span data-translate="ac_watch">شاهد على يوتيوب</span></span></div></a>' +
-      '<div class="ac-head reveal"><h3 data-translate="ac_older">الدروس السابقة</h3><div class="ac-nav"><button class="ac-btn ac-prev" type="button" aria-label="السابق"><svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M7.5 4.5 13 10l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="ac-btn ac-next" type="button" aria-label="التالي"><svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M7.5 4.5 13 10l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>' +
-      '<div class="ac-row reveal">' + rest.map(function (l) {
-        return '<a class="ac-card video-link" href="' + url(l) + '" target="_blank" rel="noopener noreferrer">' +
-          '<img loading="lazy" decoding="async" src="https://img.youtube.com/vi/' + l.id + '/hqdefault.jpg" alt="درس ' + l.n + '" />' +
-          '<span class="ac-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg></span>' +
-          '<div class="ac-glass"><h4 class="video-title">درس ' + l.n + '</h4></div></a>';
-      }).join('') + '</div>';
-    var row = box.querySelector('.ac-row'), prevB = box.querySelector('.ac-prev'), nextB = box.querySelector('.ac-next');
-    var rtl = function () { return document.documentElement.dir === 'rtl'; };
-    var upd = function () {
-      var max = row.scrollWidth - row.clientWidth - 2, x = Math.abs(row.scrollLeft);
-      prevB.disabled = x <= 2; nextB.disabled = x >= max;
+      '<div class="ac-main"><div class="ac-player"></div><div class="ac-info"><h3 class="video-title ac-title"></h3><p class="ac-desc"></p>' +
+      '<div class="ac-meta"><div class="rt"></div><a class="ac-yt" target="_blank" rel="noopener noreferrer"><span data-translate="ac_watch">شاهد على يوتيوب</span></a></div></div></div>' +
+      '<aside class="ac-side"><div class="ac-side-in"><div class="ac-side-h" data-translate="ac_list">قائمة الدروس</div><div class="ac-list">' +
+      list.map(function (l, i) {
+        return '<button type="button" class="ac-item" data-i="' + i + '"><span class="ac-th"><img loading="lazy" decoding="async" src="' + th(l, 'mqdefault') + '" alt="" /><span class="ac-n">' + l.n + '</span></span>' +
+          '<span class="ac-tx">' + (i === 0 ? '<span class="ac-new" data-translate="ac_newest">الأحدث</span>' : '') + '<b class="video-title"></b><small class="ac-ds"></small><span class="rt-ro" data-lr="l_' + l.id + '"></span></span></button>';
+      }).join('') + '</div></div></aside>';
+    var paint = function () {
+      var l = list[sel], p = box.querySelector('.ac-player');
+      if (!playing) p.innerHTML = '<img src="' + th(l, 'maxresdefault') + '" alt="' + lt(l) + '" onload="if(this.naturalWidth<200)this.src=\'' + th(l, 'hqdefault') + '\'" /><button class="ac-play" type="button" aria-label="' + (EN2() ? 'Play' : 'تشغيل') + '">' + PLAY + '</button>';
+      box.querySelector('.ac-title').textContent = lt(l);
+      box.querySelector('.ac-desc').textContent = ld(l);
+      box.querySelector('.ac-yt').href = 'https://youtu.be/' + l.id;
+      if (window.MrRating) MrRating.mount(box.querySelector('.ac-meta .rt'), 'l_' + l.id);
+      [].forEach.call(box.querySelectorAll('.ac-item'), function (b, i) {
+        var x = list[i];
+        b.classList.toggle('on', i === sel);
+        b.querySelector('.video-title').textContent = lt(x);
+        b.querySelector('.ac-ds').textContent = ld(x);
+        if (window.MrRating) MrRating.mount(b.querySelector('.rt-ro'), 'l_' + x.id, true);
+      });
     };
-    var go = function (d) { row.scrollBy({ left: d * row.clientWidth * 0.8 * (rtl() ? -1 : 1), behavior: reduce ? 'auto' : 'smooth' }); };
-    prevB.addEventListener('click', function () { go(-1); });
-    nextB.addEventListener('click', function () { go(1); });
-    row.addEventListener('scroll', upd, { passive: true });
-    window.addEventListener('resize', upd);
-    upd();
+    box.addEventListener('click', function (e) {
+      var it = e.target.closest('.ac-item');
+      if (it) {
+        sel = +it.getAttribute('data-i'); playing = false; paint();
+        if (window.innerWidth < 900) box.querySelector('.ac-main').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+        return;
+      }
+      if (e.target.closest('.ac-play')) {
+        playing = true; var l = list[sel];
+        var src = l.emb || ('https://www.youtube-nocookie.com/embed/' + l.id + '?rel=0');
+        src += (src.indexOf('?') < 0 ? '?' : '&') + 'autoplay=1';
+        box.querySelector('.ac-player').innerHTML = '<iframe src="' + esc2(src) + '" title="' + esc2(lt(l)) + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+      }
+    });
+    paint();
+    new MutationObserver(paint).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
   }
 
-  // ── بطاقات الأعمال: ظهور متدرج + ميلان ثلاثي الأبعاد + بقعة ضوء + معاينة ──
+  // ── بطاقات الأعمال (مروحة) تُرسم من works-data.js ──
+  var WK = window.WORKS || [], wkGrid = document.getElementById('wkGrid');
+  if (wkGrid && WK.length) {
+    var ea = function (s) { return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;'); };
+    wkGrid.innerHTML = WK.map(function (w, i) {
+      return '<article class="wk-card" data-full-img="' + ea(w.img) + '" style="--d:' + ((i % 3) * 0.1).toFixed(1) + 's" tabindex="0" role="button">' +
+        '<span class="wk-badge">' + (i < 9 ? '0' : '') + (i + 1) + '</span>' +
+        '<div class="wk-cap" data-ar="' + ea(w.ar) + '" data-en="' + ea(w.en) + '"></div>' +
+        '<div class="wk-desc" data-ar="' + ea(w.d || '') + '" data-en="' + ea(w.e || '') + '"></div>' +
+        '<div class="wk-stack"><span class="wk-sheet"></span><span class="wk-sheet"></span><span class="wk-sheet"></span><span class="wk-sheet"></span>' +
+        '<span class="wk-art"><img class="wk-img" loading="lazy" decoding="async" src="' + ea(encodeURI(w.img)) + '" alt="" /></span></div></article>';
+    }).join('');
+    [].forEach.call(wkGrid.querySelectorAll('.wk-card'), function (c, i) {
+      c.style.setProperty('--img', 'url("' + encodeURI(WK[i].img) + '")');
+    });
+    var wkLang = function () {
+      var en = document.documentElement.lang === 'en';
+      [].forEach.call(wkGrid.querySelectorAll('.wk-cap'), function (c) {
+        c.textContent = c.getAttribute(en ? 'data-en' : 'data-ar');
+        var label = (en ? 'Work sample: ' : 'نموذج عمل: ') + c.textContent, card = c.closest('.wk-card');
+        card.setAttribute('aria-label', label);
+        card.querySelector('.wk-img').alt = label;
+        var ds = card.querySelector('.wk-desc'); if (ds) ds.textContent = ds.getAttribute(en ? 'data-en' : 'data-ar');
+      });
+    };
+    wkLang();
+    new MutationObserver(wkLang).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+  }
+
+  // ── ظهور متدرج + معاينة ──
   var cards = [].slice.call(document.querySelectorAll('.wk-card'));
   if (!cards.length) return;
   var wio = new IntersectionObserver(function (es) {
@@ -75,30 +133,11 @@
     wio.observe(c);
     var open = function () {
       if (window.openImagePreview) {
-        var list = cards.map(function (x) { return { name: x.querySelector('.wk-cap').textContent.trim(), img: x.getAttribute('data-full-img') }; });
+        var list = cards.map(function (x) { return { name: x.querySelector('.wk-cap').textContent.trim(), img: x.getAttribute('data-full-img'), desc: (x.querySelector('.wk-desc') || {}).textContent || '' }; });
         window.openImagePreview(list, cards.indexOf(c));
       }
     };
     c.addEventListener('click', open);
     c.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
-    if (!fine || reduce) return;
-    var inner = c.querySelector('.wk-inner'), raf = false, px = 0.5, py = 0.5;
-    c.addEventListener('mouseenter', function () { c.classList.add('tilt'); });
-    c.addEventListener('mousemove', function (e) {
-      var r = c.getBoundingClientRect();
-      px = (e.clientX - r.left) / r.width; py = (e.clientY - r.top) / r.height;
-      if (raf) return; raf = true;
-      requestAnimationFrame(function () {
-        raf = false;
-        inner.style.setProperty('--rx', ((0.5 - py) * 7).toFixed(2) + 'deg');
-        inner.style.setProperty('--ry', ((px - 0.5) * 9).toFixed(2) + 'deg');
-        inner.style.setProperty('--mx', (px * 100).toFixed(1) + '%');
-        inner.style.setProperty('--my', (py * 100).toFixed(1) + '%');
-      });
-    });
-    c.addEventListener('mouseleave', function () {
-      c.classList.remove('tilt');
-      inner.style.setProperty('--rx', '0deg'); inner.style.setProperty('--ry', '0deg');
-    });
   });
 })();

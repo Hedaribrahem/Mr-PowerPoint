@@ -29,5 +29,5 @@ window.LESSONS = [
   { n: '26', id: '1HSJqdru-J8' },
   { n: '27', id: 'P-tld9sNwgw' },
   { n: '28', id: 'jIu4PzWdcfE' },
-  { n: '29', id: 'afvqW9dI_Ys' }
+  { n: '29', id: 'afvqW9dI_Ys', emb: "https://www.youtube.com/embed/afvqW9dI_Ys?si=G6lyE0ApiFIB9c0R" }
 ];
