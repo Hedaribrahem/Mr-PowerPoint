@@ -98,12 +98,13 @@
   var WK = window.WORKS || [], wkGrid = document.getElementById('wkGrid');
   if (wkGrid && WK.length) {
     var ea = function (s) { return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;'); };
+    var sheet = function (p) { return '<span class="wk-sheet" style="--img:url(\'' + ea(encodeURI(p).replace(/'/g, '%27')) + '\')"></span>'; };
     wkGrid.innerHTML = WK.map(function (w, i) {
       return '<article class="wk-card" data-full-img="' + ea(w.img) + '" style="--d:' + ((i % 3) * 0.1).toFixed(1) + 's" tabindex="0" role="button">' +
         '<span class="wk-badge">' + (i < 9 ? '0' : '') + (i + 1) + '</span>' +
         '<div class="wk-cap" data-ar="' + ea(w.ar) + '" data-en="' + ea(w.en) + '"></div>' +
         '<div class="wk-desc" data-ar="' + ea(w.d || '') + '" data-en="' + ea(w.e || '') + '"></div>' +
-        '<div class="wk-stack"><span class="wk-sheet"></span><span class="wk-sheet"></span><span class="wk-sheet"></span><span class="wk-sheet"></span>' +
+        '<div class="wk-stack">' + [0, 1, 2, 3].map(function (k) { return sheet((w.imgs && w.imgs[k]) || w.img); }).join('') +
         '<span class="wk-art"><img class="wk-img" loading="lazy" decoding="async" src="' + ea(encodeURI(w.img)) + '" alt="" /></span></div></article>';
     }).join('');
     [].forEach.call(wkGrid.querySelectorAll('.wk-card'), function (c, i) {
@@ -133,8 +134,9 @@
     wio.observe(c);
     var open = function () {
       if (window.openImagePreview) {
-        var list = cards.map(function (x) { return { name: x.querySelector('.wk-cap').textContent.trim(), img: x.getAttribute('data-full-img'), desc: (x.querySelector('.wk-desc') || {}).textContent || '' }; });
-        window.openImagePreview(list, cards.indexOf(c));
+        var w = WK[cards.indexOf(c)] || {}, name = c.querySelector('.wk-cap').textContent.trim(), desc = (c.querySelector('.wk-desc') || {}).textContent || '';
+        var gal = [c.getAttribute('data-full-img')].concat(w.imgs || []).map(function (p) { return { name: name, img: p, desc: desc }; });
+        window.openImagePreview(gal, 0);
       }
     };
     c.addEventListener('click', open);
