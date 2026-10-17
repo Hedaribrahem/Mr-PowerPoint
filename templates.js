@@ -13,8 +13,14 @@
   // بطاقة زجاجية موحّدة (الرئيسية + صفحة النماذج)
   function tlCard(t, isNew) {
     var num = (t.name.match(/\d+/) || [''])[0];
-    return '<article class="tl-card" data-i="' + T.indexOf(t) + '" tabindex="0" role="button" aria-label="معاينة ' + t.name + '">' +
-      '<img loading="lazy" decoding="async" src="' + encodeURI(t.img) + '" alt="قالب PowerPoint جاهز رقم ' + num + '" />' +
+    var hs = t.imgs && t.imgs.length;
+    var sheets = hs ? '<span class="tl-sheets" aria-hidden="true">' + [0, 1, 2, 3].map(function (k) {
+      var p = t.imgs[k] || t.img;
+      return '<span class="tl-sheet" style="--img:url(\'' + escH(encodeURI(p).replace(/'/g, '%27')) + '\')"></span>';
+    }).join('') + '</span>' : '';
+    var im = '<img loading="lazy" decoding="async" src="' + encodeURI(t.img) + '" alt="قالب PowerPoint جاهز رقم ' + num + '" />';
+    return '<article class="tl-card' + (hs ? ' has-s' : '') + '" data-i="' + T.indexOf(t) + '" tabindex="0" role="button" aria-label="معاينة ' + t.name + '">' +
+      sheets + (hs ? '<span class="tl-clip">' + im + '</span>' : im) +
       (isNew ? '<span class="tl-badge" data-translate="new_badge">جديد</span>' : '') +
       '<span class="tl-zoom" aria-hidden="true">' + ZOOM_ICON + '</span>' +
       '<div class="tl-glass"><div class="tl-info"><span class="tl-name">' + t.name + '</span><span class="tl-desc">' + escH(descOf(t)) + '</span><span class="rt-ro" data-rt="t_' + escH(t.name) + '"></span></div>' +
@@ -89,6 +95,11 @@
     if (lastFocus && lastFocus.focus) lastFocus.focus();
   }
   function openFromCard(c) {
+    var t0 = T[+c.getAttribute('data-i')];
+    if (t0 && t0.imgs && t0.imgs.length) { // قالب له شرائح: المعاينة تعرض شرائحه
+      openPreview([t0.img].concat(t0.imgs).map(function (p) { return Object.assign({}, t0, { img: p }); }), 0);
+      return;
+    }
     var list = c.closest('#tlLatest') ? latestList : fullList;
     var idx = list.indexOf(T[+c.getAttribute('data-i')]);
     openPreview(list, Math.max(0, idx));

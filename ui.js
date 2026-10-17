@@ -47,26 +47,42 @@
   if (box && LS.length) {
     var list = LS.slice().reverse(), sel = 0, playing = false;
     var EN2 = function () { return document.documentElement.lang === 'en'; };
+    var AR_RE = /[؀-ۿ]/;
     var DD = { ar: 'في هذا الدرس نتعلم خطوة جديدة في تصميم العروض التقديمية بأسلوب مبسّط وعملي.', en: 'In this lesson we learn a new step in presentation design, in a simple and practical way.' };
-    var ld = function (l) { return EN2() ? (l.e || DD.en) : (l.d || DD.ar); };
-    var lt = function (l) { return (EN2() ? 'Lesson ' : 'درس ') + l.n; };
+    // الوصف الإنجليزي: المترجم إن وُجد، أو الوصف الأصلي إن كان إنجليزياً أصلاً، وإلا النص الافتراضي
+    var ld = function (l) { return EN2() ? (l.e || (l.d && !AR_RE.test(l.d) ? l.d : DD.en)) : (l.d || DD.ar); };
+    // العنوان الإنجليزي (te) إن وُجد
+    var lt = function (l) { return (EN2() && l.te) ? l.te : (l.t || ((EN2() ? 'Lesson ' : 'درس ') + l.n)); };
     var th = function (l, q) { return 'https://img.youtube.com/vi/' + l.id + '/' + q + '.jpg'; };
     var esc2 = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); };
     var PLAY = '<svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>';
     box.innerHTML =
-      '<div class="ac-main"><div class="ac-player"></div><div class="ac-info"><h3 class="video-title ac-title"></h3><p class="ac-desc"></p>' +
+      '<div class="ac-main reveal"><div class="ac-player"></div><div class="ac-info"><h3 class="video-title ac-title"></h3><p class="ac-desc"></p><a class="ac-more" target="_blank" rel="noopener noreferrer" hidden></a>' +
       '<div class="ac-meta"><div class="rt"></div><a class="ac-yt" target="_blank" rel="noopener noreferrer"><span data-translate="ac_watch">شاهد على يوتيوب</span></a></div></div></div>' +
-      '<aside class="ac-side"><div class="ac-side-in"><div class="ac-side-h" data-translate="ac_list">قائمة الدروس</div><div class="ac-list">' +
+      '<aside class="ac-side reveal reveal-delay-2"><div class="ac-side-in"><div class="ac-side-h" data-translate="ac_list">قائمة الدروس</div><div class="ac-list">' +
       list.map(function (l, i) {
         return '<button type="button" class="ac-item" data-i="' + i + '"><span class="ac-th"><img loading="lazy" decoding="async" src="' + th(l, 'mqdefault') + '" alt="" /><span class="ac-n">' + l.n + '</span></span>' +
           '<span class="ac-tx">' + (i === 0 ? '<span class="ac-new" data-translate="ac_newest">الأحدث</span>' : '') + '<b class="video-title"></b><small class="ac-ds"></small><span class="rt-ro" data-lr="l_' + l.id + '"></span></span></button>';
       }).join('') + '</div></div></aside>';
+
+    // يُظهر "عرض المزيد" فقط إذا كان الوصف أطول من سطرين
+    var chkMore = function () {
+      var d = box.querySelector('.ac-desc'), m = box.querySelector('.ac-more');
+      if (!d || !m) return;
+      m.hidden = !(d.scrollHeight > d.clientHeight + 1);
+    };
+
     var paint = function () {
       var l = list[sel], p = box.querySelector('.ac-player');
-      if (!playing) p.innerHTML = '<img src="' + th(l, 'maxresdefault') + '" alt="' + lt(l) + '" onload="if(this.naturalWidth<200)this.src=\'' + th(l, 'hqdefault') + '\'" /><button class="ac-play" type="button" aria-label="' + (EN2() ? 'Play' : 'تشغيل') + '">' + PLAY + '</button>';
+      if (!playing) p.innerHTML = '<img src="' + th(l, 'maxresdefault') + '" alt="' + esc2(lt(l)) + '" onload="if(this.naturalWidth<200)this.src=\'' + th(l, 'hqdefault') + '\'" /><button class="ac-play" type="button" aria-label="' + (EN2() ? 'Play' : 'تشغيل') + '">' + PLAY + '</button>';
       box.querySelector('.ac-title').textContent = lt(l);
       box.querySelector('.ac-desc').textContent = ld(l);
       box.querySelector('.ac-yt').href = 'https://youtu.be/' + l.id;
+      var more = box.querySelector('.ac-more');
+      more.href = 'https://youtu.be/' + l.id;
+      more.textContent = EN2() ? 'Show more' : 'عرض المزيد';
+      more.hidden = true;
+      requestAnimationFrame(chkMore);
       if (window.MrRating) MrRating.mount(box.querySelector('.ac-meta .rt'), 'l_' + l.id);
       [].forEach.call(box.querySelectorAll('.ac-item'), function (b, i) {
         var x = list[i];
@@ -91,6 +107,8 @@
       }
     });
     paint();
+    window.addEventListener('resize', chkMore);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(chkMore);
     new MutationObserver(paint).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
   }
 

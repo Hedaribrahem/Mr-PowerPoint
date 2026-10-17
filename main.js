@@ -778,7 +778,7 @@ function updateTranslations() {
 function updateAcademyVideoTitles() {
   document.querySelectorAll('.video-title').forEach((el) => {
     const text = el.textContent.trim();
-    const match = text.match(/^(درس|Lesson)\s*(\d+)/i);
+    const match = text.match(/^(درس|Lesson)\s*(\d+)$/i);
     if (!match) return;
     if (currentLang === 'ar') {
       el.innerHTML = `<span class="lesson-prefix">درس</span> ${match[2]}`;
@@ -789,7 +789,7 @@ function updateAcademyVideoTitles() {
 
   document.querySelectorAll('.video-link img').forEach((img) => {
     const altText = img.getAttribute('alt') || '';
-    const match = altText.match(/^(درس|Lesson)\s*(\d+)/i);
+    const match = altText.match(/^(درس|Lesson)\s*(\d+)$/i);
     if (!match) return;
     img.setAttribute('alt', currentLang === 'ar' ? `درس ${match[2]}` : `Lesson ${match[2]}`);
   });
