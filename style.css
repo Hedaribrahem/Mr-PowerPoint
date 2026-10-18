@@ -2952,6 +2952,8 @@ body.light-mode::after { opacity: 0.22; }
 
 /* عناوين الدروس الحقيقية قد تكون طويلة */
 .ac-tx .video-title { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.5; }
+
+
 /* ───────── أضف هذا الكود في آخر style.css ─────────
    (1) وصف الدرس سطران + "عرض المزيد"  (2) العدّادات  (3) التعليقات  (4) لوحة التعليقات داخل معاينة القوالب */
 
@@ -2984,7 +2986,7 @@ body.light-mode::after { opacity: 0.22; }
 .cm-name:focus, .cm-text:focus { border-color: var(--red); }
 .cm-name::placeholder, .cm-text::placeholder { color: var(--cm-mut); }
 .cm-text { resize: vertical; min-height: 84px; line-height: 1.7; }
-.cm-hp { position: absolute !important; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.cm-hp { position: absolute !important; top: 0; inset-inline-start: 0; width: 1px; height: 1px; margin: 0; padding: 0; border: 0; overflow: hidden; clip: rect(0 0 0 0); opacity: 0; pointer-events: none; }
 .cm-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .cm-note { font-size: 0.78rem; color: var(--cm-mut); }
 .cm-send { cursor: pointer; border: 0; border-radius: 999px; padding: 9px 28px; font: inherit; font-weight: 700; color: #fff; background: var(--btn-grad); box-shadow: var(--btn-rim), var(--btn-glow); transition: transform 0.2s, opacity 0.2s; }
