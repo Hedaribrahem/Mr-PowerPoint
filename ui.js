@@ -58,12 +58,17 @@
     var PLAY = '<svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>';
     box.innerHTML =
       '<div class="ac-main reveal"><div class="ac-player"></div><div class="ac-info"><h3 class="video-title ac-title"></h3><p class="ac-desc"></p><a class="ac-more" target="_blank" rel="noopener noreferrer" hidden></a>' +
-      '<div class="ac-meta"><div class="rt"></div><a class="ac-yt" target="_blank" rel="noopener noreferrer"><span data-translate="ac_watch">شاهد على يوتيوب</span></a></div></div></div>' +
+      '<div class="ac-meta"><div class="rt"></div><span class="ac-views"></span><a class="ac-yt" target="_blank" rel="noopener noreferrer"><span data-translate="ac_watch">شاهد على يوتيوب</span></a></div></div></div>' +
       '<aside class="ac-side reveal reveal-delay-2"><div class="ac-side-in"><div class="ac-side-h" data-translate="ac_list">قائمة الدروس</div><div class="ac-list">' +
       list.map(function (l, i) {
         return '<button type="button" class="ac-item" data-i="' + i + '"><span class="ac-th"><img loading="lazy" decoding="async" src="' + th(l, 'mqdefault') + '" alt="" /><span class="ac-n">' + l.n + '</span></span>' +
           '<span class="ac-tx">' + (i === 0 ? '<span class="ac-new" data-translate="ac_newest">الأحدث</span>' : '') + '<b class="video-title"></b><small class="ac-ds"></small><span class="rt-ro" data-lr="l_' + l.id + '"></span></span></button>';
       }).join('') + '</div></div></aside>';
+
+    // التعليقات: كتلة مستقلة تحت المشغّل والقائمة (تتبدّل مع الدرس المختار)
+    var cmHost = document.createElement('div');
+    cmHost.className = 'ac-cm';
+    box.parentNode.insertBefore(cmHost, box.nextSibling);
 
     // يُظهر "عرض المزيد" فقط إذا كان الوصف أطول من سطرين
     var chkMore = function () {
@@ -84,6 +89,8 @@
       more.hidden = true;
       requestAnimationFrame(chkMore);
       if (window.MrRating) MrRating.mount(box.querySelector('.ac-meta .rt'), 'l_' + l.id);
+      if (window.MrCount) MrCount.mount(box.querySelector('.ac-meta .ac-views'), 'l_' + l.id, 'v');
+      if (window.MrComments) MrComments.mount(cmHost, 'l_' + l.id, { ar: 'تعليقات وأسئلة على الدرس', en: 'Lesson comments & questions' });
       [].forEach.call(box.querySelectorAll('.ac-item'), function (b, i) {
         var x = list[i];
         b.classList.toggle('on', i === sel);
@@ -101,6 +108,7 @@
       }
       if (e.target.closest('.ac-play')) {
         playing = true; var l = list[sel];
+        if (window.MrCount) MrCount.hit('l_' + l.id); // مشاهدة جديدة (مرة لكل زائر كل 12 ساعة)
         var src = l.emb || ('https://www.youtube-nocookie.com/embed/' + l.id + '?rel=0');
         src += (src.indexOf('?') < 0 ? '?' : '&') + 'autoplay=1';
         box.querySelector('.ac-player').innerHTML = '<iframe src="' + esc2(src) + '" title="' + esc2(lt(l)) + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';

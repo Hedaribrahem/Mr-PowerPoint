@@ -2952,3 +2952,69 @@ body.light-mode::after { opacity: 0.22; }
 
 /* عناوين الدروس الحقيقية قد تكون طويلة */
 .ac-tx .video-title { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.5; }
+/* ───────── أضف هذا الكود في آخر style.css ─────────
+   (1) وصف الدرس سطران + "عرض المزيد"  (2) العدّادات  (3) التعليقات  (4) لوحة التعليقات داخل معاينة القوالب */
+
+/* (1) وصف الدرس: سطران + "عرض المزيد" */
+.ac-desc { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin: 0 0 14px; }
+.ac-more { display: inline-block; margin: -6px 0 14px; font-size: 0.9rem; font-weight: 700; color: var(--red); text-decoration: none; }
+.ac-more:hover { text-decoration: underline; }
+.ac-more[hidden] { display: none; }
+
+/* (2) العدّادات: تحميلات القوالب ومشاهدات الدروس */
+.ct { display: inline-flex; align-items: center; gap: 5px; font-size: 0.82rem; font-variant-numeric: tabular-nums; opacity: 0.9; }
+.ct[hidden] { display: none; }
+.ct svg { width: 14px; height: 14px; flex: none; }
+.tl-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.tl-glass .ct { color: #fff; font-size: 0.72rem; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.45); }
+.ac-meta .ct { color: rgba(var(--text-rgb), 0.7); }
+.tpl-lb-line { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 2px; }
+.tpl-lb-line .ct { color: rgba(255, 255, 255, 0.85); }
+@media (max-width: 768px) { .tl-glass .ct { display: none; } }
+
+/* (3) التعليقات */
+.ac-cm { max-width: 920px; margin-top: 34px; }
+.cm { --cm-tx: rgb(var(--text-rgb)); --cm-mut: rgba(var(--text-rgb), 0.62); --cm-bg: rgba(var(--text-rgb), 0.04); --cm-in: rgba(var(--text-rgb), 0.05); --cm-bd: var(--surface-border); color: var(--cm-tx); }
+.tpl-lb .cm { --cm-tx: #fff; --cm-mut: rgba(255, 255, 255, 0.66); --cm-bg: rgba(255, 255, 255, 0.07); --cm-in: rgba(255, 255, 255, 0.1); --cm-bd: rgba(255, 255, 255, 0.26); }
+.cm-h { display: flex; align-items: baseline; gap: 10px; margin-bottom: 14px; }
+.cm-title { font-size: 1.15rem; font-weight: 800; }
+.cm-count { color: var(--cm-mut); font-size: 0.9rem; }
+.cm-form { position: relative; display: grid; gap: 10px; margin-bottom: 22px; padding: 16px; border-radius: 20px; border: 1px solid var(--cm-bd); background: var(--cm-bg); }
+.cm-name, .cm-text { width: 100%; font: inherit; font-size: 0.95rem; color: var(--cm-tx); background: var(--cm-in); border: 1px solid var(--cm-bd); border-radius: 12px; padding: 10px 14px; outline: none; transition: border-color 0.2s; }
+.cm-name:focus, .cm-text:focus { border-color: var(--red); }
+.cm-name::placeholder, .cm-text::placeholder { color: var(--cm-mut); }
+.cm-text { resize: vertical; min-height: 84px; line-height: 1.7; }
+.cm-hp { position: absolute !important; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.cm-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.cm-note { font-size: 0.78rem; color: var(--cm-mut); }
+.cm-send { cursor: pointer; border: 0; border-radius: 999px; padding: 9px 28px; font: inherit; font-weight: 700; color: #fff; background: var(--btn-grad); box-shadow: var(--btn-rim), var(--btn-glow); transition: transform 0.2s, opacity 0.2s; }
+.cm-send:hover { transform: translateY(-1px); }
+.cm-send:disabled { opacity: 0.55; cursor: wait; transform: none; }
+.cm-msg { min-height: 1.2em; font-size: 0.86rem; }
+.cm-msg.ok { color: #2ecc71; }
+.cm-msg.err { color: #ff6b6a; }
+.cm-legal { font-size: 0.7rem; line-height: 1.6; color: var(--cm-mut); }
+.cm-legal a { color: inherit; text-decoration: underline; }
+.cm-legal[hidden] { display: none; }
+.cm-list { display: grid; gap: 12px; }
+.cm-i { padding: 14px 16px; border-radius: 18px; border: 1px solid var(--cm-bd); background: var(--cm-bg); }
+.cm-top { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+.cm-av { flex: none; width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; font-weight: 800; color: var(--red); background: rgba(230, 19, 18, 0.14); border: 1px solid rgba(230, 19, 18, 0.4); }
+.cm-n { font-weight: 700; }
+.cm-d { margin-inline-start: auto; font-size: 0.76rem; color: var(--cm-mut); }
+.cm-t { margin: 0; font-weight: 300; line-height: 1.85; white-space: pre-wrap; overflow-wrap: anywhere; }
+.cm-r { margin-top: 10px; padding: 10px 14px; border-radius: 14px; border-inline-start: 3px solid var(--red); background: rgba(230, 19, 18, 0.08); }
+.cm-r b { display: block; margin-bottom: 2px; font-size: 0.82rem; color: var(--red); }
+.cm-r p { margin: 0; font-weight: 300; line-height: 1.8; white-space: pre-wrap; overflow-wrap: anywhere; }
+.cm-empty { padding: 18px 0; text-align: center; color: var(--cm-mut); }
+.tpl-lb .cm-r { background: rgba(230, 19, 18, 0.18); }
+.grecaptcha-badge { visibility: hidden; } /* الشعار مخفي، ونص الإشعار الإلزامي من Google يظهر أسفل نموذج التعليق */
+
+/* (4) لوحة التعليقات داخل معاينة القوالب */
+.tpl-lb-cmb { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; font: inherit; font-size: 0.85rem; font-weight: 700; color: #fff; padding: 6px 14px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.35); background: rgba(255, 255, 255, 0.14); transition: background 0.25s; }
+.tpl-lb-cmb:hover, .tpl-lb.cm-open .tpl-lb-cmb { background: var(--btn-grad); }
+.tpl-lb-cm { position: absolute; inset-inline: 0; bottom: 0; z-index: 4; max-height: 78vh; overflow: auto; overscroll-behavior: contain; padding: 52px max(20px, calc((100% - 760px) / 2)) 26px; border-radius: 26px 26px 0 0; border-top: 1px solid rgba(255, 255, 255, 0.22); background: rgba(16, 16, 18, 0.97); color: #fff; cursor: auto; visibility: hidden; transform: translateY(102%); transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), visibility 0s 0.4s; }
+.tpl-lb.cm-open .tpl-lb-cm { visibility: visible; transform: none; transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), visibility 0s; }
+.tpl-lb-cmx { position: absolute; top: 12px; inset-inline-end: 16px; width: 34px; height: 34px; display: grid; place-items: center; cursor: pointer; color: #fff; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.3); background: rgba(255, 255, 255, 0.12); }
+.tpl-lb-cmx:hover { background: var(--btn-grad); }
+@media (prefers-reduced-motion: reduce) { .tpl-lb-cm { transition: none !important; } }

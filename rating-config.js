@@ -1,3 +1,7 @@
-// إعدادات التقييم (Firebase Firestore). اتركها فارغة = يُحفظ التقييم عند الزائر فقط (للتجربة).
-// بعد إنشاء مشروع Firebase املأ: projectId و apiKey (من Project settings).
-window.RATING_CFG = { projectId: 'mr-powerpoint', apiKey: 'AIzaSyCu2KeY3_gBc4EMhntkAGwm4w67App1x1I' };
+window.RATING_CFG = {
+  projectId: 'mr-powerpoint',
+  apiKey: 'AIzaSyCu2KeY3_gBc4EMhntkAGwm4w67App1x1I',
+  appId: '1:591022544323:web:f843147991f754c8c29976',
+  recaptchaSiteKey: '6Lf7NvUtAAAAAPcO-HMLbG6nTIZVEU2CgNoJr8iP',
+  recaptchaType: 'enterprise'
+};
