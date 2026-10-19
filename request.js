@@ -52,8 +52,8 @@
     var s = L(), en = EN(), old = sec.querySelector('.rq-form'), dr = null;
     if (old) { dr = {}; ['n', 'c', 'v', 'd', 'dl'].forEach(function (k) { dr[k] = old.elements[k].value; }); }
     sec.innerHTML =
-      '<div class="section-header"><div><div class="section-label">' + s.label + '</div><h2 class="section-title reveal">' + s.title + '</h2><p class="section-subtitle reveal">' + s.sub + '</p></div></div>' +
-      '<div class="rq-card reveal">' + (done ? ok(done) : form()) + '</div>';
+      '<div class="section-header"><div><div class="section-label">' + s.label + '</div><h2 class="section-title">' + s.title + '</h2><p class="section-subtitle">' + s.sub + '</p></div></div>' +
+      '<div class="rq-card">' + (done ? ok(done) : form()) + '</div>';
     var cta = document.getElementById('rqCta'); if (cta) cta.textContent = s.cta;
     var nf = sec.querySelector('.rq-form');
     if (dr && nf) Object.keys(dr).forEach(function (k) { nf.elements[k].value = dr[k]; });
