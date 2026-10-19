@@ -3067,8 +3067,3 @@ body.light-mode::after { opacity: 0.22; }
 .rq-ref b { color: var(--red); letter-spacing: 1px; }
 .rq-oka { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
 @media (max-width: 640px) { .rq-row { grid-template-columns: 1fr; } }
-/* ───────── أضف هذا الكود في آخر style.css: وصف الدرس سطران + "عرض المزيد" ───────── */
-.ac-desc { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin: 0 0 14px; }
-.ac-more { display: inline-block; margin: -6px 0 14px; font-size: 0.9rem; font-weight: 700; color: var(--red); text-decoration: none; }
-.ac-more:hover { text-decoration: underline; }
-.ac-more[hidden] { display: none; }
