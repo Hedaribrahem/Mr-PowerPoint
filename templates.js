@@ -145,6 +145,10 @@
       var card = dl.closest('.tl-card'), tt = card ? T[+card.getAttribute('data-i')] : (lb && lb.contains(dl) ? curT() : null);
       if (tt && tt.name) MrCount.hit('t_' + tt.name);
     }
+    if (dl && window.mrTrack) { // تتبّع Analytics لتحميل القالب
+      var c0 = dl.closest('.tl-card'), t0 = c0 ? T[+c0.getAttribute('data-i')] : (lb && lb.contains(dl) ? curT() : null);
+      if (t0 && t0.name) window.mrTrack('template_download', { template_name: t0.name, link_location: c0 ? (c0.closest('#tlLatest') ? 'home_latest' : 'templates_page') : 'preview' });
+    }
     var c = e.target.closest('.tl-card');
     if (!c || dl) return;
     openFromCard(c);
