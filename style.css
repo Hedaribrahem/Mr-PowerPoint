@@ -3050,3 +3050,20 @@ body.light-mode::after { opacity: 0.22; }
 .tpl-empty { text-align: center; padding: 48px 16px; }
 .tpl-empty p { margin: 0 0 14px; opacity: 0.8; }
 .tpl-empty[hidden] { display: none; }
+
+/* ── نموذج طلب الخدمة ── */
+.rq-card { max-width: 760px; margin: 0 auto; padding: clamp(20px, 4vw, 36px); border-radius: 28px; border: 1px solid var(--surface-border); background: linear-gradient(145deg, rgba(var(--text-rgb), 0.05), rgba(var(--text-rgb), 0.02)); }
+.rq-form { display: grid; gap: 16px; position: relative; }
+.rq-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.rq-f { display: grid; gap: 7px; font-size: 0.88rem; font-weight: 700; }
+.rq-f > span { color: var(--cm-mut); font-weight: 600; }
+.rq-form select.cm-name { cursor: pointer; }
+.rq-form select.cm-name option { color: #111; background: #fff; }
+.rq-act { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.rq-ok { text-align: center; padding: 10px 0; }
+.rq-tick { width: 64px; height: 64px; margin: 0 auto 14px; display: grid; place-items: center; font-size: 2rem; font-weight: 900; color: #fff; border-radius: 50%; background: linear-gradient(135deg, #1faa59, #2ecc71); }
+.rq-ok h3 { font-size: 1.4rem; margin-bottom: 6px; }
+.rq-ok p { opacity: 0.8; margin-bottom: 6px; }
+.rq-ref b { color: var(--red); letter-spacing: 1px; }
+.rq-oka { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+@media (max-width: 640px) { .rq-row { grid-template-columns: 1fr; } }

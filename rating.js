@@ -331,6 +331,7 @@
   window.MrRating = { mount: mount };
   window.MrCount = { mount: mountCount, hit: hit };
   window.MrComments = { mount: mountComments };
+  window.MrFS = { ok: ok, commit: commit, doc: DOC }; // للنماذج الأخرى (طلب الخدمة)
   window.MrStats = { // قراءة التقييم والتحميلات لأي عنصر (للفرز)
     get: function (key) { var s = store[sk(key)] || { sum: 0, count: 0, n: 0 }; return { sum: s.sum || 0, count: s.count || 0, n: s.n || 0, avg: s.count ? s.sum / s.count : 0 }; },
     onData: function (f) { dataCbs.push(f); }
