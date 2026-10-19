@@ -108,6 +108,8 @@
     el.setAttribute('title', n.toLocaleString('en-US') + ' ' + (kind === 'v' ? (EN() ? 'views' : 'مشاهدة') : (EN() ? 'downloads' : 'تحميل')));
   }
   function paintAll() { els.forEach(paint); cels.forEach(paintCnt); }
+  var dataCbs = [];
+  function fireData() { dataCbs.forEach(function (f) { try { f(); } catch (e) {} }); } // عند وصول بيانات التقييمات والعدّادات (لا عند كل ضغطة)
 
   function mount(el, key, ro) {
     if (!el) return;
@@ -311,7 +313,7 @@
     var c = lsG(CK, null), fresh = false;
     if (c && c.d) {
       Object.keys(c.d).forEach(function (k) { store[k] = c.d[k]; });
-      cacheT = c.t || 0; paintAll();
+      cacheT = c.t || 0; paintAll(); fireData();
       fresh = Date.now() - cacheT < CTTL;
     }
     if (fresh) return;
@@ -319,7 +321,7 @@
     listAll('ratings', function (d) {
       var f = d.fields || {};
       next[d.name.split('/').pop()] = { sum: iv(f.sum), count: iv(f.count), n: iv(f.n) };
-    }).then(function () { store = next; cacheT = Date.now(); saveCache(); paintAll(); }).catch(function () {});
+    }).then(function () { store = next; cacheT = Date.now(); saveCache(); paintAll(); fireData(); }).catch(function () {});
   }
   if (acOn && document.readyState !== 'complete') window.addEventListener('load', function () { setTimeout(boot, 200); });
   else if (acOn) setTimeout(boot, 200);
@@ -329,4 +331,8 @@
   window.MrRating = { mount: mount };
   window.MrCount = { mount: mountCount, hit: hit };
   window.MrComments = { mount: mountComments };
+  window.MrStats = { // قراءة التقييم والتحميلات لأي عنصر (للفرز)
+    get: function (key) { var s = store[sk(key)] || { sum: 0, count: 0, n: 0 }; return { sum: s.sum || 0, count: s.count || 0, n: s.n || 0, avg: s.count ? s.sum / s.count : 0 }; },
+    onData: function (f) { dataCbs.push(f); }
+  };
 })();

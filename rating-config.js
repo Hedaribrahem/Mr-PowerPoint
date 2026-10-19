@@ -48,3 +48,35 @@ window.RATING_CFG = {
     else if ((m = h.match(/^https?:\/\/(www\.)?(facebook|instagram)\.com\//i))) window.mrTrack('social_click', { network: m[2].toLowerCase(), link_location: loc });
   }, true);
 })();
+
+/* المشاركة: أي زر فيه data-share="wa|copy" مع data-url و data-text يعمل تلقائياً (واتساب أو نسخ الرابط) ويُسجَّل في Analytics */
+(function () {
+  var en = function () { return document.documentElement.lang === 'en'; };
+  function fallbackCopy(t, ok) {
+    var a = document.createElement('textarea');
+    a.value = t; a.setAttribute('readonly', '');
+    a.style.cssText = 'position:fixed;top:0;inset-inline-start:0;opacity:0';
+    document.body.appendChild(a); a.select();
+    try { document.execCommand('copy'); ok(); } catch (e) {}
+    document.body.removeChild(a);
+  }
+  function copy(t, ok) {
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(t).then(ok, function () { fallbackCopy(t, ok); });
+    else fallbackCopy(t, ok);
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('[data-share]');
+    if (!b) return;
+    e.preventDefault();
+    var kind = b.getAttribute('data-share'), url = b.getAttribute('data-url') || '', text = b.getAttribute('data-text') || '';
+    if (!url) return;
+    if (kind === 'wa') window.open('https://wa.me/?text=' + encodeURIComponent(text + '\n' + url), '_blank', 'noopener');
+    else copy(url, function () {
+      var l = b.querySelector('.sh-l');
+      if (!l) return;
+      var o = l.textContent; l.textContent = en() ? 'Copied \u2713' : 'تم النسخ \u2713';
+      setTimeout(function () { l.textContent = o; }, 1700);
+    });
+    if (window.mrTrack) window.mrTrack('share', { method: kind === 'wa' ? 'whatsapp' : 'copy_link', content_type: b.getAttribute('data-type') || '', item_id: b.getAttribute('data-id') || '' });
+  });
+})();

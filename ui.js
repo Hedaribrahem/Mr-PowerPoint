@@ -56,9 +56,12 @@
     var th = function (l, q) { return 'https://img.youtube.com/vi/' + l.id + '/' + q + '.jpg'; };
     var esc2 = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); };
     var PLAY = '<svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>';
+    var WA2 = '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.03 2C6.5 2 2.03 6.48 2.03 12c0 1.77.46 3.42 1.26 4.9L2 22l5.27-1.27A9.96 9.96 0 0 0 12.03 22c5.51 0 9.99-4.48 9.99-10S17.54 2 12.03 2zm0 18.4c-1.61 0-3.23-.42-4.62-1.23l-.33-.2-2.94.89.94-2.86-.22-.34A8.35 8.35 0 0 1 3.64 12c0-4.63 3.77-8.4 8.39-8.4 4.63 0 8.4 3.77 8.4 8.4 0 4.62-3.77 8.4-8.4 8.4zm4.6-6.28c-.25-.13-1.49-.73-1.72-.82-.23-.08-.4-.13-.57.13-.17.25-.65.82-.8.99-.15.17-.29.19-.55.06-.25-.13-1.07-.39-2.03-1.25-.75-.67-1.26-1.5-1.4-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.57-1.36-.78-1.86-.2-.49-.41-.42-.57-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.44 1.03 2.61c.13.17 1.78 2.72 4.31 3.82.6.26 1.07.42 1.44.53.6.19 1.15.17 1.59.1.49-.07 1.49-.61 1.7-1.2.21-.59.21-1.09.15-1.2-.06-.1-.23-.17-.48-.29z"/></svg>';
+    var LINK2 = '<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M6.5 9.5a3 3 0 0 0 4.24 0l2-2a3 3 0 0 0-4.24-4.24l-.7.7M9.5 6.5a3 3 0 0 0-4.24 0l-2 2a3 3 0 0 0 4.24 4.24l.7-.7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
     box.innerHTML =
       '<div class="ac-main reveal"><div class="ac-player"></div><div class="ac-info"><h3 class="video-title ac-title"></h3><p class="ac-desc"></p><a class="ac-more" target="_blank" rel="noopener noreferrer" hidden></a>' +
-      '<div class="ac-meta"><div class="rt"></div><span class="ac-views"></span><a class="ac-yt" target="_blank" rel="noopener noreferrer"><span data-translate="ac_watch">شاهد على يوتيوب</span></a></div></div></div>' +
+      '<div class="ac-meta"><div class="rt"></div><span class="ac-views"></span><span class="ac-share"><button class="ac-sh wa" type="button" data-share="wa">' + WA2 + '<span class="sh-l"></span></button><button class="ac-sh" type="button" data-share="copy">' + LINK2 + '<span class="sh-l"></span></button></span>' +
+      '<a class="ac-yt" target="_blank" rel="noopener noreferrer"><span data-translate="ac_watch">شاهد على يوتيوب</span></a></div></div></div>' +
       '<aside class="ac-side reveal reveal-delay-2"><div class="ac-side-in"><div class="ac-side-h" data-translate="ac_list">قائمة الدروس</div><div class="ac-list">' +
       list.map(function (l, i) {
         return '<button type="button" class="ac-item" data-i="' + i + '"><span class="ac-th"><img loading="lazy" decoding="async" src="' + th(l, 'mqdefault') + '" alt="" /><span class="ac-n">' + l.n + '</span></span>' +
@@ -83,6 +86,13 @@
       box.querySelector('.ac-title').textContent = lt(l);
       box.querySelector('.ac-desc').textContent = ld(l);
       box.querySelector('.ac-yt').href = 'https://youtu.be/' + l.id;
+      var lurl = location.href.split('#')[0].split('?')[0] + '#lesson=' + l.id; // رابط مشاركة الدرس
+      [].forEach.call(box.querySelectorAll('.ac-sh'), function (b) {
+        b.setAttribute('data-url', lurl);
+        b.setAttribute('data-text', (EN2() ? 'Watch this lesson from Mr PowerPoint: ' : 'شاهد هذا الدرس من Mr PowerPoint: ') + lt(l));
+        b.setAttribute('data-type', 'lesson'); b.setAttribute('data-id', l.id);
+        b.querySelector('.sh-l').textContent = b.getAttribute('data-share') === 'wa' ? (EN2() ? 'WhatsApp' : 'واتساب') : (EN2() ? 'Copy link' : 'نسخ الرابط');
+      });
       var more = box.querySelector('.ac-more');
       more.href = 'https://youtu.be/' + l.id;
       more.textContent = EN2() ? 'Show more' : 'عرض المزيد';
@@ -115,6 +125,19 @@
       }
     });
     paint();
+    // فتح درس مباشرة من رابط مشاركة: #lesson=معرّف_الفيديو
+    var openLesson = function () {
+      var m = /^#lesson=([\w-]+)$/.exec(location.hash);
+      if (!m) return;
+      for (var i = 0; i < list.length; i++) if (list[i].id === m[1]) {
+        sel = i; playing = false; paint();
+        var go = function () { var a = document.getElementById('academy'); if (a) a.scrollIntoView({ behavior: 'auto', block: 'start' }); };
+        if (document.readyState === 'complete') go(); else window.addEventListener('load', go);
+        break;
+      }
+    };
+    openLesson();
+    window.addEventListener('hashchange', openLesson);
     window.addEventListener('resize', chkMore);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(chkMore);
     new MutationObserver(paint).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
