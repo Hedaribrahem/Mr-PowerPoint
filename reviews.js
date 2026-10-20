@@ -150,17 +150,18 @@
       currentDocument: { exists: false }
     }]).then(function (r) {
       if (!r.ok) throw 0;
+      try { localStorage.removeItem('mr_rv_cache'); } catch (e) {}
       ts.push(now); lsS('mr_rv_t', ts); lsS('mr_cm_name', name);
       if (window.mrTrack) window.mrTrack('generate_lead', { method: 'site_review' });
       grade = 0; justSent = true; t0 = Date.now(); render();
     }).catch(function () { btn.disabled = false; say(s.fail, 'err'); });
   }
 
-  /* ───────── التحميل: عند اقتراب القسم من الشاشة فقط، مع تخزين مؤقت 30 دقيقة (لتوفير قراءات Firestore) ───────── */
-  var CK = 'mr_rv_cache', TTL = 30 * 60 * 1000;
+  /* ───────── التحميل: عند اقتراب القسم من الشاشة فقط، مع تخزين مؤقت 10 دقائق (لتوفير قراءات Firestore) ───────── */
+  var CK = 'mr_rv_cache', TTL = 10 * 60 * 1000;
   function load() {
     var c = lsG(CK, null);
-    if (c && c.d && Date.now() - c.t < TTL) { data = c.d; loaded = true; render(); return; }
+    if (c && c.d && c.d.length && Date.now() - c.t < TTL) { data = c.d; loaded = true; render(); return; }
     FS.fetchComments(KEY, 40).then(function (d) {
       data = d; loaded = true; lsS(CK, { t: Date.now(), d: d }); render();
     }).catch(function () { loaded = true; render(); });
