@@ -158,6 +158,29 @@
         </p>
       </article>
 
+      <article class="privacy-content" id="newsletterPolicy" style="line-height: 1.9; font-size: 16px; margin-top: 8px;"></article>
+      <script>
+        /* فقرة القائمة البريدية (مستقلة عن main.js ويتبدّل نصها مع اللغة) */
+        (function () {
+          var box = document.getElementById('newsletterPolicy');
+          var T = {
+            ar: '<h2>القائمة البريدية</h2>' +
+              '<p>إذا اشتركت في قائمتنا البريدية عبر النموذج في الصفحة الرئيسية، نحفظ بريدك الإلكتروني واسمك (إن كتبته) ولغة الموقع التي استخدمتها ووقت موافقتك على استلام الرسائل.</p>' +
+              '<ul style="padding-inline-start: 1cm;"><li>نستخدم هذه البيانات لإرسال أخبار القوالب والدروس والعروض فقط.</li>' +
+              '<li>قد نرفع بريدك إلى خدمة إرسال بريد إلكتروني خارجية (مثل Brevo) لتتولى إرسال الرسائل، ولا نبيع بياناتك ولا نشاركها لأي غرض آخر.</li>' +
+              '<li>يمكنك إلغاء الاشتراك في أي وقت عبر رابط "إلغاء الاشتراك" في أسفل أي رسالة، أو بالتواصل معنا لحذف بياناتك.</li></ul>',
+            en: '<h2>Mailing list</h2>' +
+              '<p>If you subscribe to our mailing list through the form on the home page, we store your email address, your name (if you entered it), the site language you used, and the time you agreed to receive messages.</p>' +
+              '<ul style="padding-inline-start: 1cm;"><li>We use this data only to send news about templates, lessons and offers.</li>' +
+              '<li>We may upload your email to an external email-sending service (such as Brevo) that sends the messages for us. We do not sell your data or share it for any other purpose.</li>' +
+              '<li>You can unsubscribe at any time using the "unsubscribe" link at the bottom of any message, or contact us to have your data deleted.</li></ul>'
+          };
+          function paint() { box.innerHTML = T[document.documentElement.lang === 'en' ? 'en' : 'ar']; }
+          paint();
+          new MutationObserver(paint).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+        })();
+      </script>
+
       <div style="margin-top: 32px;">
         <a href="index.html" class="btn-primary" data-translate="privacy_back_home">
           العودة إلى الصفحة الرئيسية
