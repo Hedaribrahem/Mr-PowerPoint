@@ -196,18 +196,18 @@
   var CT = function () { return CS[EN() ? 'en' : 'ar']; };
   function h(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
 
-  function fetchComments(k) {
+  function fetchComments(k, lim) {
     var body = { structuredQuery: { from: [{ collectionId: 'comments' }], where: { compositeFilter: { op: 'AND', filters: [
       { fieldFilter: { field: { fieldPath: 'k' }, op: 'EQUAL', value: { stringValue: k } } },
       { fieldFilter: { field: { fieldPath: 's' }, op: 'EQUAL', value: { stringValue: 'approved' } } }
-    ] } }, limit: 100 } };
+    ] } }, limit: lim || 100 } };
     return fx(base + ':runQuery?' + KEY, { method: 'POST', headers: JH, body: JSON.stringify(body) })
       .then(function (r) { return r.json(); })
       .then(function (rows) {
         if (!Array.isArray(rows)) throw 0;
         return rows.filter(function (r) { return r.document; }).map(function (r) {
           var f = r.document.fields || {};
-          return { n: sv(f.n), t: sv(f.t), r: sv(f.r), c: f.c && f.c.timestampValue ? Date.parse(f.c.timestampValue) : 0 };
+          return { n: sv(f.n), t: sv(f.t), r: sv(f.r), g: iv(f.g), c: f.c && f.c.timestampValue ? Date.parse(f.c.timestampValue) : 0 };
         }).sort(function (a, b) { return b.c - a.c; });
       });
   }
@@ -331,7 +331,7 @@
   window.MrRating = { mount: mount };
   window.MrCount = { mount: mountCount, hit: hit };
   window.MrComments = { mount: mountComments };
-  window.MrFS = { ok: ok, commit: commit, doc: DOC }; // للنماذج الأخرى (طلب الخدمة)
+  window.MrFS = { ok: ok, commit: commit, doc: DOC, fetchComments: fetchComments }; // للنماذج الأخرى (طلب الخدمة)
   window.MrStats = { // قراءة التقييم والتحميلات لأي عنصر (للفرز)
     get: function (key) { var s = store[sk(key)] || { sum: 0, count: 0, n: 0 }; return { sum: s.sum || 0, count: s.count || 0, n: s.n || 0, avg: s.count ? s.sum / s.count : 0 }; },
     onData: function (f) { dataCbs.push(f); }
