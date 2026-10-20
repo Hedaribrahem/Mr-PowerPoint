@@ -3,7 +3,9 @@ window.RATING_CFG = {
   apiKey: 'AIzaSyCu2KeY3_gBc4EMhntkAGwm4w67App1x1I',
   appId: '1:591022544323:web:f843147991f754c8c29976',
   recaptchaSiteKey: '6Lf7NvUtAAAAAPcO-HMLbG6nTIZVEU2CgNoJr8iP',
-  recaptchaType: 'enterprise'
+  recaptchaType: 'enterprise',
+  /* رابط Worker الذي يرسل إشعارات Telegram (انظر TELEGRAM-SETUP.md). اتركه فارغاً لتعطيل الإشعارات. */
+  notifyUrl: 'https://telegram-notify.hedar-ibrahem1.workers.dev/'
 };
 
 /* Google Analytics (GA4): يُحمَّل في كل صفحة تستدعي هذا الملف، ولا يُحتسب العمل المحلي (localhost) */

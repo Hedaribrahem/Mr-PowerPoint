@@ -83,6 +83,7 @@
         if (!r.ok) throw 0;
         sent.push(now); lsS('mr_sub_t', sent); lsS('mr_sub_ok', true);
         if (window.mrTrack) window.mrTrack('sign_up', { method: 'newsletter' });
+        FS.notify('subscriber');
         done = true; build();
       }).catch(function () { btn.disabled = false; say(s.eFail, 'err'); });
     });

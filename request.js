@@ -118,6 +118,7 @@
         if (!r.ok) throw 0;
         sent.push(now); lsS('mr_rq_t', sent);
         if (window.mrTrack) window.mrTrack('generate_lead', { method: 'request_form', service: v });
+        window.MrFS.notify('request', v);
         done = { n: n, v: v, ref: id.slice(-6).toUpperCase() };
         build();
       }).catch(function () { btn.disabled = false; say(s.eFail, 'err'); });

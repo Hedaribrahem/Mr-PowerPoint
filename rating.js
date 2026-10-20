@@ -67,6 +67,12 @@
       });
     });
   }
+  /* إشعار Telegram: يُرسل نوع الحدث فقط (بدون أي بيانات شخصية) إلى Worker يحفظ مفتاح البوت. يفشل بصمت دائماً. */
+  function notify(type, v) {
+    var u = C.notifyUrl;
+    if (!u || !/^https:\/\//.test(u)) return;
+    try { fetch(u, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ type: type, v: v || '' }), keepalive: true }).catch(function () {}); } catch (e) {}
+  }
   function commit(writes) {
     return fx(base + ':commit?' + KEY, { method: 'POST', headers: JH, body: JSON.stringify({ writes: writes }) });
   }
@@ -292,6 +298,7 @@
     if (ts.length && now - ts[ts.length - 1] < 30000) { msg.textContent = s.wait; msg.classList.add('err'); return; }
     btn.disabled = true; msg.textContent = '…';
     postComment(host._k, name, text).then(function () {
+      notify('comment');
       ts.push(now); lsS('mr_cm_t', ts); lsS('mr_cm_name', name);
       tx.value = ''; msg.textContent = s.ok; msg.classList.add('ok');
     }).catch(function () {
@@ -331,7 +338,7 @@
   window.MrRating = { mount: mount };
   window.MrCount = { mount: mountCount, hit: hit };
   window.MrComments = { mount: mountComments };
-  window.MrFS = { ok: ok, commit: commit, doc: DOC, fetchComments: fetchComments }; // للنماذج الأخرى (طلب الخدمة)
+  window.MrFS = { ok: ok, commit: commit, doc: DOC, fetchComments: fetchComments, notify: notify }; // للنماذج الأخرى (طلب الخدمة)
   window.MrStats = { // قراءة التقييم والتحميلات لأي عنصر (للفرز)
     get: function (key) { var s = store[sk(key)] || { sum: 0, count: 0, n: 0 }; return { sum: s.sum || 0, count: s.count || 0, n: s.n || 0, avg: s.count ? s.sum / s.count : 0 }; },
     onData: function (f) { dataCbs.push(f); }

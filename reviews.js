@@ -153,6 +153,7 @@
       try { localStorage.removeItem('mr_rv_cache'); } catch (e) {}
       ts.push(now); lsS('mr_rv_t', ts); lsS('mr_cm_name', name);
       if (window.mrTrack) window.mrTrack('generate_lead', { method: 'site_review' });
+      FS.notify('review');
       grade = 0; justSent = true; t0 = Date.now(); render();
     }).catch(function () { btn.disabled = false; say(s.fail, 'err'); });
   }
