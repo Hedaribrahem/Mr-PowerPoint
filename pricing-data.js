@@ -1,15 +1,15 @@
 // يُدار من لوحة التحكم (تبويب الأسعار). القسم مخفي في الموقع حتى تُفعّل "إظهار قسم الأسعار" وتكتب سعراً لخدمة واحدة على الأقل.
 window.PRICING = {
-  "show": false,
+  "show": true,
   "note": "الأسعار تقريبية وتختلف حسب عدد الشرائح وتعقيد التصميم. أرسل تفاصيل مشروعك ونرد عليك بعرض سعر نهائي بدون التزام.",
   "noteE": "Prices are approximate and vary with the number of slides and the complexity of the design. Send your project details and we will reply with a final quote, no commitment.",
   "items": [
     {
       "id": "s1",
-      "p": "",
+      "p": "يبدأ من 20 دولار",
       "pe": "",
-      "d": "",
-      "de": ""
+      "d": "التسليم خلال 48 حتى 72 ساعة",
+      "de": "Delivery within 48 to 72 hours"
     },
     {
       "id": "s2",
