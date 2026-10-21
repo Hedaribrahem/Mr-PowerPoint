@@ -3185,3 +3185,13 @@ body.light-mode::after { opacity: 0.22; }
 /* مقتطف المدونة في الصفحة الرئيسية */
 #blog .bl-grid { max-width: 1100px; margin: 0 auto; }
 .bl-all { margin-top: 24px; text-align: center; }
+
+/* ───── الأسعار (pricing.js) ───── */
+.pc-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; }
+.pc-card { display: flex; flex-direction: column; gap: 10px; padding: 24px 22px; border-radius: 24px; border: 1px solid var(--surface-border); background: linear-gradient(145deg, rgba(var(--text-rgb), 0.06), rgba(var(--text-rgb), 0.02)); transition: transform 0.2s, border-color 0.2s; }
+.pc-card:hover { transform: translateY(-4px); border-color: rgba(230, 19, 18, 0.5); }
+.pc-name { font-size: 1.02rem; font-weight: 800; line-height: 1.6; margin: 0; }
+.pc-price { font-size: 1.7rem; font-weight: 900; color: var(--red); line-height: 1.3; }
+.pc-note { margin: 0; font-size: 0.88rem; font-weight: 300; line-height: 1.8; opacity: 0.8; flex: 1; }
+.pc-btn { align-self: flex-start; margin-top: 6px; }
+.pc-foot { max-width: 760px; margin: 22px auto 0; text-align: center; font-size: 0.88rem; line-height: 1.9; opacity: 0.7; }

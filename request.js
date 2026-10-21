@@ -46,7 +46,13 @@
   var esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); };
   var lsG = function (k, d) { try { var v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; } catch (e) { return d; } };
   var lsS = function (k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
-  var t0 = Date.now(), done = null;
+  var t0 = Date.now(), done = null, pre = '';
+  document.addEventListener('mr-pick-service', function (e) {
+    pre = (e && e.detail) || '';
+    var f = sec.querySelector('.rq-form');
+    if (done) { done = null; build(); f = sec.querySelector('.rq-form'); }
+    if (f && pre) f.elements.v.value = pre;
+  });
 
   function build() {
     var s = L(), en = EN(), old = sec.querySelector('.rq-form'), dr = null;
@@ -57,6 +63,7 @@
     var cta = document.getElementById('rqCta'); if (cta) cta.textContent = s.cta;
     var nf = sec.querySelector('.rq-form');
     if (dr && nf) Object.keys(dr).forEach(function (k) { nf.elements[k].value = dr[k]; });
+    if (nf && pre && !(dr && dr.v)) nf.elements.v.value = pre;
     bind();
   }
   function form() {
