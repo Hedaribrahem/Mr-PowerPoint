@@ -7,16 +7,16 @@ window.PRICING = {
     {
       "id": "s1",
       "p": "يبدأ من 20 دولار",
-      "pe": "",
+      "pe": "Starts at $20",
       "d": "التسليم خلال 48 حتى 72 ساعة",
       "de": "Delivery within 48 to 72 hours"
     },
     {
       "id": "s2",
-      "p": "",
-      "pe": "",
-      "d": "",
-      "de": ""
+      "p": "يبدأ من 20 دولار",
+      "pe": "Starts at $20",
+      "d": "التسليم خلال 48 حتى 72 ساعة",
+      "de": "Delivery within 48 to 72 hours"
     },
     {
       "id": "s3",
