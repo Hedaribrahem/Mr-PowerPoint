@@ -24,4 +24,53 @@
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+
+  <url>
+    <loc>https://hedaribrahem.github.io/Mr-PowerPoint/blog.html</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hedaribrahem.github.io/Mr-PowerPoint/blog/common-powerpoint-design-mistakes.html</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hedaribrahem.github.io/Mr-PowerPoint/blog/colors-and-fonts-for-presentations.html</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hedaribrahem.github.io/Mr-PowerPoint/blog/how-many-slides-presentation.html</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hedaribrahem.github.io/Mr-PowerPoint/blog/investor-pitch-deck-structure.html</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hedaribrahem.github.io/Mr-PowerPoint/blog/turn-data-into-clear-charts.html</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hedaribrahem.github.io/Mr-PowerPoint/blog/use-ready-templates-professionally.html</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hedaribrahem.github.io/Mr-PowerPoint/blog/powerpoint-shortcuts-save-time.html</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
