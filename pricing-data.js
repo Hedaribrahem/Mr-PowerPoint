@@ -6,45 +6,45 @@ window.PRICING = {
   "items": [
     {
       "id": "s1",
-      "p": "يبدأ من 20 دولار",
-      "pe": "Starts at $20",
+      "p": "يبدأ من 15دولار",
+      "pe": "Starts at $15",
       "d": "التسليم خلال 48 حتى 72 ساعة",
       "de": "Delivery within 48 to 72 hours"
     },
     {
       "id": "s2",
+      "p": "يبدأ من 15دولار",
+      "pe": "Starts at $15",
+      "d": "التسليم خلال 48 حتى 72 ساعة",
+      "de": "Delivery within 48 to 72 hours"
+    },
+    {
+      "id": "s3",
+      "p": "يبدأ من 10 دولار",
+      "pe": "Starts at $10",
+      "d": "التسليم خلال 48 حتى 72 ساعة",
+      "de": "Delivery within 48 to 72 hours"
+    },
+    {
+      "id": "s4",
       "p": "يبدأ من 20 دولار",
       "pe": "Starts at $20",
       "d": "التسليم خلال 48 حتى 72 ساعة",
       "de": "Delivery within 48 to 72 hours"
     },
     {
-      "id": "s3",
-      "p": "",
-      "pe": "",
-      "d": "",
-      "de": ""
-    },
-    {
-      "id": "s4",
-      "p": "",
-      "pe": "",
-      "d": "",
-      "de": ""
-    },
-    {
       "id": "s5",
-      "p": "",
-      "pe": "",
-      "d": "",
-      "de": ""
+      "p": "يبدأ من 15 دولار",
+      "pe": "Starts at $15",
+      "d": "التسليم خلال 48 حتى 72 ساعة",
+      "de": "Delivery within 48 to 72 hours"
     },
     {
       "id": "s6",
-      "p": "",
-      "pe": "",
-      "d": "",
-      "de": ""
+      "p": "يبدأ من 15 دولار",
+      "pe": "Starts at $15",
+      "d": "التسليم خلال 48 حتى 72 ساعة",
+      "de": "Delivery within 48 to 72 hours"
     }
   ]
 };
