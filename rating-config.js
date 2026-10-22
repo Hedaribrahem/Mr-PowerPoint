@@ -16,10 +16,19 @@ window.RATING_CFG = {
   window.gtag = function () { window.dataLayer.push(arguments); };
   window.gtag('js', new Date());
   window.gtag('config', id);
-  var s = document.createElement('script');
-  s.async = true;
-  s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
-  document.head.appendChild(s);
+  /* نؤجّل تحميل مكتبة Analytics (≈155KB) حتى أول تفاعل أو 5 ثوانٍ بعد اكتمال الصفحة، لتسريع العرض الأول */
+  var loaded = false, ev = ['pointerdown', 'keydown', 'touchstart', 'scroll', 'wheel', 'mousemove'];
+  function load() {
+    if (loaded) return; loaded = true;
+    ev.forEach(function (e) { removeEventListener(e, load, true); });
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
+    document.head.appendChild(s);
+  }
+  ev.forEach(function (e) { addEventListener(e, load, { capture: true, passive: true }); });
+  var t = function () { setTimeout(load, 5000); };
+  if (document.readyState === 'complete') t(); else addEventListener('load', t);
 })();
 
 /* تتبّع النقرات في Analytics: واتساب، خمسات، يوتيوب، التواصل الاجتماعي، وتحميل القوالب.

@@ -21,7 +21,7 @@
     else { im.removeAttribute('src'); pending[k] = { im: im, src: src }; }
   });
   window.addEventListener('load', function () { setTimeout(function () { loaded = true; Object.keys(pending).forEach(ensure); }, 1500); });
-  var cur = 0, zin = true; // الشريحة الأولى تبدأ بتقريب
+  var cur = 0, zin = true, started = false; // الشريحة الأولى تبدأ بتقريب
   var isRTL = function () { return document.documentElement.dir === 'rtl'; };
 
   function labels() {
@@ -49,7 +49,7 @@
       b.classList.remove('on', 'done');
       b.removeAttribute('aria-current');
       if (k < cur) b.classList.add('done');
-      if (k === cur) { void b.offsetWidth; b.classList.add(reduce ? 'done' : 'on'); b.setAttribute('aria-current', 'true'); }
+      if (k === cur) { if (started) void b.offsetWidth; b.classList.add(reduce ? 'done' : 'on'); b.setAttribute('aria-current', 'true'); }
     });
   }
 
@@ -77,5 +77,5 @@
     if (Math.abs(dx) > 50) go(cur + ((dx > 0) === isRTL() ? 1 : -1));
   }, { passive: true });
 
-  go(0);
+  go(0); started = true;
 })();

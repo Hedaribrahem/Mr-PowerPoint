@@ -36,11 +36,24 @@
     rcP.catch(function () { rcP = null; });
     return rcP;
   }
+  /* لا نحمّل reCAPTCHA (≈700KB) أثناء تحميل الصفحة: ننتظر أول تفاعل للزائر (لمس/تمرير/ضغط) أو 15 ثانية بعد اكتمال الصفحة */
+  var rdyP = null;
+  function ready() {
+    if (rdyP) return rdyP;
+    rdyP = new Promise(function (res) {
+      var done = false, ev = ['pointerdown', 'keydown', 'touchstart', 'scroll', 'wheel', 'mousemove'];
+      function go() { if (done) return; done = true; ev.forEach(function (e) { removeEventListener(e, go, true); }); res(); }
+      ev.forEach(function (e) { addEventListener(e, go, { capture: true, passive: true }); });
+      var t = function () { setTimeout(go, 15000); };
+      if (document.readyState === 'complete') t(); else addEventListener('load', t);
+    });
+    return rdyP;
+  }
   function appCheck() {
     if (!acOn || Date.now() < acRetry) return Promise.resolve('');
     if (acTok && Date.now() < acExp) return Promise.resolve(acTok);
     if (acP) return acP;
-    acP = rc().then(function (g) { return g.execute(C.recaptchaSiteKey, { action: 'app_check' }); })
+    acP = ready().then(rc).then(function (g) { return g.execute(C.recaptchaSiteKey, { action: 'app_check' }); })
       .then(function (t) {
         return fetch('https://firebaseappcheck.googleapis.com/v1/projects/' + C.projectId + '/apps/' + C.appId +
           ':' + (acEnt ? 'exchangeRecaptchaEnterpriseToken' : 'exchangeRecaptchaV3Token') + '?' + KEY, {
