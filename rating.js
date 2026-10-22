@@ -239,6 +239,13 @@
     var lg = h('div', 'cm-legal'); lg.hidden = !acOn;
     [nm, hp, tx, row, msg, lg].forEach(function (e) { f.appendChild(e); });
     host.appendChild(hd); host.appendChild(f); host.appendChild(h('div', 'cm-list'));
+    if (host.classList.contains('ac-cm')) {
+      host.classList.add('cm-fold');
+      hd.tabIndex = 0; hd.setAttribute('role', 'button'); hd.setAttribute('aria-expanded', host.classList.contains('open') ? 'true' : 'false');
+      var tg = function () { var o = host.classList.toggle('open'); hd.setAttribute('aria-expanded', o ? 'true' : 'false'); };
+      hd.addEventListener('click', tg);
+      hd.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tg(); } });
+    }
     nm.value = lsG('mr_cm_name', '');
     f.addEventListener('submit', function (e) { e.preventDefault(); submitC(host); });
   }

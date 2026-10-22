@@ -98,11 +98,11 @@
 
       <ul class="nav-links">
         <li><a href="#" data-translate="nav_home">الرئيسية</a></li>
-        <li><a href="#services" data-translate="nav_services">الخدمات</a></li>
-        <li><a href="#works" data-translate="nav_works">الأعمال</a></li>
         <li><a href="#templates" data-translate="nav_templates">القوالب</a></li>
-        <li><a href="#academy" data-translate="nav_academy">الأكاديمية</a></li>
+        <li><a href="#works" data-translate="nav_works">الأعمال</a></li>
+        <li><a href="#services" data-translate="nav_services">الخدمات</a></li>
         <li><a href="#testimonials" data-translate="nav_testimonials">الآراء</a></li>
+        <li><a href="#academy" data-translate="nav_academy">الأكاديمية</a></li>
       </ul>
 
       <div style="display: flex; align-items: center; gap: 10px">
@@ -141,21 +141,11 @@
     <div class="mobile-menu" id="mobileMenu">
       <ul>
         <li><a href="#" onclick="closeMobileMenu()" data-translate="nav_home">الرئيسية</a></li>
-        <li>
-          <a href="#services" onclick="closeMobileMenu()" data-translate="nav_services">الخدمات</a>
-        </li>
+        <li><a href="#templates" onclick="closeMobileMenu()" data-translate="nav_templates">القوالب</a></li>
         <li><a href="#works" onclick="closeMobileMenu()" data-translate="nav_works">الأعمال</a></li>
-        <li>
-          <a href="#templates" onclick="closeMobileMenu()" data-translate="nav_templates">
-            القوالب
-          </a>
-        </li>
+        <li><a href="#services" onclick="closeMobileMenu()" data-translate="nav_services">الخدمات</a></li>
+        <li><a href="#testimonials" onclick="closeMobileMenu()" data-translate="nav_testimonials">الآراء</a></li>
         <li><a href="#academy" onclick="closeMobileMenu()" data-translate="nav_academy">الأكاديمية</a></li>
-        <li>
-          <a href="#testimonials" onclick="closeMobileMenu()" data-translate="nav_testimonials">
-            الآراء
-          </a>
-        </li>
       </ul>
       <div class="mobile-menu-footer">
         <a
@@ -236,6 +226,45 @@
         <div class="strip-item reveal reveal-delay-2"><span class="strip-num" data-to="40" data-pre="+" data-count="lessons">+40</span><span class="strip-label" data-translate="stat_3">درس تعليمي</span></div>
         <div class="strip-item reveal reveal-delay-3"><span class="strip-num" data-site="rating" data-to="4.9" data-dec="1" data-suf="★">4.9★</span><span class="strip-label" data-translate="stat_4">تقييم العملاء</span></div>
       </div>
+    </section>
+
+    <!-- TEMPLATES SECTION: أحدث 6 قوالب (البيانات في templates-data.js) -->
+    <section id="templates">
+      <div class="section-header">
+        <div>
+          <div class="section-label" data-translate="templates_label">المنتجات الرقمية</div>
+          <h2 class="section-title reveal" data-translate="templates_title">نماذج جاهزة للتحميل</h2>
+          <p class="section-subtitle reveal" data-translate="templates_subtitle">
+            تم تصميم كل قالب لتوفير وقتك ورفع جودة عرضك التقديمي على الفور
+          </p>
+        </div>
+      </div>
+
+      <div class="tl" id="tlLatest">
+        <div class="tl-line"><div class="tl-line-fill"></div></div>
+      </div>
+
+      <div class="tl-cta reveal">
+        <a href="templates.html" class="btn-primary">
+          <span data-translate="view_all">عرض جميع النماذج</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- WORKS -->
+    <section id="works">
+      <div class="section-header">
+        <div>
+          <div class="section-label" data-translate="works_label">معرض الأعمال</div>
+          <h2 class="section-title reveal" data-translate="works_title">أعمالنا تتحدث عنا</h2>
+          <p class="section-subtitle reveal" data-translate="works_subtitle">
+            نماذج من عروضنا التقديمية لعملاء من مختلف القطاعات
+          </p>
+        </div>
+      </div>
+
+      <div class="wk-grid" id="wkGrid"></div>
     </section>
 
     <!-- SERVICES -->
@@ -594,56 +623,6 @@
         </div>
       </div>
     </section>
-    <!-- WORKS -->
-    <section id="works">
-      <div class="section-header">
-        <div>
-          <div class="section-label" data-translate="works_label">معرض الأعمال</div>
-          <h2 class="section-title reveal" data-translate="works_title">أعمالنا تتحدث عنا</h2>
-          <p class="section-subtitle reveal" data-translate="works_subtitle">
-            نماذج من عروضنا التقديمية لعملاء من مختلف القطاعات
-          </p>
-        </div>
-      </div>
-
-      <div class="wk-grid" id="wkGrid"></div>
-    </section>
-
-    <!-- TEMPLATES SECTION: أحدث 6 قوالب (البيانات في templates-data.js) -->
-    <section id="templates">
-      <div class="section-header">
-        <div>
-          <div class="section-label" data-translate="templates_label">المنتجات الرقمية</div>
-          <h2 class="section-title reveal" data-translate="templates_title">نماذج جاهزة للتحميل</h2>
-          <p class="section-subtitle reveal" data-translate="templates_subtitle">
-            تم تصميم كل قالب لتوفير وقتك ورفع جودة عرضك التقديمي على الفور
-          </p>
-        </div>
-      </div>
-
-      <div class="tl" id="tlLatest">
-        <div class="tl-line"><div class="tl-line-fill"></div></div>
-      </div>
-
-      <div class="tl-cta reveal">
-        <a href="templates.html" class="btn-primary">
-          <span data-translate="view_all">عرض جميع النماذج</span>
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
-        </a>
-      </div>
-    </section>
-
-    <!-- ACADEMY -->
-    <section id="academy">
-      <div class="section-header">
-        <div>
-          <div class="section-label" data-translate="academy_label">الأكاديمية التعليمية</div>
-          <h2 class="section-title reveal" data-translate="academy_title">فيديوهات تعليمية احترافية</h2>
-          <p class="section-subtitle reveal" data-translate="academy_subtitle">تعلم مهارات التصميم والعروض التقديمية من خلال محتوى تدريبي مبسط وعملي</p>
-        </div>
-      </div>
-      <div class="ac" id="acBox"></div>
-    </section>
 
     <!-- PROCESS -->
     <section id="process" style="background: var(--darkest)">
@@ -658,12 +637,6 @@
         <div class="pr-step reveal reveal-delay-3"><div class="pr-ico"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l3 3 5-6"/></svg><b>4</b></div><div class="pr-card"><h3 class="step-title" data-translate="step_4">التسليم والمراجعة</h3><p class="step-desc" data-translate="step_4_desc">تستلم عملك مع مراجعتين مجانيتين لضمان رضاك</p></div></div>
       </div>
     </section>
-
-    <!-- PRICING (يُبنى بواسطة pricing.js، ويبقى مخفياً حتى تفعّله من لوحة التحكم) -->
-    <section id="pricing" hidden></section>
-
-    <!-- FAQ (يُبنى بواسطة faq.js) -->
-    <section id="faq"></section>
 
     <!-- REQUEST FORM (يُبنى بواسطة request.js) -->
     <section id="request"></section>
@@ -794,6 +767,22 @@
       </div>
       <div id="siteReviews"></div>
     </section>
+
+    <!-- FAQ (يُبنى بواسطة faq.js) -->
+    <section id="faq"></section>
+
+    <!-- ACADEMY -->
+    <section id="academy">
+      <div class="section-header">
+        <div>
+          <div class="section-label" data-translate="academy_label">الأكاديمية التعليمية</div>
+          <h2 class="section-title reveal" data-translate="academy_title">فيديوهات تعليمية احترافية</h2>
+          <p class="section-subtitle reveal" data-translate="academy_subtitle">تعلم مهارات التصميم والعروض التقديمية من خلال محتوى تدريبي مبسط وعملي</p>
+        </div>
+      </div>
+      <div class="ac" id="acBox"></div>
+    </section>
+
     <!-- NEWSLETTER (يُبنى بواسطة subscribe.js) -->
     <section id="subscribe"></section>
     <!-- CTA -->
@@ -946,11 +935,11 @@
         <div class="footer-links-col">
           <h4 data-translate="footer_nav_title">الروابط الرئيسية</h4>
           <ul>
-            <li><a href="#services" data-translate="nav_services">الخدمات</a></li>
-            <li><a href="#works" data-translate="nav_works">الأعمال</a></li>
             <li><a href="#templates" data-translate="nav_templates">القوالب</a></li>
-            <li><a href="#academy" data-translate="nav_academy">الأكاديمية التعليمية</a></li>
+            <li><a href="#works" data-translate="nav_works">الأعمال</a></li>
+            <li><a href="#services" data-translate="nav_services">الخدمات</a></li>
             <li><a href="#testimonials" data-translate="nav_testimonials">الآراء</a></li>
+            <li><a href="#academy" data-translate="nav_academy">الأكاديمية التعليمية</a></li>
           </ul>
         </div>
 
@@ -1033,5 +1022,6 @@
     <script src="subscribe.js"></script>
     <script src="main.js"></script>
     <script src="scrollbar.js"></script>
+    <script src="sticky-cta.js"></script>
   </body>
 </html>

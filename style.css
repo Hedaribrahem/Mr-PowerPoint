@@ -3197,3 +3197,72 @@ html[lang="en"] .tpl-sel { padding-left: 16px; padding-right: 38px; background-p
 .pc-note { margin: 0; font-size: 0.88rem; font-weight: 300; line-height: 1.8; opacity: 0.8; flex: 1; }
 .pc-btn { align-self: center; margin-top: 6px; }
 .pc-foot { max-width: 760px; margin: 22px auto 0; text-align: center; font-size: 0.88rem; line-height: 1.9; opacity: 0.7; }
+
+/* ───────── تكثيف الصفحة الرئيسية (الدفعة 1) ───────── */
+section:not(#home):not(#stats) { padding-block: 64px; }
+.section-header { margin-bottom: 34px; }
+footer { padding-top: 92px; }
+.tl { margin-top: 28px; padding-bottom: 36px; }
+.tl-item { max-width: 450px; }
+.tl-row + .tl-row { margin-top: -120px; }
+@media (max-width: 768px) {
+  section:not(#home):not(#stats) { padding-block: 46px; }
+  .section-header { margin-bottom: 24px; }
+  .tl-row + .tl-row { margin-top: 18px; }
+  .tl-row:nth-child(n+6) { display: none; } /* أول 4 قوالب فقط؛ الباقي في صفحة "عرض جميع النماذج" */
+}
+@media (max-width: 640px) {
+  /* الخدمات: شريط أفقي يُسحب باليد بدل بطاقات طويلة فوق بعضها */
+  .services-grid { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; margin-inline: -5vw; padding: 4px 5vw 14px; scrollbar-width: none; }
+  .services-grid::-webkit-scrollbar { display: none; }
+  .services-grid .service-card { flex: 0 0 80%; scroll-snap-align: center; opacity: 1 !important; transform: none !important; }
+  /* خطوات العمل: عمودان */
+  .pr { grid-template-columns: 1fr 1fr; gap: 12px; row-gap: 34px; }
+  .pr-step { padding-top: 40px; }
+  .pr-ico { width: 52px; height: 52px; border-radius: 18px; }
+  .pr-card { padding: 34px 12px 16px; border-radius: 20px; }
+  .pr-card .step-title { font-size: 0.98rem; }
+  .pr-card .step-desc { font-size: 0.8rem; line-height: 1.7; }
+  /* التذييل: عمودان للروابط */
+  footer { padding-top: 84px; }
+  .footer-container { grid-template-columns: 1fr 1fr; gap: 26px 16px; margin-bottom: 30px; }
+  .footer-container > .footer-brand, .footer-container > .footer-contact { grid-column: 1 / -1; }
+}
+@media (max-width: 640px) {
+  /* المدونة والأسعار: شريط أفقي */
+  .bl-grid, .pc-grid { display: flex; flex-wrap: nowrap; justify-content: flex-start; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; margin-inline: -5vw; padding: 4px 5vw 14px; scrollbar-width: none; }
+  .bl-grid::-webkit-scrollbar, .pc-grid::-webkit-scrollbar { display: none; }
+  .bl-grid > .bl-card, .pc-grid > .pc-card { flex: 0 0 80%; min-width: 0; scroll-snap-align: center; opacity: 1 !important; transform: none !important; }
+  .pc-grid > .pc-card:only-child { margin-inline: auto; }
+  /* الأكاديمية: تعليق أقصر */
+  .cm-text { min-height: 60px; height: 60px; }
+}
+@media (min-width: 641px) {
+  .service-card { padding: 28px 26px; }
+  .service-features li { padding-block: 3px; }
+  .service-icon { margin-bottom: 14px; }
+}
+
+/* التعليقات في الأكاديمية: شريط مطوي يُفتح عند الضغط */
+.cm-fold .cm-h { cursor: pointer; align-items: center; margin-bottom: 0; padding: 12px 18px; border: 1px solid var(--cm-bd); border-radius: 16px; background: var(--cm-bg); transition: border-color 0.2s; }
+.cm-fold .cm-h:hover, .cm-fold .cm-h:focus-visible { border-color: rgba(230, 19, 18, 0.5); outline: none; }
+.cm-fold .cm-h::after { content: ""; margin-inline-start: auto; width: 9px; height: 9px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); margin-top: -4px; opacity: 0.7; transition: transform 0.25s; }
+.cm-fold.open .cm-h { margin-bottom: 12px; }
+.cm-fold.open .cm-h::after { transform: rotate(-135deg); }
+.cm-fold:not(.open) .cm-form, .cm-fold:not(.open) .cm-list { display: none; }
+.cm-fold .cm-title { font-size: 1rem; }
+
+/* ───────── الدفعة 2: الأسعار داخل بطاقات الخدمات، زر الطلب العائم، اشتراك مضغوط ───────── */
+.svc-price { display: flex; flex-direction: column; gap: 2px; margin: 16px 0 4px; padding: 10px 14px; border-radius: 14px; background: rgba(230, 19, 18, 0.09); border: 1px solid rgba(230, 19, 18, 0.28); }
+.svc-price b { font-size: 1.05rem; font-weight: 800; color: var(--red); line-height: 1.5; }
+.svc-price small { font-size: 0.8rem; opacity: 0.75; line-height: 1.6; }
+#services .pc-foot { max-width: 760px; margin: 18px auto 0; text-align: center; font-size: 0.88rem; line-height: 1.9; opacity: 0.7; }
+.sticky-cta { position: fixed; z-index: 90; bottom: 22px; left: 22px; padding: 12px 22px; border-radius: 999px; color: #fff; font-weight: 800; font-size: 0.92rem; text-decoration: none; background: var(--btn-grad); box-shadow: var(--btn-rim), var(--btn-glow, 0 10px 26px -10px rgba(230, 19, 18, 0.7)); opacity: 0; transform: translateY(16px); pointer-events: none; transition: opacity 0.3s, transform 0.3s; }
+.sticky-cta.show { opacity: 1; transform: none; pointer-events: auto; }
+@media (max-width: 640px) { .sticky-cta { bottom: 16px; left: 14px; padding: 10px 18px; font-size: 0.85rem; } }
+@media (prefers-reduced-motion: reduce) { .sticky-cta { transition: none; } }
+@media (min-width: 900px) {
+  .sb-card .sb-form { grid-template-columns: 1fr 1fr; align-items: start; }
+  .sb-card .sb-form > .sb-chk, .sb-card .sb-form > .cm-row, .sb-card .sb-form > .cm-msg, .sb-card .sb-form > .cm-legal { grid-column: 1 / -1; }
+}
+.cta-box { padding-block: 52px; }
