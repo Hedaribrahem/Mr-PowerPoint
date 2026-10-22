@@ -82,7 +82,7 @@
 
     var paint = function () {
       var l = list[sel], p = box.querySelector('.ac-player');
-      if (!playing) p.innerHTML = '<img src="' + th(l, 'maxresdefault') + '" alt="' + esc2(lt(l)) + '" onload="if(this.naturalWidth<200)this.src=\'' + th(l, 'hqdefault') + '\'" /><button class="ac-play" type="button" aria-label="' + (EN2() ? 'Play' : 'تشغيل') + '">' + PLAY + '</button>';
+      if (!playing) p.innerHTML = '<img loading="lazy" decoding="async" src="' + th(l, 'maxresdefault') + '" alt="' + esc2(lt(l)) + '" onload="if(this.naturalWidth<200)this.src=\'' + th(l, 'hqdefault') + '\'" /><button class="ac-play" type="button" aria-label="' + (EN2() ? 'Play' : 'تشغيل') + '">' + PLAY + '</button>';
       box.querySelector('.ac-title').textContent = lt(l);
       box.querySelector('.ac-desc').textContent = ld(l);
       box.querySelector('.ac-yt').href = 'https://youtu.be/' + l.id;
