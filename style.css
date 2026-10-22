@@ -3306,3 +3306,7 @@ nav { background: rgba(var(--bg-rgb), 0.97); }
 .bl-cov span { background: rgba(88, 10, 20, 0.72); }
 .sc-label { background: rgba(88, 10, 20, 0.92); }
 .testimonial-card { background: linear-gradient(145deg, rgba(var(--white-rgb), 0.05), rgba(var(--white-rgb), 0.02)); }
+/* كُرات الإضاءة في قسم الدعوة: تدرّج لوني بدل filter:blur(70px) الثقيل، وبنفس الشكل تقريباً */
+.cta-orb { filter: none !important; }
+.cta-orb.o1 { background: radial-gradient(circle, rgba(230, 19, 18, 0.5) 0%, rgba(230, 19, 18, 0) 68%); }
+.cta-orb.o2 { background: radial-gradient(circle, rgba(255, 90, 60, 0.36) 0%, rgba(255, 90, 60, 0) 68%); }
