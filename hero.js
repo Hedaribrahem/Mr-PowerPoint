@@ -5,15 +5,22 @@
   var bars = [].slice.call(hero.querySelectorAll('.hx-bar'));
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var desktop = window.matchMedia('(min-width: 769px)').matches;
-  // صور الشرائح من site-data.js (تُدار من لوحة التحكم)
+  // صور الشرائح من site-data.js (تُدار من لوحة التحكم).
+  // الشريحة الأولى تُحمَّل فوراً، والبقية بعد اكتمال الصفحة (أو عند الاقتراب من عرضها) لتسريع أول ظهور.
   var cfg = window.SITE && window.SITE.hero;
-  if (cfg) slides.forEach(function (s, k) {
-    var c = cfg[k], bg = s.querySelector('.hx-bg');
-    if (!c || !c.img || !bg) return;
+  var pending = {}, loaded = false;
+  function ensure(k) { var p = pending[k]; if (p) { p.im.src = p.src; delete pending[k]; } }
+  slides.forEach(function (s, k) {
+    var c = cfg && cfg[k], bg = s.querySelector('.hx-bg');
+    if (!bg) return;
     var im = bg.querySelector('img');
+    var src = c && c.img ? encodeURI(c.img) : (im && im.getAttribute('data-src')) || '';
+    if (!src) return;
     if (!im) { im = document.createElement('img'); im.alt = ''; im.decoding = 'async'; im.onerror = function () { im.remove(); }; bg.appendChild(im); }
-    if (im.getAttribute('src') !== c.img) im.src = encodeURI(c.img);
+    if (k === 0) { if (im.getAttribute('src') !== (c && c.img) && im.getAttribute('src') !== src) im.src = src; }
+    else { im.removeAttribute('src'); pending[k] = { im: im, src: src }; }
   });
+  window.addEventListener('load', function () { setTimeout(function () { loaded = true; Object.keys(pending).forEach(ensure); }, 1500); });
   var cur = 0, zin = true; // الشريحة الأولى تبدأ بتقريب
   var isRTL = function () { return document.documentElement.dir === 'rtl'; };
 
@@ -29,6 +36,7 @@
   function go(i) {
     var prev = cur;
     cur = (i + slides.length) % slides.length;
+    ensure(cur); if (loaded) ensure((cur + 1) % slides.length);
     if (prev !== cur) {
       var old = slides[prev];
       old.classList.add('leave');               // تبقى حركتها مستمرة أثناء التلاشي

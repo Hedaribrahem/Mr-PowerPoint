@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&family=Tajawal:wght@300;400;500;700;900&display=swap');
 
 :root {
   --red: #e61312;
@@ -3261,7 +3260,7 @@ footer { padding-top: 92px; }
 
 /* ───────── أزرار عائمة صغيرة: واتساب + طلب عرض سعر (دائرتان فوق بعض، تظهران وتختفيان معاً) ───────── */
 html { overflow-x: clip; }
-.whatsapp-float { bottom: 18px; right: 16px; width: 44px; height: 44px; animation: fabPulse 2.6s infinite; box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35); transition: opacity 0.3s, transform 0.3s, box-shadow 0.3s; }
+.whatsapp-float { bottom: 18px; right: 16px; width: 44px; height: 44px; animation: fabPulse 2.6s 5; box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35); transition: opacity 0.3s, transform 0.3s, box-shadow 0.3s; }
 .whatsapp-float .whatsapp-icon svg { width: 22px; height: 22px; }
 .whatsapp-float:hover { transform: scale(1.08); }
 html[dir="ltr"] .whatsapp-float { right: auto; left: 16px; }
@@ -3291,3 +3290,6 @@ html[dir="ltr"] .sc-label { right: auto; left: calc(100% + 10px); }
 .sb-card .rq-row { width: 100%; }
 .sb-card .rq-f { min-width: 0; flex: 1; }
 .sb-card .rq-f input { width: 100%; }
+
+/* أداء: إيقاف الحركات المستمرة خارج الشاشة */
+.pz, .pz *, .pz *::before, .pz *::after { animation-play-state: paused !important; }
