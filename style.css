@@ -3293,3 +3293,16 @@ html[dir="ltr"] .sc-label { right: auto; left: calc(100% + 10px); }
 
 /* أداء: إيقاف الحركات المستمرة خارج الشاشة */
 .pz, .pz *, .pz *::before, .pz *::after { animation-play-state: paused !important; }
+
+/* ===== إلغاء تأثير البلور (backdrop-filter) لأنه يُبطئ التمرير، واستبداله بلون خمري شفاف ===== */
+*, *::before, *::after { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+nav { background: rgba(var(--bg-rgb), 0.97); }
+.floating-badge, .mobile-menu { background: rgba(var(--darkest-rgb), 0.98); }
+.tl-glass { background: rgba(88, 10, 20, 0.74); border-color: rgba(255, 255, 255, 0.18); }
+.tl-zoom, .tpl-lb-nav { background: rgba(88, 10, 20, 0.78); border-color: rgba(255, 255, 255, 0.22); }
+.tpl-lb-fig figcaption { background: rgba(88, 10, 20, 0.8); border-color: rgba(255, 255, 255, 0.18); }
+.tpl-lb { background: rgba(20, 4, 8, 0.93); }
+.cta-box .btn-outline { background: rgba(88, 10, 20, 0.45); }
+.bl-cov span { background: rgba(88, 10, 20, 0.72); }
+.sc-label { background: rgba(88, 10, 20, 0.92); }
+.testimonial-card { background: linear-gradient(145deg, rgba(var(--white-rgb), 0.05), rgba(var(--white-rgb), 0.02)); }
