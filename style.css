@@ -3213,7 +3213,7 @@ footer { padding-top: 92px; }
 }
 @media (max-width: 640px) {
   /* الخدمات: شريط أفقي يُسحب باليد بدل بطاقات طويلة فوق بعضها */
-  .services-grid { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; margin-inline: -5vw; padding: 4px 5vw 14px; scrollbar-width: none; }
+  .services-grid { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; margin-inline: -4vw; padding: 4px 4vw 14px; scrollbar-width: none; }
   .services-grid::-webkit-scrollbar { display: none; }
   .services-grid .service-card { flex: 0 0 80%; scroll-snap-align: center; opacity: 1 !important; transform: none !important; }
   /* خطوات العمل: عمودان */
@@ -3230,7 +3230,7 @@ footer { padding-top: 92px; }
 }
 @media (max-width: 640px) {
   /* المدونة والأسعار: شريط أفقي */
-  .bl-grid, .pc-grid { display: flex; flex-wrap: nowrap; justify-content: flex-start; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; margin-inline: -5vw; padding: 4px 5vw 14px; scrollbar-width: none; }
+  .bl-grid, .pc-grid { display: flex; flex-wrap: nowrap; justify-content: flex-start; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; margin-inline: -4vw; padding: 4px 4vw 14px; scrollbar-width: none; }
   .bl-grid::-webkit-scrollbar, .pc-grid::-webkit-scrollbar { display: none; }
   .bl-grid > .bl-card, .pc-grid > .pc-card { flex: 0 0 80%; min-width: 0; scroll-snap-align: center; opacity: 1 !important; transform: none !important; }
   .pc-grid > .pc-card:only-child { margin-inline: auto; }
@@ -3257,12 +3257,37 @@ footer { padding-top: 92px; }
 .svc-price b { font-size: 1.05rem; font-weight: 800; color: var(--red); line-height: 1.5; }
 .svc-price small { font-size: 0.8rem; opacity: 0.75; line-height: 1.6; }
 #services .pc-foot { max-width: 760px; margin: 18px auto 0; text-align: center; font-size: 0.88rem; line-height: 1.9; opacity: 0.7; }
-.sticky-cta { position: fixed; z-index: 90; bottom: 22px; left: 22px; padding: 12px 22px; border-radius: 999px; color: #fff; font-weight: 800; font-size: 0.92rem; text-decoration: none; background: var(--btn-grad); box-shadow: var(--btn-rim), var(--btn-glow, 0 10px 26px -10px rgba(230, 19, 18, 0.7)); opacity: 0; transform: translateY(16px); pointer-events: none; transition: opacity 0.3s, transform 0.3s; }
-.sticky-cta.show { opacity: 1; transform: none; pointer-events: auto; }
-@media (max-width: 640px) { .sticky-cta { bottom: 16px; left: 14px; padding: 10px 18px; font-size: 0.85rem; } }
-@media (prefers-reduced-motion: reduce) { .sticky-cta { transition: none; } }
-@media (min-width: 900px) {
-  .sb-card .sb-form { grid-template-columns: 1fr 1fr; align-items: start; }
-  .sb-card .sb-form > .sb-chk, .sb-card .sb-form > .cm-row, .sb-card .sb-form > .cm-msg, .sb-card .sb-form > .cm-legal { grid-column: 1 / -1; }
-}
 .cta-box { padding-block: 52px; }
+
+/* ───────── أزرار عائمة صغيرة: واتساب + طلب عرض سعر (دائرتان فوق بعض، تظهران وتختفيان معاً) ───────── */
+html { overflow-x: clip; }
+.whatsapp-float { bottom: 18px; right: 16px; width: 44px; height: 44px; animation: fabPulse 2.6s infinite; box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35); transition: opacity 0.3s, transform 0.3s, box-shadow 0.3s; }
+.whatsapp-float .whatsapp-icon svg { width: 22px; height: 22px; }
+.whatsapp-float:hover { transform: scale(1.08); }
+html[dir="ltr"] .whatsapp-float { right: auto; left: 16px; }
+.whatsapp-tooltip { right: calc(100% + 10px); font-size: 12px; padding: 5px 12px; }
+html[dir="ltr"] .whatsapp-tooltip { right: auto; left: calc(100% + 10px); }
+.whatsapp-float.pop .whatsapp-tooltip { opacity: 1; visibility: visible; }
+.whatsapp-float.fab-off, .sticky-cta.fab-off { opacity: 0; transform: scale(0.6) translateY(10px); pointer-events: none; }
+@keyframes fabPulse { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.45); } 70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+.sticky-cta { position: fixed; z-index: 999; bottom: 72px; right: 20px; width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%; color: #fff; text-decoration: none; background: var(--btn-grad); box-shadow: var(--btn-rim), 0 6px 16px -6px rgba(230, 19, 18, 0.7); transition: opacity 0.3s, transform 0.3s; }
+html[dir="ltr"] .sticky-cta { right: auto; left: 20px; }
+.sticky-cta:hover { transform: scale(1.08); }
+.sticky-cta svg { width: 17px; height: 17px; }
+.sc-label { position: absolute; right: calc(100% + 10px); top: 50%; transform: translateY(-50%); padding: 5px 12px; border-radius: 40px; background: var(--overlay, rgba(0, 0, 0, 0.8)); backdrop-filter: blur(8px); color: #fff; font-size: 12px; font-weight: 600; white-space: nowrap; opacity: 0; visibility: hidden; transition: 0.2s; pointer-events: none; }
+html[dir="ltr"] .sc-label { right: auto; left: calc(100% + 10px); }
+.sticky-cta:hover .sc-label, .sticky-cta.pop .sc-label { opacity: 1; visibility: visible; }
+@media (max-width: 640px) {
+  .whatsapp-float { bottom: 14px; right: 12px; width: 42px; height: 42px; }
+  html[dir="ltr"] .whatsapp-float { left: 12px; }
+  .sticky-cta { bottom: 64px; right: 16px; width: 34px; height: 34px; }
+  html[dir="ltr"] .sticky-cta { left: 16px; }
+}
+@media (prefers-reduced-motion: reduce) { .whatsapp-float { animation: none; } }
+
+/* المتابعة بالبريد: بطاقة مضغوطة وحقول بعرض البطاقة */
+.sb-card { max-width: 600px; padding: 22px 26px; }
+.sb-form { gap: 10px; }
+.sb-card .rq-row { width: 100%; }
+.sb-card .rq-f { min-width: 0; flex: 1; }
+.sb-card .rq-f input { width: 100%; }
