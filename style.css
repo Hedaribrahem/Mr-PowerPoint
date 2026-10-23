@@ -3310,3 +3310,32 @@ nav { background: rgba(var(--bg-rgb), 0.97); }
 .cta-orb { filter: none !important; }
 .cta-orb.o1 { background: radial-gradient(circle, rgba(230, 19, 18, 0.5) 0%, rgba(230, 19, 18, 0) 68%); }
 .cta-orb.o2 { background: radial-gradient(circle, rgba(255, 90, 60, 0.36) 0%, rgba(255, 90, 60, 0) 68%); }
+
+/* ===== سلايدر قبل/بعد ===== */
+#beforeafter { padding-top: 40px; }
+.ba-wrap { max-width: 880px; margin: 0 auto; }
+.ba-stage { position: relative; direction: ltr; aspect-ratio: 16 / 9; border-radius: 22px; overflow: hidden; border: 1px solid var(--surface-border); background: var(--surface); touch-action: pan-y; user-select: none; -webkit-user-select: none; cursor: ew-resize; box-shadow: 0 18px 50px rgba(0, 0, 0, 0.25); }
+.ba-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.ba-clip { position: absolute; inset: 0; clip-path: inset(0 50% 0 0); }
+.ba-handle { position: absolute; top: 0; bottom: 0; left: 50%; width: 3px; margin-left: -1.5px; background: #fff; box-shadow: 0 0 12px rgba(0, 0, 0, 0.5); pointer-events: none; }
+.ba-knob { position: absolute; top: 50%; left: 50%; width: 46px; height: 46px; margin: -23px 0 0 -23px; display: grid; place-items: center; border-radius: 50%; background: var(--red); color: #fff; font-size: 15px; font-weight: 800; letter-spacing: 2px; border: 3px solid #fff; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4); }
+.ba-stage.drag .ba-knob { transform: scale(1.08); }
+.ba-chip { position: absolute; top: 14px; padding: 5px 14px; border-radius: 999px; font-size: 0.8rem; font-weight: 800; color: #fff; background: rgba(88, 10, 20, 0.78); border: 1px solid rgba(255, 255, 255, 0.25); pointer-events: none; }
+.ba-chip-b { left: 14px; } .ba-chip-a { right: 14px; background: rgba(230, 19, 18, 0.9); }
+.ba-range { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; margin: 0; cursor: ew-resize; pointer-events: none; }
+.ba-range:focus-visible ~ .ba-handle, .ba-stage:focus-within .ba-knob { outline: 3px solid #fff; outline-offset: 2px; }
+.ba-cap { margin-top: 16px; text-align: center; }
+.ba-cap b { display: block; font-size: 1.1rem; margin-bottom: 4px; }
+.ba-cap span { opacity: 0.75; font-size: 0.95rem; }
+.ba-nav { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 16px; direction: ltr; }
+.ba-arr { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--surface-border); background: var(--surface); color: inherit; font-size: 22px; line-height: 1; cursor: pointer; }
+.ba-arr:hover { border-color: var(--red); color: var(--red); }
+.ba-dots { display: flex; gap: 8px; }
+.ba-dot { width: 9px; height: 9px; padding: 0; border-radius: 50%; border: 0; background: rgba(var(--text-rgb), 0.25); cursor: pointer; transition: width .25s, background .25s; }
+.ba-dot.on { width: 26px; border-radius: 6px; background: var(--red); }
+@media (max-width: 768px) { #beforeafter { padding-top: 24px; } .ba-stage { border-radius: 16px; } .ba-knob { width: 40px; height: 40px; margin: -20px 0 0 -20px; } }
+
+/* ===== شريط الأرقام: خانات العدّادات الحيّة ===== */
+.strip-grid.has-live { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+.strip-item[hidden] { display: none; }
+@media (max-width: 768px) { .strip-grid.has-live { grid-template-columns: repeat(2, 1fr); } .strip-grid.has-live .strip-item.ls-last { grid-column: 1 / -1; } }
