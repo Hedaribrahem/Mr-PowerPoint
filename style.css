@@ -3339,3 +3339,13 @@ nav { background: rgba(var(--bg-rgb), 0.97); }
 .strip-grid.has-live { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
 .strip-item[hidden] { display: none; }
 @media (max-width: 768px) { .strip-grid.has-live { grid-template-columns: repeat(2, 1fr); } .strip-grid.has-live .strip-item.ls-last { grid-column: 1 / -1; } }
+
+/* ===== شريط التنقل الزجاجي عند التمرير (على الكمبيوتر فقط؛ على الجوال يبقى معتماً للحفاظ على السلاسة) ===== */
+@media (hover: hover) and (pointer: fine) and (min-width: 769px) {
+  nav:not(.nav-top) { background: rgba(var(--bg-rgb), 0.52) !important; backdrop-filter: blur(18px) saturate(1.7) !important; -webkit-backdrop-filter: blur(18px) saturate(1.7) !important; border-bottom: 1px solid rgba(var(--text-rgb), 0.12) !important; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18) !important; }
+  .light-mode nav:not(.nav-top) { background: rgba(var(--surface-rgb), 0.6) !important; }
+}
+
+/* ===== الخطوط المنحنية الجانبية: أوضح قليلاً ===== */
+body::before { opacity: 0.5; }
+body::after { opacity: 0.45; }
