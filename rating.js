@@ -91,7 +91,7 @@
   }
   function listAll(col, each, tok) {
     return fx(base + '/' + col + '?pageSize=300&' + KEY + (tok ? '&pageToken=' + encodeURIComponent(tok) : ''))
-      .then(function (r) { return r.json(); })
+      .then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
       .then(function (j) {
         (j.documents || []).forEach(each);
         if (j.nextPageToken) return listAll(col, each, j.nextPageToken);
@@ -344,11 +344,16 @@
       fresh = Date.now() - cacheT < CTTL;
     }
     if (fresh) return;
-    var next = {};
-    listAll('ratings', function (d) {
-      var f = d.fields || {};
-      next[d.name.split('/').pop()] = { sum: iv(f.sum), count: iv(f.count), n: iv(f.n) };
-    }).then(function () { store = next; cacheT = Date.now(); saveCache(); paintAll(); fireData(); }).catch(function () {});
+    /* إن فشل الطلب (انقطاع، حظر، خطأ من الخادم) نُبقي الأرقام المعروضة من التخزين المؤقت ولا نمسحها، ونعيد المحاولة لاحقاً */
+    var tries = 0, wait = [5000, 20000, 60000];
+    (function load() {
+      var next = {};
+      listAll('ratings', function (d) {
+        var f = d.fields || {};
+        next[d.name.split('/').pop()] = { sum: iv(f.sum), count: iv(f.count), n: iv(f.n) };
+      }).then(function () { store = next; cacheT = Date.now(); saveCache(); paintAll(); fireData(); })
+        .catch(function () { if (tries < wait.length) setTimeout(load, wait[tries++]); });
+    })();
   }
   if (acOn && document.readyState !== 'complete') window.addEventListener('load', function () { setTimeout(boot, 200); });
   else if (acOn) setTimeout(boot, 200);
