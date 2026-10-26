@@ -153,13 +153,15 @@
   });
   document.addEventListener('click', function (e) {
     var dl = e.target.closest('.tl-dl');
-    if (dl && window.MrCount) { // عدّاد التحميلات (من البطاقة أو من نافذة المعاينة)
+    if (dl) {
       var card = dl.closest('.tl-card'), tt = card ? T[+card.getAttribute('data-i')] : (lb && lb.contains(dl) ? curT() : null);
-      if (tt && tt.name) { MrCount.hit('t_' + tt.name); if (window.MrRatePrompt) MrRatePrompt.show(tt.name); }
-    }
-    if (dl && window.mrTrack) { // تتبّع Analytics لتحميل القالب
-      var c0 = dl.closest('.tl-card'), t0 = c0 ? T[+c0.getAttribute('data-i')] : (lb && lb.contains(dl) ? curT() : null);
-      if (t0 && t0.name) window.mrTrack('template_download', { template_name: t0.name, link_location: c0 ? (c0.closest('#tlLatest') ? 'home_latest' : 'templates_page') : 'preview' });
+      var loc = card ? (card.closest('#tlLatest') ? 'home_latest' : 'templates_page') : 'preview';
+      if (tt && tt.name && window.MrDl && dl.href) { // نافذة التحميل: مؤقت 10 ثوانٍ + تقييم، ثم زر التحميل (يُحتسب العدّاد عند الضغط عليه)
+        e.preventDefault(); window.MrDl.open(tt.name, dl.href, loc);
+      } else {
+        if (tt && tt.name && window.MrCount) MrCount.hit('t_' + tt.name);
+        if (tt && tt.name && window.mrTrack) window.mrTrack('template_download', { template_name: tt.name, link_location: loc });
+      }
     }
     var c = e.target.closest('.tl-card');
     if (!c || dl) return;

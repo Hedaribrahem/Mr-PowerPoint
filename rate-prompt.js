@@ -1,50 +1,62 @@
-/* بعد ضغط "تحميل" على قالب: نافذة صغيرة غير حاجبة تدعو لتقييم القالب (تظهر بعد لحظات، وتختفي وحدها).
-   لا تمنع التحميل ولا تغطي الصفحة، ولا تظهر لمن قيّم القالب سابقاً أو ظهرت له في هذه الجلسة. */
+/* نافذة التحميل: عند الضغط على "تحميل" تُفتح نافذة فيها مؤقت 10 ثوانٍ ودعوة لتقييم القالب،
+   وبعدها يظهر زر "تحميل الآن" الذي يفتح الرابط مباشرة. يُحتسب التحميل (العدّاد وAnalytics) عند ضغط الزر الأخير فقط. */
 (function () {
+  var WAIT = 10;
   var EN = function () { return document.documentElement.lang === 'en'; };
-  var sk = function (k) { return String(k).replace(/[^\w-]+/g, '-'); };
-  var lsG = function (k, d) { try { var v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; } catch (e) { return d; } };
-  var shown = {}, box = null, timer = 0;
+  var done = {}, cur = null;
+  function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
+
   function close() {
-    clearTimeout(timer);
-    if (!box) return;
-    var b = box; box = null; b.classList.remove('on');
-    setTimeout(function () { if (b.parentNode) b.parentNode.removeChild(b); }, 350);
+    if (!cur) return;
+    var c = cur; cur = null;
+    clearInterval(c.iv); document.removeEventListener('keydown', c.key, true);
+    c.root.classList.remove('on');
+    setTimeout(function () { if (c.root.parentNode) c.root.parentNode.removeChild(c.root); }, 250);
+    if (c.prev && c.prev.focus) try { c.prev.focus(); } catch (e) {}
   }
-  function show(name) {
-    if (!window.MrRating || !name) return;
-    var key = 't_' + name;
-    if (shown[key] || (lsG('mr_ratings', {})[sk(key)])) return;
-    shown[key] = 1;
-    setTimeout(function () {
-      close();
-      var en = EN();
-      box = document.createElement('div'); box.className = 'rp'; box.setAttribute('role', 'dialog'); box.setAttribute('aria-live', 'polite');
-      var x = document.createElement('button'); x.type = 'button'; x.className = 'rp-x'; x.textContent = '×'; x.setAttribute('aria-label', en ? 'Close' : 'إغلاق');
-      var t = document.createElement('div'); t.className = 'rp-t';
-      t.appendChild(document.createTextNode(en ? 'Thanks for downloading ' : 'شكراً لتحميلك '));
-      var b = document.createElement('b'); b.textContent = name; t.appendChild(b);
-      t.appendChild(document.createTextNode(en ? '! How was it? Rate it:' : '! ما رأيك به؟ قيّمه:'));
-      var s = document.createElement('div'); s.className = 'rp-s';
-      box.appendChild(x); box.appendChild(t); box.appendChild(s);
-      document.body.appendChild(box);
-      window.MrRating.mount(s, key);
-      requestAnimationFrame(function () { box && box.classList.add('on'); });
-      x.addEventListener('click', close);
-      var cur = box;
-      s.addEventListener('click', function (e) {
-        if (!e.target.closest('.rt-s')) return;
-        setTimeout(function () {
-          if (box !== cur) return;
-          t.textContent = en ? 'Thank you for your rating ♥' : 'شكراً لتقييمك ♥';
-          clearTimeout(timer); timer = setTimeout(close, 1800);
-        }, 700);
-      });
-      var arm = function () { clearTimeout(timer); timer = setTimeout(close, 14000); };
-      box.addEventListener('mouseenter', function () { clearTimeout(timer); });
-      box.addEventListener('mouseleave', arm);
-      arm();
-    }, 1200);
+
+  function open(name, url, loc) {
+    close();
+    var en = EN(), left = done[name] ? 0 : WAIT;
+    var root = el('div', 'dlm'), card = el('div', 'dlm-card');
+    root.setAttribute('role', 'dialog'); root.setAttribute('aria-modal', 'true'); root.setAttribute('aria-label', en ? 'Download' : 'تحميل القالب');
+    var x = el('button', 'dlm-x', '×'); x.type = 'button'; x.setAttribute('aria-label', en ? 'Close' : 'إغلاق');
+    var h = el('h3', 'dlm-h'); h.appendChild(document.createTextNode(en ? 'Downloading ' : 'تحميل ')); h.appendChild(el('b', '', name));
+    var p = el('p', 'dlm-p', en ? 'Your download will be ready in a moment. Meanwhile, what do you think of this template?' : 'سيكون التحميل جاهزاً بعد لحظات. وإلى ذلك الحين، ما رأيك بهذا القالب؟');
+    var rt = el('div', 'dlm-rt');
+    var bar = el('div', 'dlm-bar'), fill = el('span'); bar.appendChild(fill);
+    var go = el('a', 'dlm-go'); go.href = url; go.target = '_blank'; go.rel = 'noopener'; go.setAttribute('aria-disabled', 'true');
+    card.appendChild(x); card.appendChild(h); card.appendChild(p); card.appendChild(rt); card.appendChild(bar); card.appendChild(go);
+    root.appendChild(card); document.body.appendChild(root);
+    if (window.MrRating) window.MrRating.mount(rt, 't_' + name); else rt.hidden = true;
+
+    function label() {
+      if (left > 0) { go.textContent = en ? 'Download in ' + left + 's' : 'التحميل بعد ' + left + ' ثوانٍ'; }
+      else { go.textContent = en ? 'Download now' : 'تحميل الآن'; go.classList.add('ready'); go.removeAttribute('aria-disabled'); }
+    }
+    fill.style.transition = 'none'; fill.style.width = left ? '0%' : '100%';
+    label();
+    if (left > 0) {
+      requestAnimationFrame(function () { requestAnimationFrame(function () { fill.style.transition = 'width ' + left + 's linear'; fill.style.width = '100%'; }); });
+    }
+    var iv = setInterval(function () { if (left > 0) { left--; label(); if (left === 0) { done[name] = 1; clearInterval(iv); try { go.focus(); } catch (e) {} } } }, 1000);
+    go.addEventListener('click', function (e) {
+      if (left > 0) { e.preventDefault(); return; }
+      if (window.MrCount) window.MrCount.hit('t_' + name);
+      if (window.mrTrack) window.mrTrack('template_download', { template_name: name, link_location: loc || 'templates_page' });
+      setTimeout(close, 400);
+    });
+    rt.addEventListener('click', function (e) {
+      if (!e.target.closest('.rt-s')) return;
+      setTimeout(function () { if (cur && cur.root === root) p.textContent = en ? 'Thank you for your rating ♥' : 'شكراً لتقييمك ♥'; }, 700);
+    });
+    var key = function (e) { if (e.key === 'Escape') { e.stopPropagation(); close(); } };
+    document.addEventListener('keydown', key, true);
+    x.addEventListener('click', close);
+    root.addEventListener('click', function (e) { if (e.target === root) close(); });
+    cur = { root: root, iv: iv, key: key, prev: document.activeElement };
+    requestAnimationFrame(function () { root.classList.add('on'); });
+    try { x.focus(); } catch (e) {}
   }
-  window.MrRatePrompt = { show: show };
+  window.MrDl = { open: open };
 })();
