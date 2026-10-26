@@ -165,7 +165,7 @@
     commit([{ transform: { document: DOC + '/ratings/' + k, fieldTransforms: [
       { fieldPath: 'sum', increment: { integerValue: String(old ? v - old : v) } },
       { fieldPath: 'count', increment: { integerValue: old ? '0' : '1' } }
-    ] } }]).catch(function () {});
+    ] } }]).then(function () { if (!old) notify('rating', k + '|' + v); }).catch(function () {});
   }
 
   /* ───────── العدّادات: تحميلات القوالب ومشاهدات الدروس (مرة لكل زائر لكل عنصر كل 12 ساعة) ───────── */

@@ -8,7 +8,8 @@ const TITLES = {
   request: '📩 طلب خدمة جديد',
   review: '⭐ رأي جديد بانتظار موافقتك',
   comment: '💬 تعليق جديد بانتظار موافقتك',
-  subscriber: '✉️ مشترك جديد في القائمة البريدية'
+  subscriber: '✉️ مشترك جديد في القائمة البريدية',
+  rating: '⭐ تقييم جديد'
 };
 const SERVICES = {
   s1: 'تصميم عرض تقديمي احترافي', s2: 'تحويل عرض عادي إلى احترافي', s3: 'قالب PowerPoint حسب الهوية',
@@ -40,6 +41,11 @@ export default {
 
     let text = TITLES[d.type];
     if (d.type === 'request' && SERVICES[d.v]) text += '\nالخدمة: ' + SERVICES[d.v];
+    if (d.type === 'rating') {
+      var m = /^([tl])_([\w-]{1,60})\|([1-5])$/.exec(String(d.v || ''));
+      if (!m) return new Response('bad request', { status: 400, headers: cors });
+      text += '\n' + (m[1] === 't' ? 'القالب: ' : 'الدرس: ') + m[2].replace(/-/g, ' ') + '\nالتقييم: ' + '★'.repeat(+m[3]) + '☆'.repeat(5 - m[3]) + ' (' + m[3] + '/5)';
+    }
     text += '\n\nافتح لوحة التحكم لرؤية التفاصيل.';
 
     const r = await fetch('https://api.telegram.org/bot' + env.BOT_TOKEN + '/sendMessage', {
