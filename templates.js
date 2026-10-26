@@ -155,7 +155,7 @@
     var dl = e.target.closest('.tl-dl');
     if (dl && window.MrCount) { // عدّاد التحميلات (من البطاقة أو من نافذة المعاينة)
       var card = dl.closest('.tl-card'), tt = card ? T[+card.getAttribute('data-i')] : (lb && lb.contains(dl) ? curT() : null);
-      if (tt && tt.name) MrCount.hit('t_' + tt.name);
+      if (tt && tt.name) { MrCount.hit('t_' + tt.name); if (window.MrRatePrompt) MrRatePrompt.show(tt.name); }
     }
     if (dl && window.mrTrack) { // تتبّع Analytics لتحميل القالب
       var c0 = dl.closest('.tl-card'), t0 = c0 ? T[+c0.getAttribute('data-i')] : (lb && lb.contains(dl) ? curT() : null);

@@ -13,7 +13,9 @@
   var box = document.createElement('div'); box.className = 'tpl-stats';
   var A = mk(), B = mk(); B.w.hidden = true;
   box.appendChild(A.w); box.appendChild(B.w);
-  grid.parentNode.insertBefore(box, grid);
+  box.style.cssText = 'display:flex;flex-direction:row;gap:48px;align-items:flex-end;text-align:center;';
+  var hdr = document.querySelector('main .section-header');
+  if (hdr) hdr.appendChild(box); else grid.parentNode.insertBefore(box, grid);
 
   var io = new IntersectionObserver(function (es) {
     es.forEach(function (x) {

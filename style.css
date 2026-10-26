@@ -3351,7 +3351,20 @@ body::before { opacity: 0.5; }
 body::after { opacity: 0.45; }
 
 /* ===== عدّادات صفحة كل النماذج ===== */
-.tpl-stats { display: flex; justify-content: center; gap: 56px; flex-wrap: wrap; margin: 0 0 28px; text-align: center; }
+.tpl-stats { display: flex; flex-direction: row; justify-content: center; gap: 48px; margin: 0 0 28px; text-align: center; }
+.section-header .tpl-stats { margin: 0; }
 .tpl-stats .strip-item[hidden] { display: none; }
 .tpl-stats .strip-num { font-size: clamp(1.8rem, 5vw, 2.6rem); }
-@media (max-width: 480px) { .tpl-stats { gap: 36px; } }
+@media (max-width: 480px) { .tpl-stats { gap: 32px; } }
+
+/* ===== نافذة تقييم القالب بعد التحميل (لا تحجب التحميل) ===== */
+.rp { position: fixed; z-index: 6000; bottom: 20px; left: 16px; width: min(380px, calc(100vw - 100px)); padding: 14px 16px 14px; border-radius: 18px; color: #fff; background: rgba(88, 10, 20, 0.97); border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45); opacity: 0; transform: translateY(16px); transition: opacity .3s, transform .3s; text-align: start; }
+html[dir="ltr"] .rp { left: auto; right: 16px; }
+.rp.on { opacity: 1; transform: none; }
+.rp-t { font-size: 0.95rem; font-weight: 700; line-height: 1.6; padding-inline-end: 22px; }
+.rp-t b { color: #ffb4b3; }
+.rp-s { margin-top: 8px; display: flex; align-items: center; gap: 8px; }
+.rp-s .rt { color: #fff; }
+.rp-x { position: absolute; top: 6px; inset-inline-end: 8px; width: 26px; height: 26px; border: 0; background: transparent; color: #fff; font-size: 20px; line-height: 1; cursor: pointer; opacity: .75; }
+.rp-x:hover { opacity: 1; }
+@media (max-width: 480px) { .rp { bottom: 12px; } }
