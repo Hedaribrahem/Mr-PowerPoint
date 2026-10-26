@@ -36,7 +36,7 @@
     rcP.catch(function () { rcP = null; });
     return rcP;
   }
-  /* لا نحمّل reCAPTCHA (≈700KB) أثناء تحميل الصفحة: ننتظر أول تفاعل للزائر (لمس/تمرير/ضغط) أو 15 ثانية بعد اكتمال الصفحة */
+  /* لا نحمّل reCAPTCHA (≈700KB) أثناء تحميل الصفحة: ننتظر أول تفاعل للزائر (لمس/تمرير/ضغط) أو 40 ثانية بعد اكتمال الصفحة */
   var rdyP = null;
   function ready() {
     if (rdyP) return rdyP;
@@ -44,7 +44,7 @@
       var done = false, ev = ['pointerdown', 'keydown', 'touchstart', 'scroll', 'wheel', 'mousemove'];
       function go() { if (done) return; done = true; ev.forEach(function (e) { removeEventListener(e, go, true); }); res(); }
       ev.forEach(function (e) { addEventListener(e, go, { capture: true, passive: true }); });
-      var t = function () { setTimeout(go, 15000); };
+      var t = function () { setTimeout(go, 40000); };
       if (document.readyState === 'complete') t(); else addEventListener('load', t);
     });
     return rdyP;

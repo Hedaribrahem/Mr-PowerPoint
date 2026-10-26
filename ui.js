@@ -74,7 +74,11 @@
     box.parentNode.insertBefore(cmHost, box.nextSibling);
 
     // يُظهر "عرض المزيد" فقط إذا كان الوصف أطول من سطرين
+    // القياس (scrollHeight) يُجبر المتصفح على إعادة التنسيق، لذلك لا ننفذه إلا حين يقترب قسم الأكاديمية من الشاشة
+    var vis = !('IntersectionObserver' in window), pendChk = false;
+    if (!vis) new IntersectionObserver(function (es) { vis = es[0].isIntersecting; if (vis && pendChk) { pendChk = false; chkMore(); } }, { rootMargin: '300px' }).observe(box);
     var chkMore = function () {
+      if (!vis) { pendChk = true; return; }
       var d = box.querySelector('.ac-desc'), m = box.querySelector('.ac-more');
       if (!d || !m) return;
       m.hidden = !(d.scrollHeight > d.clientHeight + 1);
