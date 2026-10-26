@@ -3349,3 +3349,9 @@ nav { background: rgba(var(--bg-rgb), 0.97); }
 /* ===== الخطوط المنحنية الجانبية: أوضح قليلاً ===== */
 body::before { opacity: 0.5; }
 body::after { opacity: 0.45; }
+
+/* ===== عدّادات صفحة كل النماذج ===== */
+.tpl-stats { display: flex; justify-content: center; gap: 56px; flex-wrap: wrap; margin: 0 0 28px; text-align: center; }
+.tpl-stats .strip-item[hidden] { display: none; }
+.tpl-stats .strip-num { font-size: clamp(1.8rem, 5vw, 2.6rem); }
+@media (max-width: 480px) { .tpl-stats { gap: 36px; } }
