@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hedaribrahem.github.io/Mr-PowerPoint/sitemap.xml
+Sitemap: https://mr-powerpoint.com/sitemap.xml
