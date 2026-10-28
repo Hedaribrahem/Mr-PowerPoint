@@ -23,12 +23,13 @@
     var x = el('button', 'dlm-x', '×'); x.type = 'button'; x.setAttribute('aria-label', en ? 'Close' : 'إغلاق');
     var h = el('h3', 'dlm-h'); h.appendChild(document.createTextNode(en ? 'Downloading ' : 'تحميل ')); h.appendChild(el('b', '', name));
     var p = el('p', 'dlm-p', en ? 'Your download will be ready in a moment. Meanwhile, what do you think of this template?' : 'سيكون التحميل جاهزاً بعد لحظات. وإلى ذلك الحين، ما رأيك بهذا القالب؟');
-    var rt = el('div', 'dlm-rt');
+    var lab = el('div', 'dlm-lab', en ? 'Rate this template' : 'قيّم هذا القالب');
+    var rt = el('div', 'dlm-rt rt-mine');
     var bar = el('div', 'dlm-bar'), fill = el('span'); bar.appendChild(fill);
     var go = el('a', 'dlm-go'); go.href = url; go.target = '_blank'; go.rel = 'noopener'; go.setAttribute('aria-disabled', 'true');
-    card.appendChild(x); card.appendChild(h); card.appendChild(p); card.appendChild(rt); card.appendChild(bar); card.appendChild(go);
+    card.appendChild(x); card.appendChild(h); card.appendChild(p); card.appendChild(lab); card.appendChild(rt); card.appendChild(bar); card.appendChild(go);
     root.appendChild(card); document.body.appendChild(root);
-    if (window.MrRating) window.MrRating.mount(rt, 't_' + name); else rt.hidden = true;
+    if (window.MrRating) window.MrRating.mount(rt, 't_' + name); else { rt.hidden = true; lab.hidden = true; }
 
     function label() {
       if (left > 0) { go.textContent = en ? 'Download in ' + left + 's' : 'التحميل بعد ' + left + ' ثوانٍ'; }

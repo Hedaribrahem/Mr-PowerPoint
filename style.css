@@ -3367,7 +3367,7 @@ body::after { opacity: 0.45; }
 .dlm-h { margin: 0 0 8px; font-size: 1.2rem; font-weight: 800; padding-inline: 20px; }
 .dlm-h b { color: #ffb4b3; }
 .dlm-p { margin: 0 0 14px; font-size: 0.95rem; line-height: 1.8; color: rgba(255, 255, 255, 0.85); }
-.dlm-rt { display: flex; justify-content: center; margin-bottom: 18px; }
+.dlm-rt { display: flex; justify-content: center; }
 .dlm-rt .rt { color: #fff; }
 .dlm-rt .rt-s { font-size: 32px; }
 .dlm-bar { height: 6px; border-radius: 6px; background: rgba(255, 255, 255, 0.18); overflow: hidden; margin-bottom: 16px; }
@@ -3375,3 +3375,13 @@ body::after { opacity: 0.45; }
 .dlm-go { display: block; padding: 13px 20px; border-radius: 14px; font-weight: 800; font-size: 1rem; text-decoration: none; color: rgba(255, 255, 255, 0.7); background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.2); cursor: not-allowed; transition: background .25s, color .25s; }
 .dlm-go.ready { color: #fff; background: var(--red); border-color: transparent; cursor: pointer; box-shadow: 0 8px 24px rgba(230, 19, 18, 0.45); }
 @media (max-width: 480px) { .dlm-card { padding: 24px 18px 20px; } }
+
+/* نجوم نافذة التحميل: واضحة وكبيرة */
+.dlm-lab { font-weight: 700; font-size: 0.95rem; margin-bottom: 6px; color: #fff; }
+.dlm-rt { flex-direction: column; align-items: center; gap: 4px; padding: 10px 8px; margin-bottom: 18px; border-radius: 14px; background: rgba(255, 255, 255, 0.07); }
+.dlm-rt .rt { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.dlm-rt .rt-s { font-size: 40px; padding: 0 3px; background-image: linear-gradient(90deg, #ffc21a var(--f, 0%), rgba(255, 255, 255, 0.4) var(--f, 0%)); }
+html[dir="rtl"] .dlm-rt .rt-s { background-image: linear-gradient(270deg, #ffc21a var(--f, 0%), rgba(255, 255, 255, 0.4) var(--f, 0%)); }
+.dlm-rt .rt-s.hov, html[dir="rtl"] .dlm-rt .rt-s.hov { background-image: linear-gradient(#ffc21a, #ffc21a); }
+.dlm-rt .rt-t { color: rgba(255, 255, 255, 0.85); font-size: 0.85rem; opacity: 1; }
+@media (max-width: 480px) { .dlm-rt .rt-s { font-size: 36px; } }

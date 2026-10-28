@@ -89,6 +89,22 @@
   function commit(writes) {
     return fx(base + ':commit?' + KEY, { method: 'POST', headers: JH, body: JSON.stringify({ writes: writes }) });
   }
+  /* إرسال تقييم/عدّاد مع إعادة المحاولة: إن رفض الخادم الطلب أو انقطع الاتصال نحفظه ونعيد إرساله لاحقاً (لا يضيع تقييم الزائر بصمت) */
+  var RQ = 'mr_rq';
+  function send(writes) {
+    return commit(writes).then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return true; });
+  }
+  function sendQ(writes) {
+    return send(writes).catch(function () {
+      var q = lsG(RQ, []); if (q.length < 50) { q.push(writes); lsS(RQ, q); }
+      return false;
+    });
+  }
+  function flushQ() {
+    var q = lsG(RQ, []); if (!q.length || !ok) return;
+    lsS(RQ, []);
+    q.reduce(function (p, w) { return p.then(function () { return sendQ(w); }); }, Promise.resolve());
+  }
   function listAll(col, each, tok) {
     return fx(base + '/' + col + '?pageSize=300&' + KEY + (tok ? '&pageToken=' + encodeURIComponent(tok) : ''))
       .then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
@@ -107,12 +123,13 @@
     var k = el.getAttribute('data-rk'); if (!k) return;
     var s = store[k] || { sum: 0, count: 0 }, n = s.count, a = n ? s.sum / n : 0, m = mine[k] || 0;
     var ss = el.querySelectorAll('.rt-s');
-    for (var i = 0; i < 5; i++) ss[i].style.setProperty('--f', Math.round(Math.max(0, Math.min(1, a - i)) * 100) + '%');
+    var mineMode = el.classList.contains('rt-mine') && m; // نافذة التحميل: تظهر نجوم الزائر نفسه بعد أن يقيّم
+    for (var i = 0; i < 5; i++) ss[i].style.setProperty('--f', mineMode ? (i < m ? '100%' : '0%') : Math.round(Math.max(0, Math.min(1, a - i)) * 100) + '%');
     var t = el.querySelector('.rt-t');
     if (el.classList.contains('rt-ro')) t.textContent = n ? a.toFixed(1) + ' (' + n + ')' : '';
     else t.textContent = n
       ? a.toFixed(1) + ' · ' + n + (EN() ? ' ratings' : ' تقييم') + (m ? (EN() ? ' · yours: ' : ' · تقييمك: ') + m : '')
-      : (EN() ? 'Be the first to rate' : 'كن أول من يقيّم');
+      : m ? (EN() ? 'Your rating: ' : 'تقييمك: ') + m : (EN() ? 'Be the first to rate' : 'كن أول من يقيّم');
   }
   var CICON = {
     d: '<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v8M4.5 7 8 10.5 11.5 7M3 13.5h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
@@ -162,10 +179,10 @@
     if (old) s.sum += v - old; else { s.sum += v; s.count++; }
     paintAll(); saveCache();
     if (!ok) return;
-    commit([{ transform: { document: DOC + '/ratings/' + k, fieldTransforms: [
+    sendQ([{ transform: { document: DOC + '/ratings/' + k, fieldTransforms: [
       { fieldPath: 'sum', increment: { integerValue: String(old ? v - old : v) } },
       { fieldPath: 'count', increment: { integerValue: old ? '0' : '1' } }
-    ] } }]).then(function () { if (!old) notify('rating', k + '|' + v); }).catch(function () {});
+    ] } }]).then(function (okk) { if (okk && !old) notify('rating', k + '|' + v); });
   }
 
   /* ───────── العدّادات: تحميلات القوالب ومشاهدات الدروس (مرة لكل زائر لكل عنصر كل 12 ساعة) ───────── */
@@ -187,9 +204,9 @@
     s.n = (s.n || 0) + 1;
     paintAll(); saveCache();
     if (!ok) return;
-    commit([{ transform: { document: DOC + '/ratings/' + k, fieldTransforms: [
+    sendQ([{ transform: { document: DOC + '/ratings/' + k, fieldTransforms: [
       { fieldPath: 'n', increment: { integerValue: '1' } }
-    ] } }]).catch(function () {});
+    ] } }]);
   }
 
   /* ───────── التعليقات (تظهر بعد موافقة المشرف) ───────── */
@@ -337,6 +354,7 @@
   /* ───────── التحميل الأولي ───────── */
   function boot() {
     if (!ok) return;
+    setTimeout(flushQ, 3000);
     var c = lsG(CK, null), fresh = false;
     if (c && c.d) {
       Object.keys(c.d).forEach(function (k) { store[k] = c.d[k]; });
