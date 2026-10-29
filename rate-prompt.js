@@ -29,6 +29,7 @@
     var go = el('a', 'dlm-go'); go.href = url; go.target = '_blank'; go.rel = 'noopener'; go.setAttribute('aria-disabled', 'true');
     card.appendChild(x); card.appendChild(h); card.appendChild(p); card.appendChild(lab); card.appendChild(rt); card.appendChild(bar); card.appendChild(go);
     root.appendChild(card); document.body.appendChild(root);
+    if (window.MrRating && window.MrRating.warm) window.MrRating.warm();
     if (window.MrRating) window.MrRating.mount(rt, 't_' + name); else { rt.hidden = true; lab.hidden = true; }
 
     function label() {

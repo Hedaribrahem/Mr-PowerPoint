@@ -80,6 +80,19 @@
       });
     });
   }
+  /* القراءة (عدّاد التحميلات والتقييمات) مسموحة للجميع في القواعد، فنقرأ مباشرة بدون انتظار تفاعل الزائر وتحميل reCAPTCHA (كان هذا سبب تأخر ظهور الأرقام).
+     إن رفض الخادم القراءة (بعد تفعيل Enforce في App Check) نتذكر ذلك ونستخدم الرمز تلقائياً. */
+  var ENF = 'mr_ac_enf';
+  function fxr(url) {
+    var f = lsG(ENF, 0);
+    if (f && Date.now() - f < 24 * 3600 * 1000) return fx(url);
+    return fetch(url).then(function (r) {
+      if (r.status === 401 || r.status === 403) { lsS(ENF, Date.now()); return fx(url); }
+      return r;
+    });
+  }
+  /* تجهيز رمز App Check مسبقاً (عند فتح نافذة التحميل أو الاقتراب من النجوم) ليُحفظ التقييم ويصل الإشعار بدون تأخير */
+  function warm() { if (acOn) appCheck(); }
   /* إشعار Telegram: يُرسل نوع الحدث فقط (بدون أي بيانات شخصية) إلى Worker يحفظ مفتاح البوت. يفشل بصمت دائماً. */
   function notify(type, v) {
     var u = C.notifyUrl;
@@ -106,7 +119,7 @@
     q.reduce(function (p, w) { return p.then(function () { return sendQ(w); }); }, Promise.resolve());
   }
   function listAll(col, each, tok) {
-    return fx(base + '/' + col + '?pageSize=300&' + KEY + (tok ? '&pageToken=' + encodeURIComponent(tok) : ''))
+    return fxr(base + '/' + col + '?pageSize=300&' + KEY + (tok ? '&pageToken=' + encodeURIComponent(tok) : ''))
       .then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
       .then(function (j) {
         (j.documents || []).forEach(each);
@@ -163,6 +176,7 @@
           var b = e.target.closest('.rt-s'); if (!b) return;
           [].forEach.call(el.querySelectorAll('.rt-s'), function (x) { x.classList.toggle('hov', +x.getAttribute('data-v') <= +b.getAttribute('data-v')); });
         });
+        ['pointerenter', 'touchstart', 'focusin'].forEach(function (ev) { el.addEventListener(ev, warm, { passive: true, once: true }); });
         el.addEventListener('mouseleave', function () {
           [].forEach.call(el.querySelectorAll('.rt-s'), function (x) { x.classList.remove('hov'); });
         });
@@ -378,7 +392,7 @@
   else boot();
 
   new MutationObserver(function () { paintAll(); chosts.forEach(cmLang); }).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
-  window.MrRating = { mount: mount };
+  window.MrRating = { mount: mount, warm: warm };
   window.MrCount = { mount: mountCount, hit: hit };
   window.MrComments = { mount: mountComments };
   window.MrFS = { ok: ok, commit: commit, doc: DOC, fetchComments: fetchComments, notify: notify }; // للنماذج الأخرى (طلب الخدمة)
