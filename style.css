@@ -3403,3 +3403,9 @@ html[dir="rtl"] .dlm-rt .rt-s { background-image: linear-gradient(270deg, #ffc21
 .dlm-cm-s { border: 0; padding: 8px 20px; border-radius: 10px; background: #fff; color: #7a0c14; font: inherit; font-weight: 800; cursor: pointer; }
 .dlm-cm-s:disabled { opacity: .6; cursor: default; }
 .dlm-card { max-height: 94vh; overflow-y: auto; }
+
+/* نافذة التحميل: مربع التعليق ظاهر دائماً وبدون أيقونة */
+.dlm-cm-t { border: 0; text-decoration: none; cursor: default; padding: 0 0 2px; color: #fff; font-weight: 700; font-size: 0.95rem; }
+.dlm-cm { margin: 0 0 16px; }
+.dlm-cm-b { max-height: none; opacity: 1; margin-top: 8px; }
+.dlm-cm-x { min-height: 58px; }

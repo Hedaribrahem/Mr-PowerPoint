@@ -25,7 +25,7 @@
     var p = el('p', 'dlm-p', en ? 'Your download will be ready in a moment. Meanwhile, what do you think of this template?' : 'سيكون التحميل جاهزاً بعد لحظات. وإلى ذلك الحين، ما رأيك بهذا القالب؟');
     var lab = el('div', 'dlm-lab', en ? 'Rate this template' : 'قيّم هذا القالب');
     var rt = el('div', 'dlm-rt rt-mine');
-    var cm = el('div', 'dlm-cm'), cmT = el('button', 'dlm-cm-t', en ? '💬 Add a comment (optional)' : '💬 أضف تعليقاً (اختياري)'); cmT.type = 'button'; cmT.setAttribute('aria-expanded', 'false');
+    var cm = el('div', 'dlm-cm'), cmT = el('div', 'dlm-cm-t', en ? 'Leave a comment (optional)' : 'اترك تعليقاً (اختياري)');
     var cmB = el('div', 'dlm-cm-b'), cmN = el('input', 'dlm-cm-n'), cmX = el('textarea', 'dlm-cm-x'), cmR = el('div', 'dlm-cm-r'), cmS = el('button', 'dlm-cm-s', en ? 'Send' : 'إرسال'), cmM = el('span', 'dlm-cm-m');
     cmN.type = 'text'; cmN.maxLength = 40; cmN.autocomplete = 'name'; cmN.placeholder = en ? 'Your name (optional)' : 'اسمك (اختياري)'; cmN.setAttribute('aria-label', cmN.placeholder);
     try { cmN.value = JSON.parse(localStorage.getItem('mr_cm_name')) || ''; } catch (e) {}
@@ -34,8 +34,8 @@
     cmB.appendChild(cmN); cmB.appendChild(cmX); cmB.appendChild(cmR); cm.appendChild(cmT); cm.appendChild(cmB);
     if (!(window.MrFS && window.MrFS.quickComment && window.MrFS.ok)) cm.hidden = true;
     var sent = false;
-    function openCm(f) { cm.classList.add('open'); cmT.setAttribute('aria-expanded', 'true'); if (f) try { cmX.focus(); } catch (e) {} }
-    cmT.addEventListener('click', function () { if (cm.classList.contains('open')) { cm.classList.remove('open'); cmT.setAttribute('aria-expanded', 'false'); } else openCm(true); });
+    cm.classList.add('open');
+    function openCm() {}
     function sendCm() {
       if (sent) return;
       cmS.disabled = true; cmM.className = 'dlm-cm-m'; cmM.textContent = '…';
