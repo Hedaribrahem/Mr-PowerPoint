@@ -3385,3 +3385,21 @@ html[dir="rtl"] .dlm-rt .rt-s { background-image: linear-gradient(270deg, #ffc21
 .dlm-rt .rt-s.hov, html[dir="rtl"] .dlm-rt .rt-s.hov { background-image: linear-gradient(#ffc21a, #ffc21a); }
 .dlm-rt .rt-t { color: rgba(255, 255, 255, 0.85); font-size: 0.85rem; opacity: 1; }
 @media (max-width: 480px) { .dlm-rt .rt-s { font-size: 36px; } }
+
+/* تعليق سريع داخل نافذة التحميل */
+.dlm-cm { margin: -6px 0 16px; text-align: center; }
+.dlm-cm-t { border: 0; background: transparent; color: #ffd3d2; font: inherit; font-size: 0.92rem; font-weight: 700; cursor: pointer; padding: 6px 10px; border-radius: 10px; text-decoration: underline; text-underline-offset: 4px; }
+.dlm-cm-t:hover { color: #fff; }
+.dlm-cm-b { display: grid; gap: 8px; max-height: 0; overflow: hidden; opacity: 0; transition: max-height .35s ease, opacity .3s ease, margin .3s; text-align: start; }
+.dlm-cm.open .dlm-cm-b { max-height: 260px; opacity: 1; margin-top: 8px; }
+.dlm-cm-n, .dlm-cm-x { width: 100%; box-sizing: border-box; padding: 10px 12px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.25); background: rgba(255, 255, 255, 0.1); color: #fff; font: inherit; font-size: 0.92rem; }
+.dlm-cm-x { resize: none; min-height: 64px; }
+.dlm-cm-n::placeholder, .dlm-cm-x::placeholder { color: rgba(255, 255, 255, 0.6); }
+.dlm-cm-n:focus, .dlm-cm-x:focus { outline: 2px solid rgba(255, 255, 255, 0.55); outline-offset: 1px; }
+.dlm-cm-r { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 36px; }
+.dlm-cm-m { font-size: 0.82rem; color: rgba(255, 255, 255, 0.8); }
+.dlm-cm-m.ok { color: #9be7a8; font-weight: 700; }
+.dlm-cm-m.err { color: #ffb4b3; }
+.dlm-cm-s { border: 0; padding: 8px 20px; border-radius: 10px; background: #fff; color: #7a0c14; font: inherit; font-weight: 800; cursor: pointer; }
+.dlm-cm-s:disabled { opacity: .6; cursor: default; }
+.dlm-card { max-height: 94vh; overflow-y: auto; }

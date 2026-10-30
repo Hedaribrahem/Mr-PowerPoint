@@ -186,8 +186,17 @@
     paint(el);
   }
 
+  var notes = {}, flushNotes = {};
+  function fireNote(k) {
+    var p = notes[k]; if (!p) return; delete notes[k]; delete flushNotes[k]; clearTimeout(p.t);
+    if (p.bad || p.from === p.to) return;
+    if (p.from) notify('rerate', k + '|' + p.from + '|' + p.to); else notify('rating', k + '|' + p.to);
+  }
+  addEventListener('pagehide', function () { Object.keys(notes).forEach(fireNote); });
+  document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'hidden') Object.keys(notes).forEach(fireNote); });
   function vote(k, v) {
     var old = mine[k] || 0; mine[k] = v;
+    var p = notes[k] || (notes[k] = { from: old, to: v, bad: false, t: 0 });
     lsS('mr_ratings', mine);
     var s = store[k] || (store[k] = { sum: 0, count: 0, n: 0 });
     if (old) s.sum += v - old; else { s.sum += v; s.count++; }
@@ -196,7 +205,9 @@
     sendQ([{ transform: { document: DOC + '/ratings/' + k, fieldTransforms: [
       { fieldPath: 'sum', increment: { integerValue: String(old ? v - old : v) } },
       { fieldPath: 'count', increment: { integerValue: old ? '0' : '1' } }
-    ] } }]).then(function (okk) { if (okk && !old) notify('rating', k + '|' + v); });
+    ] } }]).then(function (okk) { if (!okk) p.bad = true; });
+    /* إشعار واحد بعد 3 ثوانٍ من آخر ضغطة: «تقييم جديد» لأول تقييم، أو «تعديل تقييم» (من ← إلى) لتغيير تقييم سابق */
+    p.to = v; clearTimeout(p.t); p.t = setTimeout(flushNotes[k] = function () { fireNote(k); }, 3000);
   }
 
   /* ───────── العدّادات: تحميلات القوالب ومشاهدات الدروس (مرة لكل زائر لكل عنصر كل 12 ساعة) ───────── */
@@ -356,6 +367,20 @@
       msg.textContent = s.fail; msg.classList.add('err');
     }).then(function () { btn.disabled = false; });
   }
+  /* تعليق سريع من نافذة التحميل (اسم اختياري). يعيد: ok | bad | wait | limit | fail */
+  function quickComment(key, name, text) {
+    key = sk(key);
+    name = String(name || '').replace(/\s+/g, ' ').trim() || (EN() ? 'Visitor' : 'زائر');
+    text = String(text || '').replace(/[ \t]+/g, ' ').replace(/\n{3,}/g, '\n\n').trim();
+    if (!ok || name.length < 2 || text.length < 3) return Promise.resolve('bad');
+    var now = Date.now(), ts = lsG('mr_cm_t', []).filter(function (t) { return now - t < 864e5; });
+    if (ts.length >= 5) return Promise.resolve('limit');
+    if (ts.length && now - ts[ts.length - 1] < 30000) return Promise.resolve('wait');
+    return postComment(key, name, text).then(function () {
+      notify('comment'); ts.push(now); lsS('mr_cm_t', ts); if (name !== 'زائر' && name !== 'Visitor') lsS('mr_cm_name', name);
+      return 'ok';
+    }).catch(function () { return 'fail'; });
+  }
   function mountComments(host, key, opts) {
     if (!host) return;
     if (!ok) { host.hidden = true; return; }
@@ -395,7 +420,7 @@
   window.MrRating = { mount: mount, warm: warm };
   window.MrCount = { mount: mountCount, hit: hit };
   window.MrComments = { mount: mountComments };
-  window.MrFS = { ok: ok, commit: commit, doc: DOC, fetchComments: fetchComments, notify: notify }; // للنماذج الأخرى (طلب الخدمة)
+  window.MrFS = { ok: ok, commit: commit, doc: DOC, fetchComments: fetchComments, notify: notify, quickComment: quickComment }; // للنماذج الأخرى (طلب الخدمة)
   window.MrStats = { // قراءة التقييم والتحميلات لأي عنصر (للفرز)
     get: function (key) { var s = store[sk(key)] || { sum: 0, count: 0, n: 0 }; return { sum: s.sum || 0, count: s.count || 0, n: s.n || 0, avg: s.count ? s.sum / s.count : 0 }; },
     onData: function (f) { dataCbs.push(f); }
