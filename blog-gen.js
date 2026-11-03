@@ -67,15 +67,15 @@
   function head(o) {
     var ld = JSON.stringify(o.ld).replace(/</g, '\\u003c');
     return '<!doctype html>\n<html lang="ar" dir="rtl">\n  <head>\n    <meta charset="UTF-8" />\n' + (o.base ? '    <base href="../" />\n' : '') +
-      '    <link rel="icon" type="image/png" sizes="32x32" href="image/logoo.png" />\n    <link rel="shortcut icon" href="image/logoo.png" />\n' +
+      '    <link rel="icon" href="favicon.ico" sizes="48x48" />\n    <link rel="icon" type="image/png" sizes="48x48" href="image/icon-48.png" />\n    <link rel="icon" type="image/png" sizes="192x192" href="image/icon-192.png" />\n    <link rel="apple-touch-icon" href="image/icon-180.png" />\n' +
       '    <meta name="viewport" content="width=device-width, initial-scale=1.0" />\n' +
       '    <title>' + esc(o.title) + '</title>\n    <meta name="description" content="' + esc(o.desc) + '" />\n' +
       '    <meta name="robots" content="index,follow,max-image-preview:large" />\n    <link rel="canonical" href="' + esc(o.url) + '" />\n    <meta name="theme-color" content="#E61312" />\n' +
       '    <meta property="og:type" content="' + o.type + '" />\n    <meta property="og:locale" content="ar_AR" />\n    <meta property="og:site_name" content="Mr PowerPoint" />\n' +
       '    <meta property="og:title" content="' + esc(o.title) + '" />\n    <meta property="og:description" content="' + esc(o.desc) + '" />\n    <meta property="og:url" content="' + esc(o.url) + '" />\n' +
-      '    <meta property="og:image" content="' + SITE + 'image/og-cover.jpg" />\n    <meta property="og:image:width" content="1200" />\n    <meta property="og:image:height" content="630" />\n' +
+      '    <meta property="og:image" content="' + (o.image || SITE + 'image/og-cover.jpg') + '" />\n' + (o.image ? '' : '    <meta property="og:image:width" content="1200" />\n    <meta property="og:image:height" content="630" />\n') +
       (o.published ? '    <meta property="article:published_time" content="' + esc(o.published) + '" />\n' : '') +
-      '    <meta name="twitter:card" content="summary_large_image" />\n    <meta name="twitter:title" content="' + esc(o.title) + '" />\n    <meta name="twitter:description" content="' + esc(o.desc) + '" />\n    <meta name="twitter:image" content="' + SITE + 'image/og-cover.jpg" />\n' +
+      '    <meta name="twitter:card" content="summary_large_image" />\n    <meta name="twitter:title" content="' + esc(o.title) + '" />\n    <meta name="twitter:description" content="' + esc(o.desc) + '" />\n    <meta name="twitter:image" content="' + (o.image || SITE + 'image/og-cover.jpg') + '" />\n' +
       '    <script type="application/ld+json">' + ld + '</script>\n' +
       '    <link rel="preconnect" href="https://fonts.googleapis.com" />\n    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />\n' +
       '    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet" />\n' +
@@ -148,6 +148,6 @@
   function slugOk(s) { return /^[a-z0-9]+(-[a-z0-9]+)*$/.test(s || ''); }
   function slugify(s) { return String(s || '').toLowerCase().replace(/&/g, ' and ').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60).replace(/-+$/, ''); }
 
-  var api = { md: md, esc: esc, articleHtml: articleHtml, indexHtml: indexHtml, sitemap: sitemap, card: card, pub: pub, readMin: readMin, fmtDate: fmtDate, slugOk: slugOk, slugify: slugify };
+  var api = { SITE: SITE, WA: WA, head: head, NAV: NAV, FOOT: FOOT, md: md, esc: esc, articleHtml: articleHtml, indexHtml: indexHtml, sitemap: sitemap, card: card, pub: pub, readMin: readMin, fmtDate: fmtDate, slugOk: slugOk, slugify: slugify };
   if (typeof module !== 'undefined' && module.exports) module.exports = api; else root.BlogGen = api;
 })(typeof window !== 'undefined' ? window : this);

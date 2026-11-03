@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/png" sizes="48x48" href="image/icon-48.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="image/icon-192.png" />
+    <link rel="apple-touch-icon" href="image/icon-180.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>قيّم تجربتك | Mr PowerPoint</title>
+    <meta name="description" content="شاركنا رأيك بتجربتك مع Mr PowerPoint بعد تسليم عملك." />
+    <meta name="robots" content="noindex,nofollow" />
+    <link rel="canonical" href="https://mr-powerpoint.com/review.html" />
+    <meta name="theme-color" content="#E61312" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ar_AR" />
+    <meta property="og:site_name" content="Mr PowerPoint" />
+    <meta property="og:title" content="قيّم تجربتك | Mr PowerPoint" />
+    <meta property="og:description" content="شاركنا رأيك بتجربتك مع Mr PowerPoint بعد تسليم عملك." />
+    <meta property="og:url" content="https://mr-powerpoint.com/review.html" />
+    <meta property="og:image" content="https://mr-powerpoint.com/image/og-cover.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="قيّم تجربتك | Mr PowerPoint" />
+    <meta name="twitter:description" content="شاركنا رأيك بتجربتك مع Mr PowerPoint بعد تسليم عملك." />
+    <meta name="twitter:image" content="https://mr-powerpoint.com/image/og-cover.jpg" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"قيّم تجربتك"}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme'), l = localStorage.getItem('lang');
+          if (t === 'light') document.body.classList.add('light-mode');
+          if (l === 'en') { document.documentElement.lang = 'en'; document.documentElement.dir = 'ltr'; document.body.dir = 'ltr'; }
+        } catch (e) {}
+      })();
+    </script>
+    <nav id="navbar">
+      <a href="index.html" class="nav-logo"><img src="image/logoo.png" alt="Mr PowerPoint" class="logo-img" /></a>
+      <div style="display: flex; align-items: center; gap: 10px">
+        <button class="lang-toggle" onclick="toggleLang()"><span class="lang-text lang-ar">عربي</span><span class="lang-sep">|</span><span class="lang-text lang-en">EN</span></button>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><span class="theme-icon"></span></button>
+        <a href="https://wa.me/963935919037" target="_blank" class="nav-cta" data-translate="nav_cta">تواصل معنا</a>
+      </div>
+    </nav>
+    <main class="bl-main rvp">
+      <div class="rvp-card">
+        <h1 data-en="Thank you for trusting us">شكراً لثقتك بنا</h1>
+        <p class="rvp-sub" data-en="Your opinion matters and helps others choose. Take a minute to rate your experience.">رأيك يهمّنا ويساعد غيرك على الاختيار. خذ دقيقة لتقييم تجربتك معنا.</p>
+        <form class="cm rv-form" id="rvForm" novalidate>
+          <label class="rq-f"><span data-en="Your name">اسمك</span><input class="cm-name" name="n" maxlength="40" autocomplete="name" /></label>
+          <div class="rq-f"><span data-en="Your rating">تقييمك</span><div class="rv-pick rvp-pick" id="rvPick" role="radiogroup" aria-label="تقييمك"><button type="button" class="rv-st" role="radio" aria-checked="false" aria-label="1/5" data-v="1">★</button><button type="button" class="rv-st" role="radio" aria-checked="false" aria-label="2/5" data-v="2">★</button><button type="button" class="rv-st" role="radio" aria-checked="false" aria-label="3/5" data-v="3">★</button><button type="button" class="rv-st" role="radio" aria-checked="false" aria-label="4/5" data-v="4">★</button><button type="button" class="rv-st" role="radio" aria-checked="false" aria-label="5/5" data-v="5">★</button></div></div>
+          <label class="rq-f"><span data-en="Your opinion">رأيك</span><textarea class="cm-text" name="d" rows="5" maxlength="600"></textarea></label>
+          <input class="cm-hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <div class="rq-act"><button class="cm-send" type="submit" data-en="Send my review">إرسال رأيي</button><span class="cm-msg" id="rvMsg" role="status"></span></div>
+          <p class="rvp-note" data-en="Your review appears on the site after it is checked. Only your name and text are shown.">يظهر رأيك على الموقع بعد مراجعته، ولا نعرض إلا اسمك ونص رأيك.</p>
+        </form>
+        <div class="rvp-done" id="rvDone" hidden>
+          <h2 data-en="Thank you! Your review was received">شكراً لك! وصل رأيك</h2>
+          <p data-en="We appreciate your time. It will appear on the site after review.">نقدّر وقتك، وسيظهر رأيك على الموقع بعد مراجعته.</p>
+          <div class="bl-cta-b"><a class="btn-primary" href="index.html" data-en="Back to the site">العودة إلى الموقع</a><a class="btn-outline" href="templates.html" data-en="Free templates">قوالب مجانية</a></div>
+        </div>
+      </div>
+    </main>
+    <script src="rating-config.js"></script>
+    <script src="rating.js"></script>
+    <script src="review.js"></script>
+    <script src="main.js"></script>
+    <script src="scrollbar.js"></script>
+  </body>
+</html>

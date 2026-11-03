@@ -11,6 +11,8 @@
   var ZOOM_ICON = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M9.5 2H14v4.5M6.5 14H2V9.5M14 2 9.5 6.5M2 14l4.5-4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   var WA_ICON = '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.03 2C6.5 2 2.03 6.48 2.03 12c0 1.77.46 3.42 1.26 4.9L2 22l5.27-1.27A9.96 9.96 0 0 0 12.03 22c5.51 0 9.99-4.48 9.99-10S17.54 2 12.03 2zm0 18.4c-1.61 0-3.23-.42-4.62-1.23l-.33-.2-2.94.89.94-2.86-.22-.34A8.35 8.35 0 0 1 3.64 12c0-4.63 3.77-8.4 8.39-8.4 4.63 0 8.4 3.77 8.4 8.4 0 4.62-3.77 8.4-8.4 8.4zm4.6-6.28c-.25-.13-1.49-.73-1.72-.82-.23-.08-.4-.13-.57.13-.17.25-.65.82-.8.99-.15.17-.29.19-.55.06-.25-.13-1.07-.39-2.03-1.25-.75-.67-1.26-1.5-1.4-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.57-1.36-.78-1.86-.2-.49-.41-.42-.57-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.44 1.03 2.61c.13.17 1.78 2.72 4.31 3.82.6.26 1.07.42 1.44.53.6.19 1.15.17 1.59.1.49-.07 1.49-.61 1.7-1.2.21-.59.21-1.09.15-1.2-.06-.1-.23-.17-.48-.29z"/></svg>';
   var LINK_ICON = '<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M6.5 9.5a3 3 0 0 0 4.24 0l2-2a3 3 0 0 0-4.24-4.24l-.7.7M9.5 6.5a3 3 0 0 0-4.24 0l-2 2a3 3 0 0 0 4.24 4.24l.7-.7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  var PAGE_ICON = '<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3.5 2h6l3 3v9h-9zM9.5 2v3h3" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>';
+  function slugT(n) { return String(n).toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, ''); }
   var CM_ICON = '<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M2.5 3.5h11v7h-6l-3 2.5v-2.5h-2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>';
 
   // بطاقة زجاجية موحّدة (الرئيسية + صفحة النماذج)
@@ -43,7 +45,7 @@
       '<button class="tpl-lb-nav tpl-lb-next" type="button" aria-label="التالي">' + CHEV + '</button>' +
       '<figure class="tpl-lb-fig"><img alt="" /><figcaption><div class="tpl-lb-left"><div class="tpl-lb-meta"><span class="tpl-lb-name"></span><span class="tpl-lb-count"></span></div><p class="tpl-lb-desc"></p>' +
       '<div class="tpl-lb-line"><div class="tpl-lb-rt rt"></div><span class="tpl-lb-ct"></span><button class="tpl-lb-cmb" type="button" aria-expanded="false">' + CM_ICON + '<span class="tpl-lb-cmt"></span></button>' +
-      '<button class="tpl-lb-sh wa" type="button" data-share="wa">' + WA_ICON + '<span class="sh-l"></span></button><button class="tpl-lb-sh" type="button" data-share="copy">' + LINK_ICON + '<span class="sh-l"></span></button></div></div>' +
+      '<button class="tpl-lb-sh wa" type="button" data-share="wa">' + WA_ICON + '<span class="sh-l"></span></button><button class="tpl-lb-sh" type="button" data-share="copy">' + LINK_ICON + '<span class="sh-l"></span></button><a class="tpl-lb-sh tpl-lb-page" href="#">' + PAGE_ICON + '<span class="sh-l"></span></a></div></div>' +
       '<a class="tl-dl" target="_blank" rel="noreferrer noopener">' + DL_ICON + '<span class="tpl-lb-dl"></span></a></figcaption></figure>' +
       '<div class="tpl-lb-cm" role="region"><button class="tpl-lb-cmx" type="button" aria-label="إغلاق التعليقات"><svg width="14" height="14" viewBox="0 0 18 18" fill="none"><path d="M4 4l10 10M14 4 4 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><div class="tpl-lb-cmh"></div></div>';
     document.body.appendChild(lb);
@@ -98,6 +100,9 @@
         b.querySelector('.sh-l').textContent = b.getAttribute('data-share') === 'wa' ? (EN() ? 'WhatsApp' : 'واتساب') : (EN() ? 'Copy link' : 'نسخ الرابط');
       });
     }
+    var pg = lb.querySelector('.tpl-lb-page');
+    pg.style.display = (isT && !t.bonus) ? '' : 'none';
+    if (isT && !t.bonus) { pg.href = 'template/' + slugT(t.name) + '.html'; pg.querySelector('.sh-l').textContent = EN() ? 'Template page' : 'صفحة القالب'; }
     lb.querySelector('.tpl-lb-cmx').setAttribute('aria-label', EN() ? 'Close comments' : 'إغلاق التعليقات');
     if (!isT) lb.classList.remove('cm-open'); else if (lb.classList.contains('cm-open')) loadCm();
     var dl = lb.querySelector('.tl-dl'); dl.style.display = t.url ? '' : 'none'; if (t.url) dl.href = t.url;
@@ -208,6 +213,14 @@
     }, { threshold: 0.12 });
     grid.querySelectorAll('.tpl-cell').forEach(function (c) { io2.observe(c); });
     initTools(grid);
+    var idx = document.createElement('details');
+    idx.className = 'tpl-index';
+    idx.innerHTML = '<summary></summary><div class="tpl-index-g">' + fullList.filter(function (t) { return !t.bonus; }).map(function (t) {
+      return '<a href="template/' + slugT(t.name) + '.html"><b>' + escH(t.name) + '</b><span>' + escH(t.d || '') + '</span></a>';
+    }).join('') + '</div>';
+    grid.parentNode.appendChild(idx);
+    var idxL = function () { idx.firstChild.textContent = EN() ? 'Browse every template page' : 'تصفّح صفحة كل قالب'; };
+    idxL(); new MutationObserver(idxL).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
   }
 
 
