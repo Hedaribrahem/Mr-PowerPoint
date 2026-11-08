@@ -37,5 +37,6 @@ window.TEMPLATES = [
   {"name": "template032", "img": "templates/template032.jpg", "url": "https://drive.google.com/file/d/1dnZsYLe8V59wEI6uLp00ylFVdvhBJw6Y/view?usp=sharing", "bonus": false, "d": "إنفوغرافيك", "e": "Infographic"},
   {"name": "template033", "img": "templates/template033.jpg", "url": "https://drive.google.com/file/d/1z0Nu4XJlbH4tofrjOj3WF6CQIhbC-MDk/view?usp=drive_link", "bonus": false, "d": "إنفوغرافيك", "e": "Infographic"},
   {"name": "template034", "img": "templates/template034.jpg", "url": "https://drive.google.com/file/d/1qx3BgNIQZ_zgIFfp0pm0VAgh6zS0U23C/view?usp=sharing", "bonus": false, "d": "إنفوغرافيك", "e": "Infographic"},
-  {"name": "template035", "img": "templates/template035.jpg", "url": "https://drive.google.com/file/d/1e-bULDTsv71tFnG2v9FH2wFngmeG9qek/view?usp=sharing", "bonus": false, "d": "إنفوغرافيك", "e": "Infographic"}
+  {"name": "template035", "img": "templates/template035.jpg", "url": "https://drive.google.com/file/d/1e-bULDTsv71tFnG2v9FH2wFngmeG9qek/view?usp=sharing", "bonus": false, "d": "إنفوغرافيك", "e": "Infographic"},
+  {"name": "template036", "img": "templates/template036.jpg", "url": "https://drive.google.com/file/d/1qwEFkAd72SMf3sQfDZ4MiWC02P19brfY/view?usp=drive_link", "bonus": false, "d": "إنفوغرافيك", "e": "Infographic"}
 ];
